@@ -79,11 +79,12 @@
 
     		//.attr('fill',"red" );     
     label.append("text")
-    			.attr('fill', "white" )
-    			//.attr("dy", ".35em")
-    			.attr("x", -5)
-    			.attr("y", -5)
-    			.text(function(d) { return "lalalla"; });		
+    	.attr('id', "labelCenter" )		
+		.attr('fill', "white" )
+		//.attr("dy", ".35em")
+		.attr("x", -55)
+		.attr("y", -5);
+		//.text(function(d) { return "lalalla"; });		
 
 
         //change dinaicly size of circle
@@ -136,6 +137,7 @@
         })
 
         var poljaZaDif = ["restriktivni","otvoreni","sa objavljivanjem","bez objavljivanja","kvalifikacioni"];
+        
         dobra = filter2nivo(dobra, poljaZaDif );
         usluge = filter2nivo(usluge, poljaZaDif);
         radovi = filter2nivo(radovi, poljaZaDif);
@@ -165,7 +167,10 @@
 
     		var tempArr = niz.filter(function (nesto) {
     			//nazivi ove kategorije su mnogo dugacki, pa samo uporedjujem deo
-    			return nesto.postupak.toLowerCase().indexOf(nesto) != -1; 	 
+    			return nesto.postupak.toLowerCase().indexOf(to) != -1; 	 
+    		}).map(function (te) {
+    			te.name = te.opis_predmeta.substr(0,15);
+    			return te;
     		})
 
     		tempOb.children = tempArr;
@@ -236,8 +241,8 @@
     };
 
 
-    function mouseover (argument) {
-    	// body...
+    function mouseover (d,j) {
+    	d3.select('#labelCenter').text(d.name);
     }
 
     function stash(d) {
