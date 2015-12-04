@@ -1,4 +1,4 @@
 vendor/*
 .htaccess
 composer*
-index.php
+index.php*
