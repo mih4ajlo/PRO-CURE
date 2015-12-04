@@ -1,0 +1,57 @@
+<?php
+
+require 'vendor/autoload.php';
+
+
+$app = new \Slim\Slim();
+
+
+$app->get('/', function ($name="Mihajlo") {
+    echo "Hello, " . $name;
+});
+/*$app->get('/:name', function ($name="Mihajlo") {
+    echo "Hello, " . $name;
+});*/
+
+$app->get('/info/', function () {
+     phpinfo();   
+
+});
+
+$app->get('/listdata', 'showData');
+$app->post('/create', 'addData');
+$app->run();
+
+function addData()
+{
+// connect
+    $m = new MongoClient();
+// select your database
+    $db = $m->dbname;
+// select your collection
+    $collection = $db->collectionname;
+// add a record
+    $document = array("title" => "title 1", "author" => "author 1");
+    $collection->insert($document);
+// add another record
+    $document = array("title" => "title 2", "author" => "author 2");
+    $collection->insert($document);
+}
+
+function showData()
+{
+// connect
+    $m = new MongoClient();
+// select your database
+    $db = $m->dbname;
+// select your collection
+    $collection = $db->collectionname;
+// find everything in the collection
+    $cursor = $collection->find();
+// Show the result here
+    foreach ($cursor as $document) {
+        echo $document["title"] . "\n";
+    }
+}
+
+?>
