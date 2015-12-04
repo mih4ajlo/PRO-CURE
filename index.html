@@ -58,9 +58,11 @@
 
     var HTMLabsoluteTip = d3.select("div.tip");
 
+    var mera = radius * 0.5 ;
 
     // Total size of all segments; we set this later, after loading the data.
     var totalSize = 0;
+    var pomeraj =  - mera /2;
 
     var vis = d3.select("#chart").append("svg")
         .attr("width", width)
@@ -69,9 +71,25 @@
         .attr("id", "container")
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+    var label = vis.append("g");
+    		label.append("rect")
+    		.attr('width', mera )
+    		.attr('height', mera )
+			.attr("transform", "translate(" + pomeraj   + "," + pomeraj + ")")  		;
+
+    		//.attr('fill',"red" );     
+    label.append("text")
+    			.attr('fill', "white" )
+    			//.attr("dy", ".35em")
+    			.attr("x", -5)
+    			.attr("y", -5)
+    			.text(function(d) { return "lalalla"; });		
+
+
+        //change dinaicly size of circle
     var partition = d3.layout.partition()
         .sort(null)
-        .size([2 * Math.PI, radius * radius])
+        .size([2 * Math.PI, radius * radius*0.5])
         .value(function(d) {
             return 1;
         });
@@ -117,20 +135,43 @@
             return la.predmet == "Radovi";
         })
 
+        var poljaZaDif = ["restriktivni","otvoreni","sa objavljivanjem","bez objavljivanja","kvalifikacioni"];
+        dobra = filter2nivo(dobra, poljaZaDif );
+        usluge = filter2nivo(usluge, poljaZaDif);
+        radovi = filter2nivo(radovi, poljaZaDif);
+
+
         tempObje.children.push({
             "name": "Dobra",
-            "children": [] /*dobra*/
+            "children":  dobra
         });
         tempObje.children.push({
             "name": "Usluge",
-            "children": [] /*usluge*/
+            "children":  usluge
         });
         tempObje.children.push({
             "name": "Radovi",
-            "children": [] /*radovi*/
+            "children":  radovi
         });
 
         return tempObje;
+    }
+
+
+    function filter2nivo (niz, poljaZaDif) {
+    	
+    	poljaZaDif.forEach(function (to) {
+    		var tempOb = { "name": "Usluge","children":  []};
+
+    		var tempArr = niz.filter(function (nesto) {
+    			//nazivi ove kategorije su mnogo dugacki, pa samo uporedjujem deo
+    			return nesto.postupak.toLowerCase().indexOf(nesto) != -1; 	 
+    		})
+
+    		tempOb.children = tempArr;
+    	})
+
+    	return niz;
     }
 
     function createVisualization(json) {
@@ -168,8 +209,8 @@
 
             })
             .style("opacity", 1)
+            .on("mouseover", mouseover)
             .each(stash);
-        //.on("mouseover", mouseover);
 
         // Add the mouseleave handler to the bounding circle.
         // d3.select("#container").on("mouseleave", mouseleave);
@@ -194,6 +235,10 @@
 	  });
     };
 
+
+    function mouseover (argument) {
+    	// body...
+    }
 
     function stash(d) {
         d.x0 = d.x;
