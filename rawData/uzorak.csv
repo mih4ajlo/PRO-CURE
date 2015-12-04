@@ -1,4 +1,4 @@
-Izveštaj,Br.,Firma,Opis predmeta nabavke,Predmet nabavke,Ugovorena cena (sa PDV),Procenjena cena,Postupak,Datum,Broj ponuda,Int br. nabavke
+izvestaj,br,firma,opis_predmeta,predmet,cena_pdv,procenjena_cena,postupak,datum,broj_ponuda,int_br_nabavke
 MO 2013 Q2,187,Chortan co,Tkanina,Dobra,"60,332,000 din.","61,400,000 din.",Otvoreni,"
 8.5.2013.",5,9/13
 MO 2013 Q2,79,"""МИД"" д.о.о","ТОд и СР интегралног транспорта, средстава са моторима мале снаге и дизалица и теретних м/в ТАМ",Usluge,"11,263,000 din.","9,386,000 din.",Restriktivni postupak,10.4.2013,1,1399
