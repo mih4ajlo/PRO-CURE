@@ -1,4 +1,4 @@
-idNum, izvestaj,br,firma,opis_predmeta,predmet,cena_pdv,procenjena_cena,postupak,datum,broj_ponuda,int_br_nabavke
+idNum,izvestaj,br,firma,opis_predmeta,predmet,cena_pdv,procenjena_cena,postupak,datum,broj_ponuda,int_br_nabavke
 1,MO 2014 Q1,40,'НИС'' а.д.,Лож уље - уље за ложење средње С,Dobra,820227000,832000000,Otvoreni,07.02.2014.,1,7/2014
 2,MO 2014 Q1,61, ''НИС'' а.д.,погонско гориво (гасно уље евродизел),Dobra,522018000,427100000,Otvoreni,26.02.2014.,1,5/2014
 3,MO 2014 Q1,45,'НИС'' а.д.,Лож уље - Гасно уље екстра лако евро ЕЛ,Dobra,520812000,506900000,Otvoreni,11.2.2014.,1,8/2014

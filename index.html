@@ -214,20 +214,36 @@
         usluge = filter2nivo("Usluge",usluge, poljaZaDif, colors.usluge.izvedene);
         radovi = filter2nivo("Radovi",radovi, poljaZaDif, colors.radovi.izvedene);
 
+        var tempDobra = [];
+        var tempUsluge = [];
+        var tempRadovi = [];
+
+        dobra.forEach(function (funk) {
+        	if(funk.children != undefined)
+        	tempDobra = tempDobra.concat(funk.children)		
+        })
+        usluge.forEach(function (funk) {
+        	if(funk.children != undefined)
+        	tempUsluge = tempUsluge.concat(funk.children)		
+        })
+        radovi.forEach(function (funk) {
+        	if(funk.children != undefined)
+        	tempRadovi = tempRadovi.concat(funk.children)		
+        })
 
         tempObje.children.push({
             "name": "Dobra",
-            "children": dobra,
+            "children": tempDobra,
             "color":colors.dobra.osnovna
         });
         tempObje.children.push({
             "name": "Usluge",
-            "children": usluge,
+            "children": tempUsluge,
             "color":colors.usluge.osnovna
         });
         tempObje.children.push({
             "name": "Radovi",
-            "children": radovi,
+            "children": tempRadovi,
             "color":colors.radovi.osnovna
         });
 
@@ -238,19 +254,27 @@
     function filter2nivo(kat, niz, poljaZaDif, boje) {
 
         var param = 'opis_predmeta';
+        
+        var uslovArra = [];
 
-        var katego = ["restriktivni", "otvoreni", "sa objavljivanjem", "bez objavljivanja", "kvalifikacioni"];
+        var katego = 
+        	["restriktivni", "otvoreni", "sa objavljivanjem", "bez objavljivanja", "kvalifikacioni"];
 
         poljaZaDif.forEach(function(to) {
+            
             var tempOb = {
-                "name": kat,
-                "children": []
+                "name": to.charAt(0).toUpperCase() + to.slice(1),
+                "children": [],
+                /*"parent":kat,*/
+                "color" : "red"
             };
 
             var tempArr = niz.filter(function(nesto) {
                 //nazivi ove kategorije su mnogo dugacki, pa samo uporedjujem deo
                 return nesto.postupak.toLowerCase().indexOf(to) != -1;
-            }).map(function(te) {
+            })
+
+            tempArr.map(function(te) {
             	var boja1 = "";
             	katego.forEach(function(la){
             		if(te.postupak.toLowerCase().indexOf(la)!=-1)
@@ -258,16 +282,20 @@
             	})
                 
 
-                te.name = te.postupak ;//+ " <br> <br> " +  te[param]/*.substr(0, 15)*/ ;
+                te.name = te.firma ; /*+ " " +  te.cena_pdv + " din"*///te[param]/*.substr(0, 15)*/ ;
                 
                 te.color = boje[boja1];
                 return te;
             })
 
             tempOb.children = tempArr;
+            //uslovArra.concat(tempArr);
+
+        	uslovArra.push(tempOb);    
         })
 
-        return niz;
+
+        return uslovArra;
     }
 
 
@@ -283,6 +311,8 @@
             var uslov = true;
             if (la.children != undefined) return false;
             for (var i = 0, len = nizArgumenata.length; i < len; i++) {
+
+            	if(la["postupak"] == undefined) return false;
 
                 if (nizArgumenata[i].name == "postupak")
                     uslov &= la["postupak"].toLowerCase().indexOf(nizArgumenata[i].value.replace("_", " ")) != -1;
@@ -337,19 +367,34 @@
             .attr("transform", "translate(" + 0 + "," + 0 + ")");
 
 
-        var x = d3.scale.linear()
-            .range([0, 250]);
+        var niz_pokazatelj = data.map(function(po){return +po.cena_pdv});
+
+        var max = d3.max( niz_pokazatelj );
+        var min = d3.min( niz_pokazatelj  );    
+         
+        var x = d3.scale.linear().range([80, 130]);
+
+        	/*.linear()
+            .range([0, 250]);*/
 
         var y = d3.scale.ordinal()
             .rangeRoundBands([0, height],.25);
 
+/*            .ordinal()
+    .domain(index)
+    .rangeRoundBands([0, height], .1);*/
+
         //definisati max sirinu
         //i pomeraj
-        x.domain([0, 250])
+        x.domain(
+        	niz_pokazatelj);
+        /*data.map(function(d) {
+            	return +d.cena_pdv ;
+        	}))*/
             //x.domain(d3.extent(data, function(d) { return d.cena_pdv; })).nice();
         y.domain(
         	data.map(function(d) {
-            	return +d.idNum ;
+            	return +d.cena_pdv ;
         	})
     	)
 
@@ -361,20 +406,24 @@
                 return "bar negative";
             })
             .attr("x", function(d) {
-                return x(Math.floor(Math.random() * 10));
+                return 0;
             })
             .attr("y", function(d) {
                 //return +d.idNum * 15;	
-                return y(d.idNum) + 5;
+                return y(d.cena_pdv) + 5;
             })
-            .attr("width", 150)
+            .attr("width",function (d,j) {
+            	return 350 -  x(+d.cena_pdv)
+            }  )
             .attr("height", 12)
             .on("mouseover", function(l, e) {
                 console.log(l)
             })
-            .on("click", change);
+            .on("click", function (d, j) {
+            	change(data)
+            });
 
-        function change(nes) {
+        function change(data, nes) {
             //clearTimeout(sortTimeout);
             nes = false
                 // Copy-on-write since tweens are evaluated after a delay.
@@ -383,17 +432,16 @@
                         nes ? function(a, b) {
                             return b.cena_pdv - a.cena_pdv;
                         } : function(a, b) {
-                            return d3.ascending(a.broj_ponuda, b.broj_ponuda);
+                            return a.cena_pdv - b.cena_pdv;
                         })
-
                     .map(function(d) {
-                        return +d.idNum;
+                        return +d.cena_pdv;
                     }))
                 .copy();
 
             svgDrugi.selectAll(".bar")
                 .sort(function(a, b) {
-                    return y0(a.idNum) - y0(b.idNum);
+                    return y0(a.cena_pdv) - y0(b.cena_pdv);
                 });
 
             var transition = svgDrugi.transition().duration(750),
@@ -404,9 +452,9 @@
             transition.selectAll(".bar")
                 .delay(delay)
                 .attr("y", function(d) {
-                    return y0(d.idNum) ;
+                    return y0(d.cena_pdv) ;
                 });
-
+				// .attr("transform", function(d, i) { return "translate(0," + y0(d.cena_pdv)+ ")"; });
 
         }
 
@@ -446,7 +494,12 @@
             	return  d.color;
             })
             .style("opacity", 1)
-            .on("mouseover", mouseover)
+            .on("mouseover", function (d, j) {
+            	if(d.depth!=0 && d.depth == 2 && d.children ==undefined)
+            		mouseover(d, j);
+
+            	labelMouse(d,j);
+            })
             .on("mouseleave", mouseleaveCell)
             //.on("click", mrdniGa)
             .each(stash);
@@ -501,9 +554,12 @@
         d3.select("#rotiraj").style("transform", "rotateZ(10deg)")
     }
 
-    function mouseover(d, j) {
 
-        d3.select('#labelCenter p').html(d.name);
+    function labelMouse (d,j) {
+    	d3.select('#labelCenter p').html(d.name);
+    }
+
+    function mouseover(d, j) {
 
         /*scale*/
         var tempEl = d3.selectAll("path").filter(function(la, po) {
@@ -635,7 +691,7 @@
         entering.append("svg:polygon")
             .attr("points", breadcrumbPoints)
             .style("fill", function(d) {
-                return d.color/*colors[Math.floor(Math.random() * 3)]*/;
+                return d.color /*|| this.color*//*colors[Math.floor(Math.random() * 3)]*/;
             });
 
         entering.append("svg:text")
@@ -645,7 +701,12 @@
             .attr('fill', "white" )
             .attr("text-anchor", "middle")
             .text(function(d) {
-                return d.name;
+            	var tekst = "";
+
+            	if(d.postupak !=undefined) 
+            		tekst = d.postupak.substr(0,15) + " : "; 
+
+                return  tekst  +  d.name.substr(0,17);
             });
 
         // Set position for entering and updating nodes.
