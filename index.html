@@ -7,11 +7,17 @@
     <script src="public/js/d3.v3.min.js"></script>
     <script src="public/js/underscore-min.js"></script>
     <script src="public/js/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <style>
-   
-    #chart2 svg{height: 100vh;}
+    #chart2 {
+        overflow-y: scroll;
+        width: 400px;
+    }
+    
+    #chart2 svg {
+        height: 100vh;
+    }
+    
     .izdvojen {
         transform: scale(1.10);
     }
@@ -61,10 +67,10 @@
     </form>
     <div class="tip"></div>
     <div id="sequence"></div>
-  	<div id="wrap" class="row">
-  	  	<div id="chart" class="col-md-8"></div>
-  		<div id="chart2" class="col-md-4"></div>
-  	</div>
+    <div id="wrap" class="row">
+        <div id="chart" class="col-md-8"></div>
+        <div id="chart2" class="col-md-4"></div>
+    </div>
     <script>
     //http://bl.ocks.org/mbostock/4063423
 
@@ -279,9 +285,19 @@
             //napraviti poseban graf ovde
     })
 
-    /*=====  End of filterPretraga  ======*/
 
 
+   
+
+        //neki button ce biti	
+        /*  d3.select("input").on("change", change);
+
+		  var sortTimeout = setTimeout(function() {
+		    d3.select("input").property("checked", true).each(change);
+		  }, 2000);*/
+
+     
+    
 
     function secondGraph(data) {
         var width = 350;
@@ -299,10 +315,13 @@
 
         var y = d3.scale.ordinal()
             .rangeRoundBands([0, height], .2);
+
+        //definisati max sirinu
+        //i pomeraj
         x.domain([0, 150])
             //x.domain(d3.extent(data, function(d) { return d.cena_pdv; })).nice();
         y.domain(data.map(function(d) {
-            return d.name;
+            return d.cena_pdv;
         }))
 
 
@@ -313,17 +332,57 @@
                 return "bar negative";
             })
             .attr("x", function(d) {
-                return x(Math.min(0, d.cena_pdv));
+                return x(Math.floor(Math.random() * 10));
             })
             .attr("y", function(d) {
                 return y(d.name);
             })
             .attr("width", 150)
-            .attr("height", y.rangeBand());
+            .attr("height", y.rangeBand())
+            .on("mouseover", function(l, e) {
+                console.log(l)
+            })
+        	.on("click", change);
+
+	   function change(nes) {
+            //clearTimeout(sortTimeout);
+            nes  =true
+            // Copy-on-write since tweens are evaluated after a delay.
+            var y0 = y.domain(
+                    data.sort(
+                        nes ? function(a, b) {
+                            return b.cena_pdv - a.cena_pdv;
+                        } : function(a, b) {
+                            return d3.ascending(a.broj_ponuda, b.broj_ponuda);
+                        })
+
+                    .map(function(d) {
+                        return d.cena_pdv;
+                    }))
+                .copy();
+
+            svgDrugi.selectAll(".bar")
+                .sort(function(a, b) {
+                    return y0(a.cena_pdv) - y0(b.cena_pdv);
+                });
+
+            var transition = svgDrugi.transition().duration(750),
+                delay = function(d, i) {
+                    return i * 50;
+                };
+
+            transition.selectAll(".bar")
+                .delay(delay)
+                .attr("y", function(d) {
+                    return y0(d.cena_pdv) + 25;
+                });
 
 
+        }
 
     }
+
+    /*=====  End of filterPretraga  ======*/
 
 
     function createVisualization(json) {
@@ -376,7 +435,7 @@
 
 
 
-        d3.selectAll("input").on("change", function change() {
+        d3.selectAll("input").on("change", function () {
             /*var value = this.value === "count" ? function() {
                 return 1;
             } : function(d) {
@@ -392,14 +451,16 @@
     };
 
 
+
+
+
+
+
     function mrdniGa() {
         //uzmi ceo i transliraj ga na ivicu
         d3.select("#container").attr("transform", "translate(" + (width + 20) + "," + (height / 2) + ")");
 
         //uzmi sve podatke i filtriraj ih, da odgovaraju samo jednoj kategoriji
-
-
-
 
     }
 
