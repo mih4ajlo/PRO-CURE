@@ -90,38 +90,40 @@
     };
 
     // Mapping of step names to colors.
-    var colors = {
-        "radovi": "#1b9e77",
-        "dobra": "#d95f02",
-        "usluge": "#7570b3"
-    }
-
-    var temp = ["restriktivni", "otvoreni", "sa_objavljivanjem", "bez_objavljivanja", "kvalifikacioni"];
-    var j = 1;
-    var tempNIz = ["radovi", "dobra", "usluge"];
-    var rezNis = []
-
-    for (var z = 0, lenZ= tempNIz.length; z < lenZ; z++) {
-
-    	var tempArBle = {"name":tempNIz[z],"izvedene":{}}; 
-
-        for (var i = 0, len = temp.length; i < len; i++) {
-
-            var tempColor = "";
-
-            if (i < (len / 2))
-                tempColor = d3.rgb( colors[tempNIz[z]] ).darker(0.1 * i).toString();
-            else
-                tempColor =  d3.rgb( colors[tempNIz[z]] ).brighter(0.1 * j++).toString();
-            
-
-            tempArBle.izvedene[temp[i]] = tempColor;
-        }
-
-        rezNis.push(tempArBle);
-
-    }
-
+   
+    var colors = 
+    {
+	  "radovi":{
+	    "osnovna": "#1b9e77",
+	    "izvedene": {
+	      "restriktivni": "#093427",
+	      "otvoreni": "#157A5C",
+	      "sa_objavljivanjem": "#23D19D",
+	      "bez_objavljivanja": "#62E4BD",
+	      "kvalifikacioni": "#CBF6E9"
+	    }
+	  },
+	  "dobra": {	    
+	    "osnovna": "#d95f02",
+	    "izvedene": {
+	      "restriktivni": "#3D1B01",
+	      "otvoreni": "#A24702",
+	      "sa_objavljivanjem": "#FD8021",
+	      "bez_objavljivanja": "#FD9749",
+	      "kvalifikacioni": "#FED1AE"
+	    }
+	  },
+	  "usluge":{	    
+	    "osnovna": "#7570b3",
+	    "izvedene": {
+	      "restriktivni": "#1E1C35",
+	      "otvoreni": "#433F78",
+	      "sa_objavljivanjem": "#5A54A0",
+	      "bez_objavljivanja": "#A4A1CE",
+	      "kvalifikacioni": "#D8D7EA"
+	    }
+	  }
+	}
 
 
     var HTMLabsoluteTip = d3.select("div.tip");
@@ -141,19 +143,20 @@
         .append("g")
         .attr("id", "rotiraj");
 
+
+
     var label = vis.append("g");
-    label.append("rect")
+    label.append('foreignObject')
         .attr('width', mera)
         .attr('height', mera)
-        .attr("transform", "translate(" + pomeraj + "," + pomeraj + ")");
-
-    //.attr('fill',"red" );     
-    label.append("text")
+        .attr("transform", "translate(" + pomeraj + "," + pomeraj + ")")
+	.append("xhtml:div")    	
         .attr('id', "labelCenter")
-        .attr('fill', "white")
+        .append("xhtml:p");
+        
         //.attr("dy", ".35em")
-        .attr("x", -55)
-        .attr("y", -5);
+        /*.attr("x", -55)
+        .attr("y", -5);*/
     //.text(function(d) { return "lalalla"; });		
 
 
@@ -183,7 +186,6 @@
     d3.csv('rawData/uzorak.csv', function(err, data) {
 
 
-
         var json = transformData(data);
 
         createVisualization(json);
@@ -208,35 +210,40 @@
 
         var poljaZaDif = ["restriktivni", "otvoreni", "sa objavljivanjem", "bez objavljivanja", "kvalifikacioni"];
 
-        dobra = filter2nivo(dobra, poljaZaDif);
-        usluge = filter2nivo(usluge, poljaZaDif);
-        radovi = filter2nivo(radovi, poljaZaDif);
+        dobra = filter2nivo("Dobra",dobra, poljaZaDif, colors.dobra.izvedene);
+        usluge = filter2nivo("Usluge",usluge, poljaZaDif, colors.usluge.izvedene);
+        radovi = filter2nivo("Radovi",radovi, poljaZaDif, colors.radovi.izvedene);
 
 
         tempObje.children.push({
             "name": "Dobra",
-            "children": dobra
+            "children": dobra,
+            "color":colors.dobra.osnovna
         });
         tempObje.children.push({
             "name": "Usluge",
-            "children": usluge
+            "children": usluge,
+            "color":colors.usluge.osnovna
         });
         tempObje.children.push({
             "name": "Radovi",
-            "children": radovi
+            "children": radovi,
+            "color":colors.radovi.osnovna
         });
 
         return tempObje;
     }
 
 
-    function filter2nivo(niz, poljaZaDif) {
+    function filter2nivo(kat, niz, poljaZaDif, boje) {
 
         var param = 'opis_predmeta';
 
+        var katego = ["restriktivni", "otvoreni", "sa objavljivanjem", "bez objavljivanja", "kvalifikacioni"];
+
         poljaZaDif.forEach(function(to) {
             var tempOb = {
-                "name": "Usluge",
+                "name": kat,
                 "children": []
             };
 
@@ -244,7 +251,16 @@
                 //nazivi ove kategorije su mnogo dugacki, pa samo uporedjujem deo
                 return nesto.postupak.toLowerCase().indexOf(to) != -1;
             }).map(function(te) {
-                te.name = te[param].substr(0, 15);
+            	var boja1 = "";
+            	katego.forEach(function(la){
+            		if(te.postupak.toLowerCase().indexOf(la)!=-1)
+            		boja1 = la.replace(" ","_"); 
+            	})
+                
+
+                te.name = te.postupak ;//+ " <br> <br> " +  te[param]/*.substr(0, 15)*/ ;
+                
+                te.color = boje[boja1];
                 return te;
             })
 
@@ -298,7 +314,7 @@
 
 
 
-
+    // da se prekine animacija
 
     //neki button ce biti	
     /*  d3.select("input").on("change", change);
@@ -325,14 +341,15 @@
             .range([0, 250]);
 
         var y = d3.scale.ordinal()
-            .rangeRoundBands([0, height], .2);
+            .rangeRoundBands([0, height],.25);
 
         //definisati max sirinu
         //i pomeraj
-        x.domain([0, 150])
+        x.domain([0, 250])
             //x.domain(d3.extent(data, function(d) { return d.cena_pdv; })).nice();
-        y.domain(data.map(function(d) {
-            return d.name;
+        y.domain(
+        data.map(function(d) {
+            return +d.idNum ;
         }))
 
 
@@ -346,10 +363,11 @@
                 return x(Math.floor(Math.random() * 10));
             })
             .attr("y", function(d) {
-                return y(d.name);
+                //return +d.idNum * 15;	
+                return y(d.idNum) + 5;
             })
             .attr("width", 150)
-            .attr("height", y.rangeBand())
+            .attr("height", 12)
             .on("mouseover", function(l, e) {
                 console.log(l)
             })
@@ -368,13 +386,13 @@
                         })
 
                     .map(function(d) {
-                        return d.name;
+                        return +d.idNum;
                     }))
                 .copy();
 
             svgDrugi.selectAll(".bar")
                 .sort(function(a, b) {
-                    return y0(a.name) - y0(b.name);
+                    return y0(a.idNum) - y0(b.idNum);
                 });
 
             var transition = svgDrugi.transition().duration(750),
@@ -385,7 +403,7 @@
             transition.selectAll(".bar")
                 .delay(delay)
                 .attr("y", function(d) {
-                    return y0(d.name) + 25;
+                    return y0(d.idNum) ;
                 });
 
 
@@ -401,8 +419,6 @@
 
         // Basic setup of page elements.
         initializeBreadcrumbTrail();
-
-
 
         // Bounding circle underneath the sunburst, to make it easier to detect
         // when the mouse leaves the parent g.
@@ -426,10 +442,33 @@
             .attr("fill-rule", "evenodd")
             .style("stroke", "#fff")
             .style("fill", function(d) {
+            	return  d.color;
+            	/*var tem = ["dobra","usluge","radovi"];
+            	var ocena = tem.indexOf( d.name.toLowerCase() )
+            	var ocena2;
 
+            	if(d.depth ==0 )return "";
+            	if(d.parent !=undefined) 
+            		ocena2 = tem.indexOf( d.parent.name.toLowerCase() )
+            	
+            	if( ocena != -1)
+            		return colors.find(function(te){return te.name ==tem[ocena] })["osnovna"];
+            	else if( ocena2 !=-1 )
+            	{
+            		var tempGl = colors.find(function(te){
+            			return te.name ==tem[ocena2] 
+            			})
+            		var boja = "";
+            		Object.keys(tempGl.izvedene).filter(function (kre) {
+            				if ( d.postupak.toLowerCase().indexOf( kre.replace("_"," ") ) !=-1  )
+            					boja =  kre;
+            			});
+            		return tempGl.izvedene[boja];
+            	}
+            	//if(d.parent !=undefined )
                 //d.postupak
-                //if (d.name.toLowerCase()) value.replace("_", " ")
-                return colors[d.name.toLowerCase()];
+               // if (d.name.toLowerCase().indexOf() ) value.replace("_", " ")
+                return colors[d.name.toLowerCase()];*/
 
             })
             .style("opacity", 1)
@@ -490,7 +529,7 @@
 
     function mouseover(d, j) {
 
-        d3.select('#labelCenter').text(d.name);
+        d3.select('#labelCenter p').html(d.name);
 
         /*scale*/
         var tempEl = d3.selectAll("path").filter(function(la, po) {
