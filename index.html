@@ -7,53 +7,64 @@
     <script src="public/js/d3.v3.min.js"></script>
     <script src="public/js/underscore-min.js"></script>
     <script src="public/js/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
 
     <style>
-    .izdvojen{
-    	transform:scale(1.10);
+   
+    #chart2 svg{height: 100vh;}
+    .izdvojen {
+        transform: scale(1.10);
     }
-    .vracen{
-    	transform:scale(1);
+    
+    .vracen {
+        transform: scale(1);
     }
-    	</style>
+    
+    .bar.positive {
+        fill: steelblue;
+    }
+    
+    .bar.negative {
+        fill: brown;
+    }
+    </style>
 </head>
 
 <body>
-	<form>
-		
-		<select name="postupak" id="">
-			<option value="otvoreni">Otvoreni</option>
-			<option value="restriktivni">Restriktivni</option>
-			<option value="sa_objavljivanjem">Sa objavljivanjem</option>
-			<option value="bez_objavljivanja">Bez objavljivanja</option>
-			<option value="kvalifikacioni">Kvalifikacioni</option>			
-		</select>
-		<select name="predmet" id="">
-			<option value="dobra">Dobra</option>
-			<option value="usluge">Usluge</option>
-			<option value="radovi">Radovi</option>
-		</select>
-
-		<select name="ponuda" id="">
-		
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8">8</option>
-			<option value="9">9</option>
-			<option value="10">10</option>
-		</select>
-		<input type="number" name="cena">
-		<button type="button">Trazi</button>
-	</form>
+    <form>
+        <select name="postupak" id="">
+            <option value="otvoreni">Otvoreni</option>
+            <option value="restriktivni">Restriktivni</option>
+            <option value="sa_objavljivanjem">Sa objavljivanjem</option>
+            <option value="bez_objavljivanja">Bez objavljivanja</option>
+            <option value="kvalifikacioni">Kvalifikacioni</option>
+        </select>
+        <select name="predmet" id="">
+            <option value="dobra">Dobra</option>
+            <option value="usluge">Usluge</option>
+            <option value="radovi">Radovi</option>
+        </select>
+        <select name="ponuda" id="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+        <input type="number" name="cena">
+        <button type="button">Trazi</button>
+    </form>
     <div class="tip"></div>
     <div id="sequence"></div>
-    <div id="chart">
-    </div>
+  	<div id="wrap" class="row">
+  	  	<div id="chart" class="col-md-8"></div>
+  		<div id="chart2" class="col-md-4"></div>
+  	</div>
     <script>
     //http://bl.ocks.org/mbostock/4063423
 
@@ -109,10 +120,9 @@
         .attr("height", height)
         .append("svg:g")
         .attr("id", "container")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+        .attr("transform", "translate(" + width / 3 + "," + height / 2 + ")")
         .append("g")
-        .attr("id", "rotiraj")
-        ;
+        .attr("id", "rotiraj");
 
     var label = vis.append("g");
     label.append("rect")
@@ -155,7 +165,7 @@
 
     d3.csv('rawData/uzorak.csv', function(err, data) {
 
-        
+
 
         var json = transformData(data);
 
@@ -205,7 +215,7 @@
 
     function filter2nivo(niz, poljaZaDif) {
 
-    	var param = 'opis_predmeta';
+        var param = 'opis_predmeta';
 
         poljaZaDif.forEach(function(to) {
             var tempOb = {
@@ -227,36 +237,94 @@
         return niz;
     }
 
-    function filterPretraga (nizArgumenata) {
-    	
 
-    	var tempEl = d3.selectAll("path").filter(function(la,po){
-    		var uslov = true; 
-    		if(la.children != undefined ) return false;
-    		for (var i = 0, len =  nizArgumenata.length; i < len ; i++) {
-    		
-				if( nizArgumenata[i].name == "postupak") 
-					uslov &=  la["postupak"].toLowerCase().indexOf( nizArgumenata[i].value.replace("_"," ") ) !=-1;
-	    		else if( nizArgumenata[i].name == "predmet") 
-	    			uslov &=  la["predmet"].toLowerCase().indexOf( nizArgumenata[i].value ) !=-1;
-	    		else if( nizArgumenata[i].name == "ponuda") 
-	    			uslov &=  +la["broj_ponuda"] == +nizArgumenata[i].value ;
-    			else if(nizArgumenata[i].name == "cena_pdv")
-    				uslov &=  +la["cena_pdv"] >= +nizArgumenata[i].value ;	
-	    			
-	    		//postupak predmet, ponuda , cena 
-	    	}
 
-    		return uslov;
-    	})
+    /*======================================
+    =            filterPretraga            =
+    ======================================*/
 
-    	tempEl.style("fill","red");
+    function filterPretraga(nizArgumenata) {
+
+
+        var tempEl = d3.selectAll("path").filter(function(la, po) {
+            var uslov = true;
+            if (la.children != undefined) return false;
+            for (var i = 0, len = nizArgumenata.length; i < len; i++) {
+
+                if (nizArgumenata[i].name == "postupak")
+                    uslov &= la["postupak"].toLowerCase().indexOf(nizArgumenata[i].value.replace("_", " ")) != -1;
+                else if (nizArgumenata[i].name == "predmet")
+                    uslov &= la["predmet"].toLowerCase().indexOf(nizArgumenata[i].value) != -1;
+                else if (nizArgumenata[i].name == "ponuda")
+                    uslov &= +la["broj_ponuda"] == +nizArgumenata[i].value;
+                else if (nizArgumenata[i].name == "cena_pdv")
+                    uslov &= +la["cena_pdv"] >= +nizArgumenata[i].value;
+
+                //postupak predmet, ponuda , cena 
+            }
+
+            return uslov;
+        })
+
+        return tempEl
     }
 
-    d3.select("button").on("click",function () {
-    	var parametri = $("form").serializeArray();
-    	filterPretraga(parametri)
+    d3.select("button").on("click", function() {
+        var parametri = $("form").serializeArray();
+        var res = filterPretraga(parametri)
+        res.style("fill", "red");
+
+
+        secondGraph(res.data())
+            //napraviti poseban graf ovde
     })
+
+    /*=====  End of filterPretraga  ======*/
+
+
+
+    function secondGraph(data) {
+        var width = 350;
+        var height = 600;
+
+        var svgDrugi = d3.select("#chart2").append("svg")
+
+        .append("g")
+            .attr('id', "resList")
+            .attr("transform", "translate(" + 0 + "," + 0 + ")");
+
+
+        var x = d3.scale.linear()
+            .range([0, 150]);
+
+        var y = d3.scale.ordinal()
+            .rangeRoundBands([0, height], .2);
+        x.domain([0, 150])
+            //x.domain(d3.extent(data, function(d) { return d.cena_pdv; })).nice();
+        y.domain(data.map(function(d) {
+            return d.name;
+        }))
+
+
+        svgDrugi.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class", function(d) {
+                return "bar negative";
+            })
+            .attr("x", function(d) {
+                return x(Math.min(0, d.cena_pdv));
+            })
+            .attr("y", function(d) {
+                return y(d.name);
+            })
+            .attr("width", 150)
+            .attr("height", y.rangeBand());
+
+
+
+    }
+
 
     function createVisualization(json) {
 
@@ -299,7 +367,7 @@
             .each(stash);
 
         // Add the mouseleave handler to the bounding circle.
-         d3.select("#container").on("mouseleave", mouseleave);
+        d3.select("#container").on("mouseleave", mouseleave);
 
         // Get total size of the tree = value of root node from partition.
         totalSize = path.node().__data__.value;
@@ -324,42 +392,44 @@
     };
 
 
-    function mrdniGa () {
-    	//uzmi ceo i transliraj ga na ivicu
-    	d3.select("#container").attr("transform","translate("+(width + 20)+","+(height/2)+")");
+    function mrdniGa() {
+        //uzmi ceo i transliraj ga na ivicu
+        d3.select("#container").attr("transform", "translate(" + (width + 20) + "," + (height / 2) + ")");
 
-    	//uzmi sve podatke i filtriraj ih, da odgovaraju samo jednoj kategoriji
-    	
-    	
+        //uzmi sve podatke i filtriraj ih, da odgovaraju samo jednoj kategoriji
+
+
 
 
     }
 
-    function rotirajGa (argument) {
-    	//uzmi prethodnu vrednost
-    	//dodaj jos 10 stepeni
-    	
-    	//uzmi element na koji je kliknuto
-    	/*var prev = b.previousElementSibling
-    	var next = b.previousElementSibling*/
+    function rotirajGa(argument) {
+        //uzmi prethodnu vrednost
+        //dodaj jos 10 stepeni
 
-    	d3.select("#rotiraj").style("transform","rotateZ(10deg)")
+        //uzmi element na koji je kliknuto
+        /*var prev = b.previousElementSibling
+        var next = b.previousElementSibling*/
+
+        d3.select("#rotiraj").style("transform", "rotateZ(10deg)")
     }
 
     function mouseover(d, j) {
 
         d3.select('#labelCenter').text(d.name);
-        
+
         /*scale*/
-        var tempEl = d3.selectAll("path").filter(function(la,po){return la.br == d.br && la.int_br_nabavke == d.int_br_nabavke;})
-        
+        var tempEl = d3.selectAll("path").filter(function(la, po) {
+            return la.br == d.br && la.int_br_nabavke == d.int_br_nabavke;
+        })
+
         //prvo vratiti sve, a onda izdici jedan
         //d3.selectAll("path").classed({"vracen":true,"izdvojen":false});
-        tempEl.classed("izdvojen",true)
-        tempEl.classed("vracen",false);
+        tempEl.classed("izdvojen", true)
+        tempEl.classed("vracen", false);
 
         var sequenceArray = getAncestors(d);
-			updateBreadcrumbs(sequenceArray, "");
+        updateBreadcrumbs(sequenceArray, "");
 
     }
 
@@ -384,56 +454,58 @@
     /*==================================
     =            Breadcrumb            =
     ==================================*/
-    
-    
-    
-    
-    function mouseleaveCell (d,i) {
-    	
-    var tempEl = d3.selectAll("path").filter(function(la,po){
-    	return la.br == d.br && la.int_br_nabavke == d.int_br_nabavke;});
-    	tempEl.classed("izdvojen",false);
-    	tempEl.classed("vracen",true);
+
+
+
+
+    function mouseleaveCell(d, i) {
+
+        var tempEl = d3.selectAll("path").filter(function(la, po) {
+            return la.br == d.br && la.int_br_nabavke == d.int_br_nabavke;
+        });
+        tempEl.classed("izdvojen", false);
+        tempEl.classed("vracen", true);
     }
 
 
     function mouseleave(d) {
-	
 
-	//hide tips
-	d3.select(".tip").style("visibility", "hidden");
 
-	// Hide the breadcrumb trail
-	d3.select("#trail")
-		.style("visibility", "hidden");
+        //hide tips
+        d3.select(".tip").style("visibility", "hidden");
 
-	// Deactivate all segments during transition.
-	d3.selectAll("path").on("mouseover", null);
+        // Hide the breadcrumb trail
+        d3.select("#trail")
+            .style("visibility", "hidden");
 
-	// Transition each segment to full opacity and then reactivate it.
-	d3.selectAll("path")
-		.transition()
-		.duration(300)
-		.style("opacity", 1)
-		.each("end", function() {
-				d3.select(this).on("mouseover", mouseover);
-			  });
+        // Deactivate all segments during transition.
+        d3.selectAll("path").on("mouseover", null);
 
-	d3.select("#explanation")
-		  .style("visibility", "hidden");
-}
+        // Transition each segment to full opacity and then reactivate it.
+        d3.selectAll("path")
+            .transition()
+            .duration(300)
+            .style("opacity", 1)
+            .each("end", function() {
+                d3.select(this).on("mouseover", mouseover);
+            });
 
-// Given a node in a partition layout, return an array of all of its ancestor
-// nodes, highest first, but excluding the root.
-function getAncestors(node) {
-  var path = [];
-  var current = node;
-  while (current.parent) {
-    path.unshift(current);
-    current = current.parent;
-  }
-  return path;
-}
+        d3.select("#explanation")
+            .style("visibility", "hidden");
+    }
+
+    // Given a node in a partition layout, return an array of all of its ancestor
+    // nodes, highest first, but excluding the root.
+    function getAncestors(node) {
+        var path = [];
+        var current = node;
+        while (current.parent) {
+            path.unshift(current);
+            current = current.parent;
+        }
+        return path;
+    }
+
     function initializeBreadcrumbTrail() {
         // Add the svg area.
         var trail = d3.select("#sequence").append("svg:svg")
