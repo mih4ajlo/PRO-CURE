@@ -61,7 +61,7 @@
 
 
     // Dimensions of sunburst.
-    var width = 900;
+    var width = 1120;
     var height = 600;
     var radius = Math.min(width, height) / 2;
 
@@ -134,7 +134,7 @@
 
 	    //.attr('fill',"red" );     
 	    label.append("text")
-	        .attr('id', "labelCenter")
+	        .attr('id', "label"+id)
 	        .attr('fill', "white")
 	        //.attr("dy", ".35em")
 	        .attr("x", -55)
@@ -299,14 +299,17 @@
             .data(nodes)
             .enter().append("svg:path")
             .attr("display", function(d) {
+            	if(d.depth >1) return "none"; 
                 return d.depth ? null : "none";
             })
             .attr("d", arc)
             .attr("fill-rule", "evenodd")
             .style("stroke", "#fff")
             .style("fill", function(d) {
+            	//if(d.children != undefined) 
+            		return  colors[Math.floor(Math.random() * 5)];
 
-                return colors[Math.floor(Math.random() * 5)];
+                return "none";
 
             })
             .style("opacity", 1)
@@ -373,7 +376,7 @@
 
     function mouseover(d, j) {
 
-        d3.select('#labelCenter').text(d.name);
+        d3.select('[id^="label"]').text(d.name);
         
         /*scale*/
         var tempEl = d3.selectAll("path").filter(function(la,po){return la.br == d.br && la.int_br_nabavke == d.int_br_nabavke;})
