@@ -8,6 +8,10 @@
     <script src="public/js/underscore-min.js"></script>
     <script src="public/js/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="public/js/transformacija.js"></script>
+	<script src="public/js/drugi.js"></script>
+	<script src="public/js/bcrumbs.js"></script>
+
     <style>
     #chart2 {
         overflow-y: scroll;
@@ -37,6 +41,10 @@
 </head>
 
 <body>
+
+	<input type="radio" name="izbor" id="" value="iznos">Iznosi
+	<input type="radio" name="izbor" id="" value="broj">Brojčano
+    
     <form>
         <select name="postupak" id="">
             <option value="otvoreni">Otvoreni</option>
@@ -154,18 +162,15 @@
         .attr('id', "labelCenter")
         .append("xhtml:p");
         
-        //.attr("dy", ".35em")
-        /*.attr("x", -55)
-        .attr("y", -5);*/
-    //.text(function(d) { return "lalalla"; });		
 
+    
 
     //change dinaicly size of circle
     var partition = d3.layout.partition()
         .sort(null)
         .size([2 * Math.PI, radius * radius * 0.5])
         .value(function(d) {
-            return 1;
+            return d.cena_pdv;
         });
 
     var arc = d3.svg.arc()
@@ -183,6 +188,47 @@
         });
 
 
+
+     
+
+	// Setup for switching data: stash the old values for transition.
+	function stash(d) {
+	  d.x0 = d.x;
+	  d.dx0 = d.dx;
+	}  	
+
+  	function arcTweenData(a, i) {
+	  var oi = d3.interpolate({x: a.x0, dx: a.dx0}, a);
+	  function tween(t) {
+	    var b = oi(t);
+	    a.x0 = b.x;
+	    a.dx0 = b.dx;
+	    return arc(b);
+	  }
+	  if (i == 0) {
+	   // If we are on the first arc, adjust the x domain to match the root node
+	   // at the current zoom level. (We only need to do this once.)
+	    var xd = d3.interpolate(x.domain(), [node.x, node.x + node.dx]);
+	    return function(t) {
+	      x.domain(xd(t));
+	      return tween(t);
+	    };
+	  } else {
+	    return tween;
+	  }
+	}    
+
+	function arcTweenZoom(d) {
+	  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+	      yd = d3.interpolate(y.domain(), [d.y, 1]),
+	      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+	  return function(d, i) {
+	    return i
+	        ? function(t) { return arc(d); }
+	        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+	  };
+	}
+
     d3.csv('rawData/uzorak.csv', function(err, data) {
 
 
@@ -192,111 +238,7 @@
     })
 
 
-    function transformData(all) {
-        var tempObje = {
-            "name": "Bezbednost",
-            "children": []
-        };
-
-        var dobra = all.filter(function(la) {
-            return la.predmet == "Dobra";
-        })
-        var usluge = all.filter(function(la) {
-            return la.predmet == "Usluge";
-        })
-        var radovi = all.filter(function(la) {
-            return la.predmet == "Radovi";
-        })
-
-        var poljaZaDif = ["restriktivni", "otvoreni", "sa objavljivanjem", "bez objavljivanja", "kvalifikacioni"];
-
-        dobra = filter2nivo("Dobra",dobra, poljaZaDif, colors.dobra.izvedene);
-        usluge = filter2nivo("Usluge",usluge, poljaZaDif, colors.usluge.izvedene);
-        radovi = filter2nivo("Radovi",radovi, poljaZaDif, colors.radovi.izvedene);
-
-        var tempDobra = [];
-        var tempUsluge = [];
-        var tempRadovi = [];
-
-        dobra.forEach(function (funk) {
-        	if(funk.children != undefined)
-        	tempDobra = tempDobra.concat(funk.children)		
-        })
-        usluge.forEach(function (funk) {
-        	if(funk.children != undefined)
-        	tempUsluge = tempUsluge.concat(funk.children)		
-        })
-        radovi.forEach(function (funk) {
-        	if(funk.children != undefined)
-        	tempRadovi = tempRadovi.concat(funk.children)		
-        })
-
-        tempObje.children.push({
-            "name": "Dobra",
-            "children": tempDobra,
-            "color":colors.dobra.osnovna
-        });
-        tempObje.children.push({
-            "name": "Usluge",
-            "children": tempUsluge,
-            "color":colors.usluge.osnovna
-        });
-        tempObje.children.push({
-            "name": "Radovi",
-            "children": tempRadovi,
-            "color":colors.radovi.osnovna
-        });
-
-        return tempObje;
-    }
-
-
-    function filter2nivo(kat, niz, poljaZaDif, boje) {
-
-        var param = 'opis_predmeta';
-        
-        var uslovArra = [];
-
-        var katego = 
-        	["restriktivni", "otvoreni", "sa objavljivanjem", "bez objavljivanja", "kvalifikacioni"];
-
-        poljaZaDif.forEach(function(to) {
-            
-            var tempOb = {
-                "name": to.charAt(0).toUpperCase() + to.slice(1),
-                "children": [],
-                /*"parent":kat,*/
-                "color" : "red"
-            };
-
-            var tempArr = niz.filter(function(nesto) {
-                //nazivi ove kategorije su mnogo dugacki, pa samo uporedjujem deo
-                return nesto.postupak.toLowerCase().indexOf(to) != -1;
-            })
-
-            tempArr.map(function(te) {
-            	var boja1 = "";
-            	katego.forEach(function(la){
-            		if(te.postupak.toLowerCase().indexOf(la)!=-1)
-            		boja1 = la.replace(" ","_"); 
-            	})
-                
-
-                te.name = te.firma ; /*+ " " +  te.cena_pdv + " din"*///te[param]/*.substr(0, 15)*/ ;
-                
-                te.color = boje[boja1];
-                return te;
-            })
-
-            tempOb.children = tempArr;
-            //uslovArra.concat(tempArr);
-
-        	uslovArra.push(tempOb);    
-        })
-
-
-        return uslovArra;
-    }
+    
 
 
 
@@ -338,131 +280,13 @@
         res.style("fill", "red");
 
         if(res.data().length == 0)
-        	alert("Nem podataka za zadate kriterijume");
+        	alert("Nema podataka za zadate kriterijume");
         else
         	secondGraph(res.data())
             //napraviti poseban graf ovde
     })
 
 
-
-    // da se prekine animacija
-
-    //neki button ce biti	
-    /*  d3.select("input").on("change", change);
-
-		  var sortTimeout = setTimeout(function() {
-		    d3.select("input").property("checked", true).each(change);
-		  }, 2000);*/
-
-
-
-
-    function secondGraph(data) {
-        var width = 350;
-        var height = 600;
-
-        var svgDrugi = d3.select("#chart2").append("svg")
-
-        .append("g")
-            .attr('id', "resList")
-            .attr("transform", "translate(" + 0 + "," + 0 + ")");
-
-
-        var niz_pokazatelj = data.map(function(po){return +po.cena_pdv});
-
-        var max = d3.max( niz_pokazatelj );
-        var min = d3.min( niz_pokazatelj  );    
-         
-        var x = d3.scale.linear().range([80, 130]);
-
-        	/*.linear()
-            .range([0, 250]);*/
-
-        var y = d3.scale.ordinal()
-            .rangeRoundBands([0, height],.25);
-
-/*            .ordinal()
-    .domain(index)
-    .rangeRoundBands([0, height], .1);*/
-
-        //definisati max sirinu
-        //i pomeraj
-        x.domain(
-        	niz_pokazatelj);
-        /*data.map(function(d) {
-            	return +d.cena_pdv ;
-        	}))*/
-            //x.domain(d3.extent(data, function(d) { return d.cena_pdv; })).nice();
-        y.domain(
-        	data.map(function(d) {
-            	return +d.cena_pdv ;
-        	})
-    	)
-
-
-        svgDrugi.selectAll(".bar")
-            .data(data)
-            .enter().append("rect")
-            .attr("class", function(d) {
-                return "bar negative";
-            })
-            .attr("x", function(d) {
-                return 0;
-            })
-            .attr("y", function(d) {
-                //return +d.idNum * 15;	
-                return y(d.cena_pdv) + 5;
-            })
-            .attr("width",function (d,j) {
-            	return 350 -  x(+d.cena_pdv)
-            }  )
-            .attr("height", 12)
-            .on("mouseover", function(l, e) {
-                console.log(l)
-            })
-            .on("click", function (d, j) {
-            	change(data)
-            });
-
-        function change(data, nes) {
-            //clearTimeout(sortTimeout);
-            nes = false
-                // Copy-on-write since tweens are evaluated after a delay.
-            var y0 = y.domain(
-                    data.sort(
-                        nes ? function(a, b) {
-                            return b.cena_pdv - a.cena_pdv;
-                        } : function(a, b) {
-                            return a.cena_pdv - b.cena_pdv;
-                        })
-                    .map(function(d) {
-                        return +d.cena_pdv;
-                    }))
-                .copy();
-
-            svgDrugi.selectAll(".bar")
-                .sort(function(a, b) {
-                    return y0(a.cena_pdv) - y0(b.cena_pdv);
-                });
-
-            var transition = svgDrugi.transition().duration(750),
-                delay = function(d, i) {
-                    return i * 50;
-                };
-
-            transition.selectAll(".bar")
-                .delay(delay)
-                .attr("y", function(d) {
-                    return y0(d.cena_pdv) ;
-                });
-				// .attr("transform", function(d, i) { return "translate(0," + y0(d.cena_pdv)+ ")"; });
-
-        }
-
-    }
-
-    /*=====  End of filterPretraga  ======*/
 
 
     function createVisualization(json) {
@@ -477,14 +301,14 @@
             .attr("r", radius)
             .style("opacity", 0);
 
-        // For efficiency, filter nodes to keep only those large enough to see.
+       /* // For efficiency, filter nodes to keep only those large enough to see.
         var nodes = partition.nodes(json)
             .filter(function(d) {
                 return (d.dx > 0.005); // 0.005 radians = 0.29 degrees
-            });
+            });*/
 
-        var path = vis/*.data([json])*/.selectAll("path")
-            .data(nodes)
+        var path = vis.datum(json).selectAll("path")
+            .data(partition.nodes(json))
             .enter().append("svg:path")
             .attr("display", function(d) {
                 return d.depth ? null : "none";
@@ -497,64 +321,34 @@
             })
             .style("opacity", 1)
             .on("mouseover", function (d, j) {
-            	if(d.depth!=0 && d.depth == 2 && d.children ==undefined)
-            		mouseover(d, j);
+            	//if(d.depth!=0 && d.depth == 2 && d.children ==undefined)
+            		//mouseover(d, j);
 
             	labelMouse(d,j);
             })
-            .on("mouseleave", mouseleaveCell)
+            //.on("mouseleave", mouseleaveCell)
             //.on("click", mrdniGa)
             .each(stash);
+
+        d3.selectAll("input[name='izbor']").on("change", function change() {
+		    var value = this.value === "broj"
+		        ? function() { return 1; }
+		        : function(d) { return d.cena_pdv; };
+
+		    path
+		        .data(partition.value(value).nodes)
+		      .transition()
+		        .duration(1500)
+		        .attrTween("d", arcTween);
+		  });
 
         // Add the mouseleave handler to the bounding circle.
         d3.select("#container").on("mouseleave", mouseleave);
 
         // Get total size of the tree = value of root node from partition.
         totalSize = path.node().__data__.value;
-
-
-
-
-
-        d3.selectAll("input").on("change", function() {
-            /*var value = this.value === "count" ? function() {
-                return 1;
-            } : function(d) {
-                return d.size;
-            };
-
-            path
-                .data(partition.value(value).nodes)
-                .transition()
-                .duration(1500)
-                .attrTween("d", arcTween);*/
-        });
+        
     };
-
-
-
-
-
-
-
-    function mrdniGa() {
-        //uzmi ceo i transliraj ga na ivicu
-        d3.select("#container").attr("transform", "translate(" + (width + 20) + "," + (height / 2) + ")");
-
-        //uzmi sve podatke i filtriraj ih, da odgovaraju samo jednoj kategoriji
-
-    }
-
-    function rotirajGa(argument) {
-        //uzmi prethodnu vrednost
-        //dodaj jos 10 stepeni
-
-        //uzmi element na koji je kliknuto
-        /*var prev = b.previousElementSibling
-        var next = b.previousElementSibling*/
-
-        d3.select("#rotiraj").style("transform", "rotateZ(10deg)")
-    }
 
 
     function labelMouse (d,j) {
@@ -568,53 +362,12 @@
             return la.br == d.br && la.int_br_nabavke == d.int_br_nabavke;
         })
 
-        //prvo vratiti sve, a onda izdici jedan
-        //d3.selectAll("path").classed({"vracen":true,"izdvojen":false});
-        tempEl.classed("izdvojen", true)
-        tempEl.classed("vracen", false);
-
         var sequenceArray = getAncestors(d);
         updateBreadcrumbs(sequenceArray, "");
 
     }
 
-    function stash(d) {
-        d.x0 = d.x;
-        d.dx0 = d.dx;
-    }
-
-    function arcTween(a) {
-        var i = d3.interpolate({
-            x: a.x0,
-            dx: a.dx0
-        }, a);
-        return function(t) {
-            var b = i(t);
-            a.x0 = b.x;
-            a.dx0 = b.dx;
-            return arc(b);
-        };
-    }
-
-    /*==================================
-    =            Breadcrumb            =
-    ==================================*/
-
-
-
-
-    function mouseleaveCell(d, i) {
-
-        var tempEl = d3.selectAll("path").filter(function(la, po) {
-            return la.br == d.br && la.int_br_nabavke == d.int_br_nabavke;
-        });
-        tempEl.classed("izdvojen", false);
-        tempEl.classed("vracen", true);
-    }
-
-
-    function mouseleave(d) {
-
+     function mouseleave(d) {
 
         //hide tips
         d3.select(".tip").style("visibility", "hidden");
@@ -639,108 +392,29 @@
             .style("visibility", "hidden");
     }
 
-    // Given a node in a partition layout, return an array of all of its ancestor
-    // nodes, highest first, but excluding the root.
-    function getAncestors(node) {
-        var path = [];
-        var current = node;
-        while (current.parent) {
-            path.unshift(current);
-            current = current.parent;
-        }
-        return path;
+    function stash(d) {
+        d.x0 = d.x;
+        d.dx0 = d.dx;
     }
 
-    function initializeBreadcrumbTrail() {
-        // Add the svg area.
-        var trail = d3.select("#sequence").append("svg:svg")
-            .attr("width", width)
-            .attr("height", 50)
-            .attr("id", "trail");
-        // Add the label at the end, for the percentage.
-        trail.append("svg:text")
-            .attr("id", "endlabel")
-            .style("fill", "yellow");
+    function arcTween(a) {
+        
+        var i = d3.interpolate({
+            x: a.x0,
+            dx: a.dx0
+        }, a);
+
+        return function(t) {
+            var b = i(t);
+            a.x0 = b.x;
+            a.dx0 = b.dx;
+            return arc(b);
+        };
     }
 
-    // Generate a string that describes the points of a breadcrumb polygon.
-    function breadcrumbPoints(d, i) {
-        var points = [];
-        points.push("0,0");
-        points.push(b.w + ",0");
-        points.push(b.w + b.t + "," + (b.h / 2));
-        points.push(b.w + "," + b.h);
-        points.push("0," + b.h);
-        if (i > 0) { // Leftmost breadcrumb; don't include 6th vertex.
-            points.push(b.t + "," + (b.h / 2));
-        }
-        return points.join(" ");
-    }
 
-    // Update the breadcrumb trail to show the current sequence and percentage.
-    function updateBreadcrumbs(nodeArray, percentageString) {
-
-        // Data join; key function combines name and depth (= position in sequence).
-        var g = d3.select("#trail")
-            .selectAll("g")
-            .data(nodeArray, function(d) {
-                return d.idNum;//d.name + d.depth;
-            });
-
-        // Add breadcrumb and label for entering nodes.
-        var entering = g.enter().append("svg:g");
-
-        entering.append("svg:polygon")
-            .attr("points", breadcrumbPoints)
-            .style("fill", function(d) {
-                return d.color /*|| this.color*//*colors[Math.floor(Math.random() * 3)]*/;
-            });
-
-        entering.append("svg:text")
-            .attr("x", (b.w + b.t) / 2)
-            .attr("y", b.h / 2)
-            .attr("dy", "0.35em")
-            .attr('fill', "white" )
-            .attr("text-anchor", "middle")
-            .text(function(d) {
-            	var tekst = "";
-
-            	if(d.postupak !=undefined) 
-            		tekst = d.postupak.substr(0,15) + " : "; 
-
-                return  tekst  +  d.name.substr(0,17);
-            });
-
-        // Set position for entering and updating nodes.
-        g.attr("transform", function(d, i) {
-            return "translate(" + i * (b.w + b.s) + ", 0)";
-        });
-
-        // Remove exiting nodes.
-        g.exit().remove();
-
-        // do not display last percentage on breadcrumb
-        if (nodeArray.length > 2) {
-            percentageString = "";
-        }
-
-
-        // Now move and update the percentage at the end.
-       /* d3.select("#trail").select("#endlabel")
-            .attr("x", (nodeArray.length + 0.5) * (b.w + b.s))
-            .attr("y", b.h / 2)
-            .attr("dy", "0.35em")
-            .attr("text-anchor", "middle")
-            .text(percentageString);*/
-
-
-        // Make the breadcrumb trail visible, if it's hidden.
-        d3.select("#trail")
-            .style("visibility", "");
-
-    }
-    /*=====  End of Breadcrumb  ======*/
     </script>
+    
 </body>
 
 </html>

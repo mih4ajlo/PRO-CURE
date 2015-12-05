@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="public/js/d3.v3.min.js"></script>
+    <script src="public/js/underscore-min.js"></script>
+    <script src="public/js/jquery.min.js"></script>
+    <!-- <script src="public/js/main.js"></script> -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="public/css/bootstrap-multiselect.css" type="text/css"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+    <script>    /*Nemanja*/
+    $(document).ready(function() {
+    
+        $('#ponuda').multiselect({
+            nonSelectedText: "Broj ponuđača"
+        });
+        $('#postupak').multiselect();
+        $('#predmet').multiselect();
+        $('#narucilac').multiselect();
+        $('#vrstepredmeta').multiselect();
+        $('#maticniBroj').multiselect();
+        $( "#datepicker" ).datepicker();
+        $( "#slider" ).slider();
+
+    });</script>
+</head>
+
+<body>
+
+
+<form class="container-fluid">
+
+<!-- Left -->
+  <div id="selektori" class="col-lg-8">
+        <select name="narucilac" id="narucilac"> 
+            <option value="" selected disabled>Naručilac</option>
+            <option value="ministartsvo_odbrane">Ministarstvo odbrane</option>
+            <option value="unutrasnjiposlovi">Mup</option>
+        </select>
+        <select name="vrstepredmeta" id="vrstepredmeta"> 
+            <option value="" selected disabled>Vrste predmeta</option>
+            <option value="dobra">Dobra</option>
+            <option value="usluge">Usluge</option>
+            <option value="usluge">Radovi</option>
+        </select>
+        <select name="maticniBroj" id="maticniBroj"> 
+            <option value="" selected disabled>Matični broj</option>
+            <option value="osimvojske">07093608</option>
+            <option value="mup">07008104</option>
+        </select>
+        <select name="postupak" id="postupak"> 
+            <option value="" selected disabled>Tip postupka</option>
+            <option value="otvoreni">Otvoreni postupak</option>
+            <option value="restriktivni">Restriktivni postupak</option>
+            <option value="sa_objavljivanjem">Bez objavljivanja</option>
+            <option value="bez_objavljivanja">Sa objavljivanjem</option>
+            <option value="kvalifikacioni">Konkurs za dizajn</option>
+            <option value="kvalifikacioni">Postupak javne nabavke male vrednosti</option>
+            <option value="kvalifikacioni">Kvalifikacioni postupak</option>
+            <option value="kvalifikacioni">Konkurentni dijalog</option>
+        </select>
+        <select name="predmet" id="predmet">
+            <option value="" selected disabled>Predmet</option>
+            <option value="dobra">Dobra</option>
+            <option value="usluge">Usluge</option>
+            <option value="radovi">Radovi</option>
+        </select>
+        <select name="ponuda" id="ponuda" multiple="ponuda">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+        </select>
+
+    </div>
+<!-- Right -->
+    <div class="col-lg-4">
+        <div class="input-group">
+            <input type="number" class="form-control" name="cena" placeholder="Traži...">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Search</button>
+            </span>
+        </div>
+        <p> Ugovorena cena:<div id="slider"></div></p>
+        <p>Vremenski raspon: <input type="text" id="datepicker"></p>
+    </div>
+
+</form>
+
+
+    <div class="tip"></div>
+    <div id="sequence"></div>
+    <div id="wrap" class="row">
+        <div id="chart" class="col-md-8"></div>
+        <div id="chart2" class="col-md-4"></div>
+    </div>
+  
+</body>
+
+</html>
