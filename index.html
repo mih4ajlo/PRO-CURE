@@ -11,6 +11,7 @@
 	<script src="public/js/transformacija.js"></script>
 	<script src="public/js/drugi.js"></script>
 	<script src="public/js/bcrumbs.js"></script>
+	<script src="public/js/settings.js"></script>
 
     <style>
     #chart2 {
@@ -301,11 +302,7 @@
             .attr("r", radius)
             .style("opacity", 0);
 
-       /* // For efficiency, filter nodes to keep only those large enough to see.
-        var nodes = partition.nodes(json)
-            .filter(function(d) {
-                return (d.dx > 0.005); // 0.005 radians = 0.29 degrees
-            });*/
+      
 
         var path = vis.datum(json).selectAll("path")
             .data(partition.nodes(json))
