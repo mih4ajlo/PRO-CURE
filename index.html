@@ -337,8 +337,10 @@
         var res = filterPretraga(parametri)
         res.style("fill", "red");
 
-
-        secondGraph(res.data())
+        if(res.data().length == 0)
+        	alert("Nem podataka za zadate kriterijume");
+        else
+        	secondGraph(res.data())
             //napraviti poseban graf ovde
     })
 
