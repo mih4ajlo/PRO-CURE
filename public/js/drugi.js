@@ -36,7 +36,7 @@
         var max = d3.max( niz_pokazatelj );
         var min = d3.min( niz_pokazatelj  );    
          
-        var x = d3.scale.linear().range([80, 130]);
+        var x = d3.scale.linear().range([50, 180]);
 
 
         var y = d3.scale.ordinal()
@@ -64,10 +64,10 @@
             })
             .attr("y", function(d) {
                 //return +d.idNum * 15;	
-                return y(d.cena_pdv) + 5;
+                return y(+d.cena_pdv) ;
             })
             .attr("width",function (d,j) {
-            	return 350 -  x(+d.cena_pdv)
+            	return  d3.max(350 -  Math.floor(  x(+d.cena_pdv), 0 ) );
             }  )
             .attr("height", 12)
             .on("mouseover", function(l, e) {
@@ -79,7 +79,7 @@
 
         function change(data, nes) {
             //clearTimeout(sortTimeout);
-            nes = false
+            
                 // Copy-on-write since tweens are evaluated after a delay.
             var y0 = y.domain(
                     data.sort(

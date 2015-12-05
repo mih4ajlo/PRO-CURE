@@ -1,0 +1,239 @@
+idNum,izvestaj,br,narucilac,maticni_broj,firma,opis_predmeta,predmet,cena_pdv,procenjena_cena,postupak,datum,broj_ponuda,br_nabavke
+1,MO 2013 Q2,3,MO,7093608,"АК""Вождовац"" а.д","Одржавање м/в, аутобуси и инжињеријске машине",Usluge,20973000,17477000,Restriktivni postupak,3.4.2013.,3,1333
+2,MO 2013 Q2,26,MO,7093608,"""Mercedes Benz SCG"" д.о.о",Одржавање путничких и теренских возила,Usluge,16230000,13583000,Restriktivni postupak,5.4.2013.,3,1328
+4,MO 2013 Q2,44,MO,7093608,"АК ""Раде Кончар""","Одржавање м/в, аутобуси и инжињеријске машине",Usluge,25859000,21549000,Restriktivni postupak,8.4.2013.,3,1335
+7,MO 2013 Q2,61,MO,7093608,"""MOTORFLEX-REMONT"" д.о.о",Одржавање путничких м/в и инжињеријских машина,Usluge,16112000,13426000,Restriktivni postupak,9.4.2013.,3,1330
+8,MO 2013 Q2,68,MO,7093608,Предузеће ППТ-НАМЕНСКА а.д.,"Оправка, регенерација и ремонт хидропнеуматских компоненти борбених и неборбених возила, ваздухоплова, бродова и пловних објеката Речене флотиле",Usluge,86400000,72000000,Restriktivni postupak,10.4.2013.,3,1257
+9,MO 2013 Q2,79,MO,7093608,"""МИД"" д.о.о","ТОд и СР интегралног транспорта, средстава са моторима мале снаге и дизалица и теретних м/в ТАМ",Usluge,11263000,9386000,Restriktivni postupak,10.4.2013,1,1399
+10,MO 2013 Q2,100,MO,7093608,ОРАО (Бијељина),Održavanje vazduhoplovnih motora,Usluge,90000000,75000000,Restriktivni postupak,15.4.2013.,3,1258
+81,MO 2014 Q2,84,MO,7093608,НЕКТАР,"Sok voćni nektar (jabuka, breskva)",Dobra,33600000,34000000,Pregovarački postupak sa objavljivanjem poziva za podnošenje ponuda,4.6.2014.,2,19/2014
+113,MO 2014 Q3,129,MO,7093608,"ГП ""МОРАВА ин"" д.о.о","Beograd, VMA- Dodatni radovi na adaptaciji prostora za smeštaj izolatora u Sektoru za farmaciju",Radovi,395000,329000,Pregovarački postupak sa objavljivanjem poziva za podnošenje ponuda,19.8.2014.,1,13/14
+140,MO 2014 Q4,312,MO,7093608,Gdi GIS-DATA,Specijalizovani licencni softveri za OJ MO i VS: Softveri razni,Dobra,23031000,19200000,Pregovarački postupak sa objavljivanjem poziva za podnošenje ponuda,28.11.2014.,1,4873
+170,MUP 2014 Q1 ,3,MUP,7008104,n/a,Pružanje usluge tehničke podrške za BULL serverski sistem,Usluge,2999000,2500000,Pregovarački postupak čl.36.1.2 i  UJN br.404-02-699/13,16/ januar 2014,1,18
+178,MUP 2014 Q1 ,11,MUP,7008104,n/a,Usluga servisiranja forenzičkih instrumenata,Usluge,1800000,1500000,Pregovarački postupak čl.36.1.2 i  UJN br.404-02-699/13,13/ februar 2014,1,33
+179,MUP 2014 Q1 ,12,MUP,7008104,n/a,Usluga servisisranja ABIS arsenala-balistički sistem,Usluge,1200000,1000000,Pregovarački postupak čl.36.1.2 i  UJN br.404-02-699/13,13/ februar 2014,1,32
+157,MUP 2013 Q4 ,2,MUP,7008104,n/a,"Delovi zaštitne opreme ze potrebe pripadnika MUP-a. Partija1-štitovi, šlemovi, laki prsluci,štitnici za laktove i kolena.",Dobra,29284000,25000000,Pregovarački postupak čl.35.1.2,29/ novembar 2013,3,176
+167,MUP 2013 Q4 ,18,MUP,7008104,n/a,Nabavla licence GIS platforme,Dobra,4199000,3500000,Pregovarački postupak čl.35.1.2,23/ decembar 2013,1,197
+236,MUP Q4 2013,19,MUP,7008104,n/a,Nabavk usluge održavanja sertifikacionog sistema,Usluge,13184000,11000000,Pregovarački postupak čl.35.1.2,31/ decembar 2013,1,202
+144,MUP 2013 Q2,1,MUP,7008104,n/a,Nabavka nove funkcije NEXTBIZ softvera za uvođenje knjigovodstva u policijskim upravama,Dobra,2400000,2000000,"Pregovarački postupak bez objavljivanja javnog poziva-ZJN 2008,po čl.24.1.3",31/ maj 2013,1,65/2013
+5,MO 2013 Q2,50,MO,7093608,FARMALOGIST,Lek rituksimab,Dobra,36103000,35497000,Pregovarački postupak bez objavljivanja javnog poziva,8.4.2013.,3,169/13
+6,MO 2013 Q2,51,MO,7093608,BEOHEM konzorcijum FARMIX,"Imunoglobulin IgG 7S a 2,5gr,5gr i albumin humani 20% partija 3",Dobra,39023000,37293000,Pregovarački postupak bez objavljivanja javnog poziva,8.4.2013.,3,137/13
+11,MO 2013 Q2,136,MO,7093608,DRAGER TEHNIKA d.o.o.,Механички вентилатор Drager (41 комад),Usluge,2201000,2200000,Pregovarački postupak bez objavljivanja javnog poziva,17.4.2013.,1,831/13
+12,MO 2013 Q2,141,MO,7093608, PHARMA SWISS,Biološka terapija Etanercept rastvor za inj.sc 50 mg/ml,Dobra,39302000,36391000,Pregovarački postupak bez objavljivanja javnog poziva,19.4.2013.,1,167/13
+13,MO 2013 Q2,157,MO,7093608,ADOC,n/a,Dobra,27786000,25728000,Pregovarački postupak bez objavljivanja javnog poziva,24.4.2013.,2,168/13
+14,MO 2013 Q2,172,MO,7093608,BEOLASER,Скенер Toshiba TSY-101A Aquilion CX 128,Usluge,13680000,11400000,Pregovarački postupak bez objavljivanja javnog poziva,29.4.2013.,1,583/13
+18,MO 2013 Q2,197,MO,7093608,BEOLASER d.o.o,Скенер Toshiba Aquilion 64 CFX,Usluge,13680000,11400000,Pregovarački postupak bez objavljivanja javnog poziva,31.5.2013.,1,583/13
+21,MO 2013 Q3,22,MO,7093608,EUMED,Хирушки конци партија 9,Dobra,24639000,26600000,Pregovarački postupak bez objavljivanja javnog poziva,25.07.2013,7,669/13
+26,MO 2013 Q3,51,MO,7093608, PREMIUM SURGICAL COMPANY,"СнПС-медицински потрошни материјал за потребе ОП блока,партије 11,12,14,15 до 27",Dobra,12485000,13760000,Pregovarački postupak bez objavljivanja javnog poziva,19.08.2013.,4,665/13
+30,MO 2013 Q3,79,MO,7093608,FRESENIUS MEDICAL CARE,"СнПС за хемодијализу партије 2,9,10,11,14,15,26 до30",Dobra,12901000,12417000,Pregovarački postupak bez objavljivanja javnog poziva,03.09.2013.,6,678/13
+33,MO 2013 Q3,110,MO,7093608, БЕОЛЕК,Поправка видео дуоденоскопа производње Pentax typ ED-3485T,Usluge,788000,660000,Pregovarački postupak bez objavljivanja javnog poziva,18.09.2013.,1,7603
+145,MUP 2013 Q2,2,MUP,7008104,n/a,"Izgradnja druge faze VD u Lazarevcu, sredstvima iz donacije",Usluge,7181000,6667000,Otvoreni ,20/ jun 2013,11,ГЗР-187/12
+3,MO 2013 Q2,33,MO,7093608,Неопланта,Mesne konzerve,Dobra,52060000,66770000,Otvoreni,"5.4.2013.
+",5,011/13
+15,MO 2013 Q2,175,MO,7093608,AMIGO TRADE,Konzervirana riba,Dobra,27470000,26550000,Otvoreni,5.5.2013.,3,011/13
+16,MO 2013 Q2,187,MO,7093608,Chortan co,Tkanina,Dobra,60332000,61400000,Otvoreni,"
+8.5.2013.",5,9/13
+17,MO 2013 Q2,188,MO,7093608,CHORTAN CO,Košulje,Dobra,32251000,45975000,Otvoreni,8.5.2013.,5,9/13
+19,MO 2013 Q2,203,MO,7093608,НАФТНА ИНДУСТИЈА СРБИЈЕ,Pogonska goriva,Dobra,41697000,38352000,Otvoreni,6.6.2013.,1,23/13
+20,MO 2013 Q2,204,MO,7093608,НАФТНА ИНДУСТИЈА СРБИЈЕ,Mlazno gorivo,Dobra,50196000,46021000,Otvoreni,6.6.2013.,1,23/13
+22,MO 2013 Q3,30,MO,7093608,КОРПИКО доо,Чизмице и ципеле,Dobra,26904000,23760000,Otvoreni,12.08.2013.,2,28/13
+23,MO 2013 Q3,31,MO,7093608,RANEX d.o.o.,Опрема за ендоскопску и лапароскопску хирургију - Партија 1: FULL HD видео систем са апаратима за лапараскопију,Dobra,8906000,7667000,Otvoreni,12.08.2013.,1,37/13
+24,MO 2013 Q3,34,MO,7093608,"Marinković Hofmann"" do.o. Велика Моштаница",Уређаји за контролу и одржавање моторних возила,Dobra,10398000,14440000,Otvoreni,13.08.2013.,1,43/13
+25,MO 2013 Q3,38,MO,7093608, ТРЕЗОР ВОЛГА доо,чарапе п/с,Dobra,11419000,16051000,Otvoreni,13.08.2013.,4,28/13
+27,MO 2013 Q3,54,MO,7093608,''Viva-tex'' doo,Постељна опрема,Dobra,12482000,11123000,Otvoreni,19.08.2013.,3,34/13
+28,MO 2013 Q3,57,MO,7093608,''Viva-tex'' doo,"Одећа за лекаре, остало санитетско особље и пиџаме болесничке",Dobra,14673000,13960000,Otvoreni,19.08.2013.,1,34/13
+29,MO 2013 Q3,63,MO,7093608,"""VALHALL"" д.о.о","Тримери, косачице и тестере",Dobra,8728000,8296000,Otvoreni,21.08.2013.,2,17/13
+31,MO 2013 Q3,83,MO,7093608,"Предузеће за производњу,монтажу,ремонт и сервис лифтова и покретних степеница ""vVMPS"" doo",месечно одржавање 26 лифтова у току 2013 и 2014 године са дежурством у ван радно време и празником у објекту ВМА,Usluge,5616000,4680000,Otvoreni,08.09.2013.,1,661/13
+32,MO 2013 Q3,90,MO,7093608,"""NAFTNA INDUSTRIJA SRBIJE"" A.D. Нови Сад",Пратећа погонска средства,Dobra,18364000,23608000,Otvoreni,11.09.2013.,7,14/13
+34,MO 2013 Q3,114,MO,7093608,ГЕПАРД доо,Чизме војничке универзалне,Dobra,51041000,42600000,Otvoreni,20.09.2013,1,31/13
+35,MO 2013 Q3,116,MO,7093608,VIVA TEX доо,панталоне војничке маскирне,Dobra,15047000,17024000,Otvoreni,23.09.2013,3,31/13
+36,MO 2013 Q3,124,MO,7093608,"ГП ""МОРАВА ИН"" доо","Адаптација простора на II етажи, ламела RR1 објекта ВМА за потребе смештаја ИЗОЛАТОРА",Radovi,7123000,8083000,Otvoreni,26.09.2013.,2,1/13
+37,MO 2013 Q4,14,MO,7093608,IBIS INSTRUMENTS,Анализатор мреже (Network Analyzer),Dobra,8100000,7597000,Otvoreni,03.10.3013.,4,52/13
+38,MO 2013 Q4,16,MO,7093608,BEOLASER,"Апарат ултразвучни са комплетом сонди за преглед абдомена, бубрега, штитасте жлезде и крвних судова за потребе Клинике за нефрологију ВМА",Dobra,5052000,5000000,Otvoreni,03.10.2013.,2,35/13
+39,MO 2013 Q4,17,MO,7093608,Comes doo,репроматеријал штампарски: папир и картон,Dobra,6848000,5170000,Otvoreni,08.10.2013.,1,2018
+40,MO 2013 Q4,18,MO,7093608,Comes doo,репроматеријал штампарски: папир и картон,Dobra,5360000,4700000,Otvoreni,18.10.2013.,1,2018
+41,MO 2013 Q4,21,MO,7093608,"""Енерготок"" д.о.о.",Радови на ремонту и припреми термоенергетских постројењa,Radovi,14932000,15000000,Otvoreni,08.10.2013.,2,5776
+42,MO 2013 Q4,27,MO,7093608,НИС'' а.д,"Уље за ложење, средње С",Dobra,257671000,208285000,Otvoreni,14.10.2013.,1,71/2013
+43,MO 2013 Q4,35,MO,7093608,Clas comerc doo,део складишних артикала хране-пастеризовано поврће,Dobra,8370000,9100000,Otvoreni,24.10.2013.,4,60/13
+44,MO 2013 Q4,37,MO,7093608, Special coop doo,део складишних артикала хране-мед природни багремов,Dobra,5149000,5200000,Otvoreni,24.10.2013.,1,60/13
+45,MO 2013 Q4,39,MO,7093608,"Институт ""ИМС"" ад.","Утврђивање квалитета армирано-бетонске конструкције на објекту ""24"" у II МЗ Бежанијска Коса",Usluge,1295000,1833000,Otvoreni,24.10.2013.,1,5/2013
+46,MO 2013 Q4,42,MO,7093608,Wizard doo,део складишних артикала хране-стерилисано поврће,Dobra,9947000,9325000,Otvoreni,25.10.2013.,1,60/13
+47,MO 2013 Q4,45,MO,7093608,"""ВЕТЕРИНАРСКИ ЗАВОД СУБОТИЦА"" А.Д.",Храна за лабораторијске животиње,Dobra,4057000,3697000,Otvoreni,28.10.2013.,1,60/13
+48,MO 2013 Q4,46,MO,7093608,ПКБ велепродаја продукт,део складишних артикала хране-пасуљ у зрну,Dobra,10886000,10240000,Otvoreni,01.11.2013,2,60/30
+49,MO 2013 Q4,56,MO,7093608,''НИС'' а.д.,Погонска горива,Dobra,233418000,204825000,Otvoreni,12.11.2013.,1,77/13
+50,MO 2013 Q4,57,MO,7093608,''НИС'' а.д.,Погонска горива,Dobra,69150000,5904000,Otvoreni,14.11.2013.,1,77/13
+51,MO 2014 Q1,16,MO,7093608,Т.П. ''Месокомбинат-промет'' д.о.о,Јунеће и свињско месо,Dobra,152130000,159000000,Otvoreni,15.1.2014.,4,1/2014
+52,MO 2014 Q1,18,MO,7093608,СЗТР ''Ђурђевић'',"производи од јунећег, свињског меса",Dobra,100236000,107365000,Otvoreni,15.1.2014.,3,2/2014
+53,MO 2014 Q1,22,MO,7093608,''Paxel'' доо,месне конзерве,Dobra,62700000,66600000,Otvoreni,17.1.2014.,2,2/2014
+54,MO 2014 Q1,25,MO,7093608,ЕПС СНАБДЕВАЊЕ,Електрична енергија,Dobra,47225000,39354000,Otvoreni,27.1.2014.,1,50-4
+55,MO 2014 Q1,27,MO,7093608,"ДОО. ""Одржавање и услуге""",Набавка услуге припремања и допремања оброка готове хране,Usluge,16665000,15204000,Otvoreni,28.1.2014.,1,50-6
+56,MO 2014 Q1,32,MO,7093608,AVE PHARMACEUTICAL,Свеже млеко и млечни производи,Dobra,70344000,68270000,Otvoreni,31.1.2014.,1,131
+57,MO 2014 Q1,37,MO,7093608,ЕПС СНАБДЕВАЊЕ,Електрична енергија,Dobra,35000000,35000000,Otvoreni,5.2.2014.,1,26-364
+58,MO 2014 Q1,40,MO,7093608,'НИС'' а.д.,Лож уље - уље за ложење средње С,Dobra,820227000,832000000,Otvoreni,07.02.2014.,1,7/2014
+59,MO 2014 Q1,45,MO,7093608,'НИС'' а.д.,Лож уље - Гасно уље екстра лако евро ЕЛ,Dobra,520812000,506900000,Otvoreni,11.2.2014.,1,8/2014
+60,MO 2014 Q1,51,MO,7093608,FRESHLINE,Свеже воће и поврће,Dobra,134070000,121384000,Otvoreni,14.02.2014.,2,129
+61,MO 2014 Q1,58,MO,7093608,ЕПС СНАБДЕВАЊЕ,Електрична енергија,Dobra,43000000,35833000,Otvoreni,25.2.2014.,1,1
+62,MO 2014 Q1,60,MO,7093608,ЕПС СНАБДЕВАЊЕ Д.О.О.,Електрична енергија,Dobra,108500000,90417000,Otvoreni,25.2.2014.,1,82
+63,MO 2014 Q1,61,MO,7093608, ''НИС'' а.д.,погонско гориво (гасно уље евродизел),Dobra,522018000,427100000,Otvoreni,26.02.2014.,1,5/2014
+64,MO 2014 Q1,62,MO,7093608,'НИС'' а.д.,погонско гориво (безоловни моторни бензин),Dobra,170445000,146875000,Otvoreni,26.2.2014.,1,5/2014
+65,MO 2014 Q1,64,MO,7093608,'НИС'' а.д.,погонско гориво (млазно гориво),Dobra,331200000,287500000,Otvoreni,27.2.2014.,1,5/2014
+66,MO 2014 Q1,66,MO,7093608,ЕПС СНАБДЕВАЊЕ,Електрична енергија,Dobra,60000000,50000000,Otvoreni,28.2.2014.,1,402-1
+68,MO 2014 Q2,11,MO,7093608,Good will-wg,Ugalj mrki separisani,Dobra,90179000,114456000,Otvoreni,3.4.2014.,10,0006/2014
+69,MO 2014 Q2,16,MO,7093608,: Special Coop doo,Sir topljeni,Dobra,41907000,51040000,Otvoreni,9.4.2014.,2,3/2014
+70,MO 2014 Q2,29,MO,7093608,КРИП ИНЖЕЊЕРИНГ,"Izvođenje prethodnih radova i izrada TD za izgradnju objekta Komande centra za obuku jedinica za multinacionalne operacije u bazi ""Jug"" vk. ""Cepotina"" sa pratećom infrastrukturom",Usluge,299000,1250000,Otvoreni,16.4.2014.,4,1/14
+71,MO 2014 Q2,30,MO,7093608,VIVA-TEX,Unforma M-93,Dobra,26349000,27118000,Otvoreni,,3,11/14
+72,MO 2014 Q2,32,MO,7093608,ДОН ДОН,Zamrznuti bureci i pite,Dobra,24680000,32420000,Otvoreni,22.4.2014.,5,14/2014
+73,MO 2014 Q2,33,MO,7093608,ИМ ТОПОЛА,Gotova jela,Dobra,29424000,25450000,Otvoreni,22.4.2014,2,15/2014
+74,MO 2014 Q2,44,MO,7093608,SELEKTA,Hleb i pecivo za sendviče,Dobra,25448000,40130000,Otvoreni,29.4.2014.,1,15217
+75,MO 2014 Q2,61,MO,7093608,AMIGO TRADE,Zamrznuta morska riba,Dobra,29502000,36700000,Otvoreni,6.5.2014.,5,20/2014
+76,MO 2014 Q2,62,MO,7093608,BOOKMARK,Riblje konzerve,Dobra,23940000,25050000,Otvoreni,6.5.2014.,5,20/2014
+77,MO 2014 Q2,63,MO,7093608,БОМИНГ,"Popravka krova iznad mezanina u objektu KN-9 zgrada ""5"", Nemanjina 15",Radovi,3281000,3333000,Otvoreni,7.5.2014.,2,3/14
+78,MO 2014 Q2,66,MO,7093608,Паланка промет д.о.о,"Pileće meso, zamrznuto",Dobra,58438000,55475000,Otvoreni,16.5.2014.,1,26/2014
+79,MO 2014 Q2,68,MO,7093608,Д.О.О.ВУКОВИЋ 1967,Električna energija,Usluge,343500000,286250000,Otvoreni,21.5.2014.,2,38/14
+80,MO 2014 Q2,72,MO,7093608,ГРАДСКИ ЗАВОД ЗА ВЕШТАЧЕЊЕ,Tehnički pregled objekta br. 29 na lokaciji II MZ Bežanijska kosa,Usluge,260000,708000,Otvoreni,30.5.2014.,3,4/14
+82,MO 2014 Q2,85,MO,7093608,"Група понуђача: ""ВИЗАНТИЈА ТРЕНД"", ""БС ПРОЈЕКТ 2009"", ""ТЕХНИЧКА ШКОЛА","Izvođenje građevinsko-zanatskih i instalaterskih radova na uređenju stanova u Subotici (Somboru, N. Sadu, Nakovu, Užicu, V. Plani, Raškoj)",Radovi,1119000,1500000,Otvoreni,4.6.2014.,3,2/14
+83,MO 2014 Q2,86,MO,7093608,"Група понуђача: ""ВИЗАНТИЈА ТРЕНД"", ""БС ПРОЈЕКТ 2009"", ""ТЕХНИЧКА ШКОЛА""","Izvođenje građevinsko-zanatskih i instalaterskih radova na uređenju stanova u Novom Sadu (Somboru, Subotici, Nakovu, Užicu, V. Plani, Raškoj)",Radovi,1180000,1500000,Otvoreni,4.6.2014.,3,2/14
+84,MO 2014 Q2,87,MO,7093608,"Група понуђача: ""ПРИМАТ М"", ""ТАТОВИЋ"", СЗР ""ЗАНАТ СЕРВИСА""","Izvođenje građevinsko-zanatskih i instalaterskih radova na uređenju stanova u Somboru (Subotici,Novom Sadu, Nakovu, Užicu, Velikoj Plani, Raškoj)",Radovi,2074000,2333000,Otvoreni,5.6.2014,4,2/14
+85,MO 2014 Q2,88,MO,7093608,"Група понуђача: ""ПРИМАТ М"", ""ТАТОВИЋ"", СЗР ""ЗАНАТ СЕРВИС""","Izvođenje građevinsko-zanatskih i instalaterskih radova na uređenju stanova u V. Plani, (Somboru, Subotici, N.Sadu, Nakovu, Užicu, Raškoj)",Radovi,1122000,1250000,Otvoreni,5.6.2014.,6,2/14
+86,MO 2014 Q2,89,MO,7093608,"Група понуђача: ЈП ""СТАН"", "" 24.СЕПТЕМБАР""","Izvođenje građevinsko-zanatskih i instalaterskih radova na uređenju stanova u Užicu, (Somboru, Subotici, N.Sadu, Nakovu, V. Plani, Raškoj)",Radovi,4702000,4317000,Otvoreni,5.6.2014.,6,2/14
+87,MO 2014 Q2,93,MO,7093608,АБ&CO GEOSYSTEMS,"Geodetsko snimanje objekta ""29"" II MZ Bežanijska kosa",Usluge,54000,75000,Otvoreni,11.6.2014.,2,7/14
+88,MO 2014 Q2,102,MO,7093608,МАКСИМ ГРАДЊА д.о.о,"Beograd, VMA - Zamena spuštenog plafona i rasvete u holu (specijalistička poliklinika)",Radovi,8629000,9167000,Otvoreni,13.6.2014,2,70/14
+89,MO 2014 Q2,103,MO,7093608,Amphora д.о.о.,Kancelarijski i birotehnički potrošni materijal,Dobra,4578000,6850000,Otvoreni,6/14/2014,1,5-10
+90,MO 2014 Q2,105,MO,7093608,"Група понуђача: ""ПРИМАТ М"", ""ТАТОВИЋ"", СЗР ""ЗАНАТ СЕРВИС""","Izvođenje građevinsko-zanatskih i instalaterskih radova na uređenju stanova u Raškoj, (Somboru, Subotici, N.Sadu,Nakovu, Užicu, V.Plani)",Radovi,1016000,667000,Otvoreni,16.6.2014.,5,2/14
+91,MO 2014 Q2,106,MO,7093608,ГЕОПУТ,"Izrada PDR za radarski položaj ""Veliki Strešer""-geodetsko snimanje, pribavljanje tehničkih uslova za izgradnju primarne infrastrukture i izrada urbanističke dokumentacije",Usluge,168000,254000,Otvoreni,17.6.2014.,9,6/14
+94,MO 2014 Q2,112,MO,7093608,КРИП ИНЖЕЊЕРИНГ,"Beograd, VTI Žarkovo-IzradaTD za klimatizaciju laboratorije za ispitivanje tekstila, kože i obuće",Usluge,144000,208000,Otvoreni,23.6.2014.,3,8/14
+96,MO 2014 Q3,7,MO,7093608,BEOHEM-3,"Lekovi za opštu antiinfekcijsku sistemsku primenu, imunoglobulini, antineoplastici imunomodulatori partije 46 i 51",Dobra,25146000,22984000,Otvoreni,1.7.2014,1,51/14
+97,MO 2014 Q3,13,MO,7093608,ADOC,"Lekovi za opštu antiinfekcijsku sistemsku primenu, imunoglobulini, antineoplastici imunomodulatori partije: 52,54,73 i 74",Dobra,39675000,39675000,Otvoreni,2.7.2014.,1,
+98,MO 2014 Q3,21,MO,7093608,FARMALOGIST,"Lekovi za opštu antiinfekcijsku sistemsku primenu, imunoglobulini, antineoplastici imunomodulatori partije 6,7,14,20,21,23,26,27,28,29,35,37,38,41,45 i 53,",Dobra,31631000,35711000,Otvoreni,4.7.20141,3,51/14
+99,MO 2014 Q3,24,MO,7093608,Индустроградња ОЗЗ Београд,"Zidarski, stolarski, molerski i radovi na krovu objekata za potrebe VP 5302 Požarevac",Radovi,1619000,1842000,Otvoreni,8.7.2014.,3,164
+100,MO 2014 Q3,32,MO,7093608,Техномонт Сврљиг,"Radovi na vodovodu, kanalizaciji, instalacijama centralnog grejanja i električnim instalacijama za potrebe VP 5302 Požarevac",Radovi,659000,1583000,Otvoreni,15.7.2014.,1,195
+101,MO 2014 Q3,33,MO,7093608,BMA TRADING,"papir toaletni u rolni, papir ubrusni u rolni, salveta papirna, složivi papirni ubrusi za dozatore i složivi toalet papir za dozatore",Dobra,31241000,35310000,Otvoreni,15.7.2014.,2,23/2014
+102,MO 2014 Q3,57,MO,7093608,ДЕМЕТРА РБ ДОО,Usluge sadnje i održavanja zelenih površina,Usluge,5497000,8417000,Otvoreni,21.7.2014.,4,32/14
+103,MO 2014 Q3,62,MO,7093608,NIS,Gasno ulje-Evro dizel klase A,Dobra,161962000,141400000,Otvoreni,23.7.2014.,1,35/2014
+104,MO 2014 Q3,63,MO,7093608,NIS,Evro premijum BMB 95,Dobra,32467000,28200000,Otvoreni,23.7.2014.,1,35/2014
+105,MO 2014 Q3,70,MO,7093608,Хидроенерго пројект ДОО,Usluge sadnje i održavanja zelenih površina,Usluge,988000,8417000,Otvoreni,24.7.2014.,4,32/14
+106,MO 2014 Q3,72,MO,7093608,NIS,Mlazno gorivo JET A1,Dobra,68115000,59896000,Otvoreni,24.7.2014,1,35/2014
+107,MO 2014 Q3,89,MO,7093608,ГРАППА д.о.о.,Servis rashladnog postrojenja partija 1,Usluge,2740000,2333000,Otvoreni,28.7.2014.,1,89/14
+108,MO 2014 Q3,91,MO,7093608,CLAS COMERC,"Cvekla, krastavci, paprika",Dobra,24060000,24300000,Otvoreni,28.7.2014.,2,47/2014
+109,MO 2014 Q3,95,MO,7093608,ДИМЊИЧАР а.д,"Mehaničko i hemijsko čišđenje kotlova i dimnjaka kotlarnica, opreme u objektu VMA, servis split sistema i zamena cevovoda partija 2",Usluge,3527000,2942000,Otvoreni,30.7.2014.,1,89/14
+110,MO 2014 Q3,113,MO,7093608,ВМПС,"Održavanje, servisiranje, tehnički pregled i prilagođavanje liftova novim tehničkim propisima i pokretnih stepenica partija 4 (isporuka i ugradnja svetlosnih zavesa i dig pokaz.spratnosti )",Usluge,1082000,1000000,Otvoreni,7.8.2014.,1,127/14
+111,MO 2014 Q3,115,MO,7093608,GEPARD,"Cipele vojničke, čizme vojničke",Dobra,46633000,38866000,Otvoreni,7.8.2014.,1,41/2014
+112,MO 2014 Q3,119,MO,7093608,ВМПС д. о. о.,Usluga redovnog mesečnog održavanja liftova u objektu VMA (26liftova) u toku 2014/2015.g sa dežurstvom van radnog vremena i praznikom partija 1,Usluge,6000000,5000000,Otvoreni,11.8.2014.,1,127/14
+114,MO 2014 Q3,135,MO,7093608,THYSSEN KRUPP ELEVATORI,Usluga redovnog mesečnog održavanja 8 krakova pokretnih stepenica u objektu VMA za 2014/2015g i godišnji servis 8 krakova pokretnih stepenica u objektu VMA za 2014/2015g partija 2,Usluge,1200000,1000000,Otvoreni,19.8.2014.,1,127/14
+115,MO 2014 Q3,161,MO,7093608,"СЗР ""ТОНИНГ""","Investiciono održavanje (stanova, garaža, adaptiranih poslovnih prostora i uređenje deložiranih stanova) u nadležnosti O2/VGC ""Beograd""",Radovi,3552000,4083000,Otvoreni,2.9.2014.,7,14/14
+116,MO 2014 Q3,166,MO,7093608,FARMALOGIST,"Lekovi za humanu upotrebu p1,2,3,5,6,10,18,21,27,28,31,32,33,40,41,42,43,44,45,46,53,54,58,59,63,64,66,69,70,71,73,74,76,77,78,82,85,94,96,97,99,103,106,107,109,111,120,121,122,124,125,126,133,135,150,153,154,163,169,170,171,174,184,185,186,187,195",Dobra,42341000,48192000,Otvoreni,5.9.2014.,3,57/14
+117,MO 2014 Q3,194,MO,7093608,ОНИКС ДОО,"popravka zidnih keramičkih obloga, zamena fiksne krovne svetlosne kupole i popravka betonskih zidova i staza",Radovi,672000,700000,Otvoreni,12.9.2014.,1,55/14
+118,MO 2014 Q3,205,MO,7093608,"Институт за превентиву, заштитут на раду, противпожарну заштиту и развој ДОО",Ispitivanje instalacija i uređaja u protiveksplozivnoj EKS zaštiti,Radovi,862000,1100000,Otvoreni,16.9.2014.,1,55/14
+119,MO 2014 Q3,215,MO,7093608,"Ти-Кар трговине, Николе Пашића 213",Nalivanje gume na potporne točkove borbenih vozila,Usluge,2655000,2236000,Otvoreni,19.9.2014.,1,ЈНОП 7-3/14
+120,MO 2014 Q3,228,MO,7093608,СЦП д. о о.,"Usluga remonta pumpi za vodu i grejanje u objektu VMA u toku 2014/2015.g"" partija 1",Usluge,1000000,833000,Otvoreni,29.9.2014.,4,197/14
+121,MO 2014 Q3,229,MO,7093608, МИКРОМОТОР д.о.о.,"Услуга поправке електромотора у обејкту ВМА у току 2014/2015.г"" партија 2",Usluge,700000,583000,Otvoreni,29.9.2014.,2,197/14
+122,MO 2014 Q4,3,MO,7093608,КОТЛОВИ д.о.о. Петроварадин,Usluge popravke i održavanja centralnog grejanja,Usluge,4647000,3875000,Otvoreni,1.10.2014.,1,25-78
+123,MO 2014 Q4,91,MO,7093608,"Омладинска задруга ""Чачак""",Tehnička podrška na mašinama,Usluge,1906000,1910000,Otvoreni,20.10.2014.,1,252
+124,MO 2014 Q4,93,MO,7093608,Beteco,Košulje od ''platno'' tkanine,Dobra,45845000,39279000,Otvoreni,21.10.2014.,5,22/2014
+125,MO 2014 Q4,113,MO,7093608,DEWACO,Tegljač sa sedlom i poluprikolicom,Dobra,128826000,108333000,Otvoreni,23.10.2014.,1,44/2014
+126,MO 2014 Q4,125,MO,7093608,Zora super sport,"Tekstilni proizvodi za domaćinstvo: čaršavi, navlake, vreće za prenos rublja",Dobra,19565000,20880000,Otvoreni,27.10.2014.,6,42/2014
+127,MO 2014 Q4,130,MO,7093608,Royaltours,Obezbeđenje avio karata i hotelskog smeštaja za službena putovanja u inostranstvo,Usluge,107605000,89657000,Otvoreni,28.10.2014.,7,106/2014
+128,MO 2014 Q4,131,MO,7093608,Sky Multicom,Obezbeđenje avio karata i hotelskog smeštaja za službena putovanja u inostranstvo,Usluge,107605000,89657000,Otvoreni,28.10.2014.,7,106/2014
+129,MO 2014 Q4,132,MO,7093608,: BT Pegrotour,Obezbeđenje avio karata i hotelskog smeštaja za službena putovanja u inostranstvo,Usluge,107605000,89657000,Otvoreni,28.10.2014.,7,106/2014
+130,MO 2014 Q4,133,MO,7093608,Jumbotravel,Obezbeđenje avio karata i hotelskog smeštaja za službena putovanja u inostranstvo,Usluge,107605000,89657000,Otvoreni,28.10.2014.,7,106/2014
+131,MO 2014 Q4,160,MO,7093608,Рашка комерц,Ostale usluge i amterijali za tekuće opravke i održavanje zgrada za potrebe OJ MO i VS oslonjenih po šemi LoP-a VP 5007 Vranje,Usluge,3641000,1542000,Otvoreni,3.11.2014.,3,37-82
+132,MO 2014 Q4,164,MO,7093608,CITI,Izrada i ugradnja uređaja za aktiviranje na Opitnoj stanici,Usluge,1320000,22998000,Otvoreni,5.11.2014.,2,77/14
+133,MO 2014 Q4,166,MO,7093608,Фимас,"Ugostiteljska oprema i aparati za domaćinstvo: frižideri, zamrzivači",Usluge,2562000,2181000,Otvoreni,5.11.2014.,3,84/2014
+134,MO 2014 Q4,181,MO,7093608,''НИС'' а.д,Pogonska goriva: Gasno ulje Evro dizel klase D,Dobra,345672000,303496000,Otvoreni,10.11.2014.,1,98/2014
+135,MO 2014 Q4,182,MO,7093608,''НИС'' а.д,Pogonska goriva: Evro premijum BMB-95,Dobra,16439000,14838000,Otvoreni,10.11.2014.,1,98/2014
+136,MO 2014 Q4,186,MO,7093608,''НИС'' а.д.,Pogonska goriva: Mlazno gorivo JET A-1,Dobra,111129000,95833000,Otvoreni,12.11.2014.,1,98/2014
+137,MO 2014 Q4,265,MO,7093608,INTERAUTO-TRADE,Putnički automobili: Opel (M1 putničko) VIVARO COMBI A20DTH,Dobra,17224000,15000000,Otvoreni,25.11.2014.,2,78/2014
+138,MO 2014 Q4,284,MO,7093608,Енергоразвој,Popravka stabilnog PP sistema,Usluge,1949000,1667000,Otvoreni,25.11.2014.,1,393
+139,MO 2014 Q4,287,MO,7093608,BRAMY,Krojačka usluga konfekcioniranje službene i svečane uniforme i košulja,Usluge,53724000,46080000,Otvoreni,26.11.2014.,2,12/2014
+141,MO 2014 Q4,327,MO,7093608,Привредно друштво DECO доо,"Beograd - VMA- Popravka sanitarnih prostorija sa zamenom dotrajalih instalacija (vodovod, kanalizacija, sanitarni uređaji, elektro instalacije, zidovi, podne i zidne obloge, plafoni)",Radovi,13093000,12500000,Otvoreni,3.12.2014.,6,80/14
+142,MO 2014 Q4,343,MO,7093608,NIKOM-AUTO,Putnički automobili: FIAT 500L LIVING 1.4 POP STAR,Dobra,23004000,19583000,Otvoreni,9.12.2014.,3,38/2014
+143,MO 2014 Q4,366,MO,7093608,''НИС'' а.д.,"Ulje za loženje, srednje S",Dobra,128097000,149059000,Otvoreni,29.12.2014.,1,110/2014
+146,MUP 2013 Q3,1,MUP,7008104,n/a,Partija 1 Letnji pneumatici preko 14 cola za putnički program vozila,Dobra,7457000,7500000,Otvoreni,18/ jul 2013,4,91
+147,MUP 2013 Q3,2,MUP,7008104,n/a,Partija 2 Letnji pneumatici do 14 cola za putnički program vozila,Dobra,87100000,8500000,Otvoreni,18/ jul 2013,4,92
+148,MUP 2013 Q3,3,MUP,7008104,n/a,Partija 3 Letnji pneumatici za terenski program vozila,Dobra,9121000,9000000,Otvoreni,18/ jul 2013,4,93
+149,MUP 2013 Q3,4,MUP,7008104,n/a,Partija 4 vodeći i pogonski pneumatici za terenski program vozila,Dobra,8846000,8500000,Otvoreni,18/ jul 2013,4,94
+150,MUP 2013 Q3,5,MUP,7008104,n/a,Partija 5 Letnji pneumatici 16 cola za terenski program vozila,Dobra,2234000,2000000,Otvoreni,18/ jul 2013,4,88
+151,MUP 2013 Q3,6,MUP,7008104,n/a,Partija 6 Militari pneumatici za teretni program vozila,Dobra,5156000,4500000,Otvoreni,18/ jul 2013,4,89
+152,MUP 2013 Q3,7,MUP,7008104,n/a,Nabavka goriva na internim pumpama,Dobra,406728000,340000000,Otvoreni,23/ avgust 2013,2,116
+153,MUP 2013 Q3,8,MUP,7008104,n/a,Nabavka goriva u maloprodajnim objektima,Dobra,7457000,7500000,Otvoreni,26/ avgust 2013,2,117
+154,MUP 2013 Q3,9,MUP,7008104,n/a,Nabavka usluge održavanja NEXT BIZ aplikativnog softveraza finansijsko računovodstvo za 2013 godinu,Usluge,6235000,5200000,Otvoreni,9/ septembar 2013,1,125
+155,MUP 2013 Q3,10,MUP,7008104,n/a,Zaštitna oprema za javni red – zaštitn maske,Dobra,6040000,6000000,Otvoreni,17/ septembar 2013,3,127
+156,MUP 2013 Q4 ,1,MUP,7008104,n/a,Nabavka usluge migracije postojećeg informacionog sistema MUP,Usluge,6900000,5800000,Otvoreni,27/ novembar 2013,6,179
+158,MUP 2013 Q4 ,3,MUP,7008104,n/a,Ugalj-partija 4,Dobra,6946000,6600000,Otvoreni,30/ novembar 2013,3,180
+159,MUP 2013 Q4 ,5,MUP,7008104,n/a,Usnici -Partija 1- usnici za etilometar ''Alcokount'',Dobra,38400000,3225000,Otvoreni,3/ decembar 2013,2,182
+160,MUP 2013 Q4 ,6,MUP,7008104,n/a,Partija 1- Zimski pneumatici preko 14 coli za putnički program vozila,Dobra,8033000,7500000,Otvoreni,9/ decembar 2013,4,181
+161,MUP 2013 Q4 ,7,MUP,7008104,n/a,Partija 1- Zimski pneumatici preko 14 coli za putnički program vozila,Dobra,11040000,10000000,Otvoreni,9/ decembar 2013,3,188
+162,MUP 2013 Q4 ,8,MUP,7008104,n/a,Partija 3- Zimski pneumatici za teretni program vozila,Dobra,11005000,10000000,Otvoreni,9/ decembar 2013,3,189
+163,MUP 2013 Q4 ,9,MUP,7008104,n/a,Nabavka ekstrata za gašenje požara,Dobra,7080000,5932000,Otvoreni,13/ decembar 2013,3,193
+164,MUP 2013 Q4 ,12,MUP,7008104,n/a,Hleb i kore za pitu i gibanicu- odesk u Nišu 1,Dobra,11040000,10000000,Otvoreni,19/ decembar 2013,5,204
+165,MUP 2013 Q4 ,16,MUP,7008104,n/a,Hleb i kore za pitu i gibanicu- odesk u Beogradu sa Pančevom i Valjevom,Dobra,6719000,10500000,Otvoreni,19/ decembar 2013,3,203
+166,MUP 2013 Q4 ,17,MUP,7008104,n/a,Ogrevno drvo,Dobra,17101000,16000000,Otvoreni,19/ decembar 2013,4,166
+168,MUP 2014 Q1 ,1,MUP,7008104,n/a,Nabavka rezervnih delova za računare i servere-partija 2- rezervni delovi za servere,Dobra,7339000,8000000,Otvoreni,13/ januar 2014,6,6
+169,MUP 2014 Q1 ,2,MUP,7008104,n/a,Rezervni delovi za računare i servere-partija 1- rezervni delovi za računarsku opremu,Dobra,22172000,20750000,Otvoreni,13/ januar 2014,6,5
+171,MUP 2014 Q1 ,4,MUP,7008104,n/a,"Nabavka uglja,partija 1- PU Beograd,Pančevo i Požarevac-205t",Usluge,2278000,2700000,Otvoreni,17/ januar 2014,3,9
+172,MUP 2014 Q1 ,5,MUP,7008104,n/a,"Nabavka uglja,partija 3- PU Užice,Prijepolje i NC Jasenovo-320t",Usluge,3460000,3700000,Otvoreni,17/ januar 2014,3,11
+173,MUP 2014 Q1 ,6,MUP,7008104,n/a,"Nabavka uglja,partija 5- PU Šabac -83t.",Usluge,906000,1200000,Otvoreni,17/ januar 2014,3,12
+174,MUP 2014 Q1 ,7,MUP,7008104,n/a,"Nabavka uglja,partija 2- PU Novi Sad,Sombor i Subotica -83t.",Usluge,981000,1300000,Otvoreni,17/ januar 2014,2,10
+175,MUP 2014 Q1 ,8,MUP,7008104,n/a,Nabavka Enterprise licenci za Vmware sistem za virtuelizaciju,Usluge,11380000,10000000,Otvoreni,20/ januar 2014,3,14
+176,MUP 2014 Q1 ,9,MUP,7008104,n/a,Licence za TAM (IBM Tivoli access Manager for eBusiness),Usluge,4200000,3500000,Otvoreni,20/ januar 2014,1,15
+177,MUP 2014 Q1 ,10,MUP,7008104,n/a,Lož ulje,Usluge,332995000,300000000,Otvoreni,13/ februar 2014,1,36
+180,MUP 2014 Q1 ,13,MUP,7008104,n/a,Rezervni delovi za radare i protiv gradnu zaštitu,Dobra,4999000,5000000,Otvoreni,13/ februar 2014,1,34
+181,MUP 2014 Q1 ,15,MUP,7008104,n/a,Podopasač,Dobra,4248000,3600000,Otvoreni,18/ februar 2014,2,31
+182,MUP 2014 Q1 ,16,MUP,7008104,n/a,Mleko pasterizovano i kiselomlečni proizvodi,Dobra,13824000,15000000,Otvoreni,20/ februar 2014,2,46
+183,MUP 2014 Q1 ,17,MUP,7008104,n/a,Stolarko-bravarski materijal partija 1-stolarki materijal,Dobra,5400000,4500000,Otvoreni,21/ februar 2014,3,40
+184,MUP 2014 Q1 ,18,MUP,7008104,n/a,Stolarko-bravarski materijal partija 2-bravarski materijal,Dobra,6000000,5000000,Otvoreni,21/ februar 2014,3,41
+185,MUP 2014 Q1 ,19,MUP,7008104,n/a,"Mleko, dugotrajno mleko i mleko čokoladno",Dobra,17208000,18000000,Otvoreni,21/ februar 2014,2,47
+186,MUP 2014 Q1 ,20,MUP,7008104,n/a,Popravka autobusa i munibuseva partija 2- popravka minibuseva marke Ikarbus,Usluge,3576000,3300000,Otvoreni,24/ februar 2014,4,43
+187,MUP 2014 Q1 ,21,MUP,7008104,n/a,Ugostiteljska oprema,Dobra,9165000,9000000,Otvoreni,27/ februar 2014,6,49
+188,MUP 2014 Q1 ,23,MUP,7008104,n/a,"Amblemi i oznake partija 1-amblemi,značke Ministarstva i zastava RS",Dobra,7920000,9750000,Otvoreni,3/ mart 2014,3,44
+189,MUP 2014 Q1 ,24,MUP,7008104,n/a,"Amblemi, oznake partija 2-prezimena, činovi i epolete",Dobra,5904000,18900000,Otvoreni,14/ mart 2014,3,56
+190,MUP 2014 Q1 ,25,MUP,7008104,n/a,Pasivna komunikaciona oprema,Dobra,3982000,5000000,Otvoreni,20/ mart 2014,6,57
+191,MUP 2014 Q2,103,MUP,7008104,n/a,Kancelarijski i birotehnički potrošni materijal,Dobra,4578000,6850000,Otvoreni,14/ jun 2014,1,5-10
+192,MUP 2014 Q2 ,1,MUP,7008104,n/a,Usluge godišnjeg održavanja PP mreže (ERICSSON),Usluge,5756000,4800000,Otvoreni,4/ april 2014,1,72
+193,MUP 2014 Q2 ,2,MUP,7008104,n/a,Potrošni materijal za mašine za kovertiranje identifikacionih dokumenata partija 2 nabavka koverti.,Dobra,1200000,2000000,Otvoreni,24/ april 2014,5,73
+194,MUP 2014 Q2 ,3,MUP,7008104,n/a,Nabavka potrošnog materijala za mašine za kovertiranje identifikacionih dokumenata partija 3 nabavka dvostruko lepljive trake.,Dobra ,2184000,2000000,Otvoreni,28/ april 2014,2,77
+195,MUP 2014 Q3 ,1,MUP,7008104,n/a,"Obućna oprema za uniformisani sastav UP,USP i UKP",Usluge,55140000,70000000,Otvoreni,9/ jul 2014,4,16.4
+196,MUP 2014 Q3 ,2,MUP,7008104,n/a,"Odećna oprema za uniformisani sastav UP,USP i UKP",Usluge,28290000,942500000,Otvoreni,10/ jul 2014,1,16.4
+197,MUP 2014 Q3 ,3,MUP,7008104,n/a,Održavanje NEXBIZ aplikacije,Usluge,6900000,5750000,Otvoreni,14/ jul 2014,1,8.1
+198,MUP 2014 Q3 ,4,MUP,7008104,n/a,Rezervni delovi za računare i računarske komponenete,Dobra,31179000,30000000,Otvoreni,15/ jul 2014,2,21.12
+199,MUP 2014 Q3 ,4,MUP,7008104,n/a,"Osiguranje objekata i opreme, lica i stada.-Partija 2.- osiguranje lica",Usluge,13190000,37288000,Otvoreni,6/ oktobar 2014,6,3.1
+200,MUP 2014 Q3 ,5,MUP,7008104,n/a,Pneumatici za standrdna i specijalna vozila,Dobra,3902000,90000000,Otvoreni,18/ jul 2014,6,19.3
+201,MUP 2014 Q3 ,6,MUP,7008104,n/a,Pneumatici za standrdna i specijalna vozila,Dobra,5189000,90000000,Otvoreni,18/ jul 2014,6,19.3
+202,MUP 2014 Q3 ,11,MUP,7008104,n/a,"Odećna oprema za uniformisani sastav UP,USP i UKP",Dobra,7986000,942500000,Otvoreni,22/ jul 2014,2,16.6
+203,MUP 2014 Q3 ,12,MUP,7008104,n/a,"Rezervni delovi, alati i potrošni materijal za redovno održavanje helikoptera",Dobra,17991000,38000000,Otvoreni,13/ avgust 2014,1,21.6
+204,MUP 2014 Q3 ,14,MUP,7008104,n/a,Električna energija,Usluge,200000000,1000000000,Otvoreni,15/ avgust 2014,1,1.4
+205,MUP 2014 Q3 ,15,MUP,7008104,n/a,Održavanje aplikacije za izdavanje ličnih karata i pasoša,Usluge,12000000,10000000,Otvoreni,18/ avgust 2014,1,119
+206,MUP 2014 Q3 ,21,MUP,7008104,n/a,Održavanje MCO TETRA,Usluge,21384000,18000000,Otvoreni,25/ avgust 2014,1,145
+207,MUP 2014 Q3 ,23,MUP,7008104,n/a,Proizvodi od mleka,Dobra,26615000,24000000,Otvoreni,28/ avgust 2014,1,135
+208,MUP 2014 Q3 ,24,MUP,7008104,n/a,"Meso sveže,mast,trajne i polutrajne prerađivine od mesa",Dobra,149088000,147200000,Otvoreni,26/ avgust 2014,3,134
+209,MUP 2014 Q3 ,39,MUP,7008104,n/a,Konzervirani mesni proizvodi i gotova jela,Dobra,32356000,31666000,Otvoreni,29/ avgust 2014,2,142
+210,MUP 2014 Q3 ,45,MUP,7008104,n/a,Toneri za štampače partija 2 Lexmark,Dobra,17156000,14400000,Otvoreni,3/ septembar 2014,9,147
+211,MUP 2014 Q3 ,47,MUP,7008104,n/a,Meso pileće,Dobra,15382000,18000000,Otvoreni,3/ septembar 2014,3,150
+212,MUP 2014 Q3 ,48,MUP,7008104,n/a,"Odećna oprema za uniformisani sastav UP,USP i UKP",Dobra,110865000,942500000,Otvoreni,4/ septembar 2014,3,16.6
+213,MUP 2014 Q3 ,50,MUP,7008104,n/a,"Obućna oprema za uniformisani sastav UP,USP i UKP",Dobra,51865000,70000000,Otvoreni,15/ septembar 2014,2,16.4
+214,MUP 2014 Q3 ,53,MUP,7008104,n/a,Izgradnja objekta PS Ub-završna faza,Radovi,53656000,65000000,Otvoreni,17/ septembar 2014,6,166
+215,MUP 2014 Q3 ,54,MUP,7008104,n/a,"Obućna oprema za uniformisani sastav UP,USP i UKP",Dobra,279270000,70000000,Otvoreni,18/ septembar 2014,4,16.4
+216,MUP 2014 Q3 ,55,MUP,7008104,n/a,"Popravka,održavanje,servisiranje,kalibracija i dodela državnog žiga za alkometre Dreger",Usluge,13200000,11000000,Otvoreni,25/ septembar 2014,1,15.19
+217,MUP 2014 Q3 ,56,MUP,7008104,n/a,"Popravka,održavanje,servisiranje,kalibracija i dodela državnog žiga za ručne radare",Usluge,12000000,10000000,Otvoreni,25/ septembar 2014,1,15.8
+218,MUP 2014 Q3 ,56,MUP,7008104,n/a,Osiguranje stada,Usluge,596000,1356000,Otvoreni,26/ septembar 2014,7,3.5
+219,MUP 2014 Q3 ,61,MUP,7008104,n/a,"Popravka, servisiranje i remont vazduhoplova",Usluge,3532000,41000000,Otvoreni,30/ septembar 2014,1,15.3
+220,MUP 2014 Q4 ,1,MUP,7008104,n/a,Pneumatici za standrdna i specijalna vozila-letnji pneumatici.-Partija 6 vodeći pogonski pneumatici za teretni program vozila i autobusa,Dobra,6509000,90000000,Otvoreni,2/ oktobar 2014,2,19.3
+221,MUP 2014 Q4 ,3,MUP,7008104,n/a,"Osiguranje objekata i opreme, lica i stada.-Partija 1.- osiguranje objekata i opreme",Usluge,6295000,11017000,Otvoreni,6/ oktobar 2014,7,3.3
+222,MUP 2014 Q4 ,6,MUP,7008104,n/a,Specijalizovani potrošni materijal-reagensi za DNK laboratoriju,Dobra,11940000,9950000,Otvoreni,13/ oktobar 2014,1,21.5
+223,MUP 2014 Q4 ,7,MUP,7008104,n/a,Laboratorijska oprema.-Radna stanica za automatsku izolaciju DNK-RNK,Dobra,3599000,4000000,Otvoreni,24/ oktobar 2014,2,24.1
+224,MUP 2014 Q4 ,9,MUP,7008104,n/a,Obućna oprema.-Partija 2.- borbene patike-poluduboke (6000 pari),Dobra,32112000,31800000,Otvoreni,18/ novembar 2014,5,19.3
+225,MUP 2014 Q4 ,10,MUP,7008104,n/a,Nabavka obuće.-Partija 1.- terenske čizme (6000 pari),Dobra,41400000,42000000,Otvoreni,18/ novembar 2014,5,192
+226,MUP 2014 Q4 ,13,MUP,7008104,n/a,"Ugalj.- Ugalj mrki,garnulacija kocka 30-65 mm.-Partija 3.- PU Prijepolje i NC Jasenovo-205",Usluge,2118000,3000000,Otvoreni,26/ novembar 2014,2,1.2
+227,MUP 2014 Q4 ,16,MUP,7008104,n/a,"Rezervni delovi, alati za helikopter AB 212",Dobra,17994000,15000000,Otvoreni,1/ decembar 2014,1,21.6
+228,MUP 2014 Q4 ,17,MUP,7008104,n/a,Nabavka goriva Partija 3.-gorivo za potrebe PU Novi Pazar-PS Tutin,Dobra,3071000,2750000,Otvoreni,2/ decembar 2014,1,19.1
+229,MUP 2014 Q4 ,18,MUP,7008104,n/a,"Zaštitna oprema za javni red i mir za pripadnike interventnih jedinica policije-Partija 1.- štitnici za ruke, štitnici za noge, zaštitni štit, viziri za interventni šlem ''Mile Dragić'' ili odgovarajući, i šrafovi za interventni šlem ''Mile Dragić''",Dobra,18554000,16500000,Otvoreni,4/ decembar 2014,1,21.9
+230,MUP 2014 Q4 ,19,MUP,7008104,n/a,Nabavka goriva Partija 2.- gorivo na maloprodajnim objektima-eksterne pumpe,Dobra,426073000,415500000,Otvoreni,4/ decembar 2014,1,19.1
+231,MUP 2014 Q4 ,21,MUP,7008104,n/a,benzin PU Novi Pazar-PS Sjenica,Dobra,3085000,2750000,Otvoreni,9/ decembar 2014,1,19.1
+232,MUP 2014 Q4 ,22,MUP,7008104,n/a,Nabavka goriva Partija 1.- gorivo na internim pumpama MUP-a,Dobra,228355000,216500000,Otvoreni,9/ decembar 2014,1,19.1
+233,MUP 2014 Q4 ,23,MUP,7008104,n/a,Ogrevno drvo-tvrdi lišćari,Dobra,14268000,16000000,Otvoreni,10/ decembar 2014,1,1.1
+234,MUP 2014 Q4 ,24,MUP,7008104,n/a,hrana za službene pse,Dobra,6000000,5000000,Otvoreni,12/ decembar 2014,3,17.1
+235,MUP 2014 Q4 ,25,MUP,7008104,n/a,Reparacija zaštitne opreme za javni red i mir za pripadnike interventnih jedinica policije,Usluge,12000000,10000000,Otvoreni,29/ decembar 2014,2,15.37
+67,MO 2014 Q1,1-14,MO,7093608,"""Бечејпревоз"" ДОО Бечеј,  СП ""Ласта"" а.д. Београд, ""Југопревоз Крушевац"" АД Крушевац, ДОО ""АС Тоурс"" Ветерник, ""Кавим-Јединство"" ДОО Врање, ""Ниш-експрес""АД Ниш, ""Алегро Реисен"" ДОО Краљево, Аррива Литас"" ДОО Пожаревац, ""Кавим Рашка"" а.д. Рашка, ""Аутопревоз"" АД Чачак, : ""Европа бус"" д.о.о. Ваљево, Зеко Тоурс"" д.о.о. Краљево, ""Јадран Лине"" ДОО Нови Сад, ""Југопревоз Велика Плана"" АД Велика Плана.",Услуга превожења лица аутобусима у периоду од 01.01. до 30.06.2014.,Usluge,1285000,15000000,Kvalifikacioni postupak,3.1.2014.,2-13,01/2014
+92,MO 2014 Q2,110,MO,7093608,Jumbo Travel,Usluge avio-prevoza i Usluge hotelskog smeštaja u inostranstvu,Usluge,725000,58500000,Kvalifikacioni postupak,20.6.2014.,3,3/2014
+93,MO 2014 Q2,111,MO,7093608,Јумбо Травел,Usluge avio-prevoza i Usluge hotelskog smeštaja u inostranstvu,Usluge,114000,58500000,Kvalifikacioni postupak,20.6.2014.,3,6/2014
+95,MO 2014 Q2,121,MO,7093608,Јумбо Травел,Usluge avio-prevoza i Usluge hotelskog smeštaja u inostranstvu,Usluge,38000,58500000,Kvalifikacioni postupak,26.6.2014,3,12/2014

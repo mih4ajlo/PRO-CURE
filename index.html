@@ -4,82 +4,133 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" type="text/css"/> -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <script src="public/js/d3.v3.min.js"></script>
     <script src="public/js/underscore-min.js"></script>
     <script src="public/js/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="public/js/transformacija.js"></script>
-	<script src="public/js/bcrumbs.js"></script>
-	<script src="public/js/drugi.js"></script>
-	
-	<script src="public/js/settings.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="public/js/transformacija.js"></script>
+    <script src="public/js/bcrumbs.js"></script>
+    <script src="public/js/drugi.js"></script>
+    <script src="public/js/settings.js"></script>
+    <script src="public/js/tooltip.js"></script>
 
-    <style>
-    #chart2 {
-        overflow-y: scroll;
-        width: 400px;
-    }
-    
-    #chart2 svg {
-        height: 100vh;
-    }
-    
-    .izdvojen {
-        transform: scale(1.10);
-    }
-    
-    .vracen {
-        transform: scale(1);
-    }
-    
-    .bar.positive {
-        fill: steelblue;
-    }
-    
-    .bar.negative {
-        fill: brown;
-    }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"></script> -->
+
+    <script>
+    $(function () {
+    	$( "#datum_od" ).datepicker({dateFormat: 'dd.mm.yy.'});
+    	$( "#datum_do" ).datepicker({dateFormat: 'dd.mm.yy.'});
+
+
+    })
+
+    $(function() {
+	    $( "#slider" ).slider({
+	      range: true,
+	      min: 10 * 1000,
+	      max: 1000*1000*1000,
+	      values: [ 7500, 100000 ],
+	      slide: function( event, ui ) {
+	      	$("#iznos_od").val( ui.values[ 0 ])
+	      	$("#iznos_do").val( ui.values[ 1 ])
+	        
+	      }
+	    });
+	    $("#iznos_od").val($( "#slider" ).slider( "values", 0 ))
+	      	$("#iznos_do").val( $( "#slider" ).slider( "values", 1 ))
+	        
+	    /*$( "#amount_label" ).html( 
+	    	 $( "#slider" ).slider( "values", 0 ) + " - " 
+	    	 + $( "#slider" ).slider( "values", 1 ) + " din"
+    	 );*/
+  });
+    </script>
 </head>
 
 <body>
-
-	<input type="radio" name="izbor" id="" value="iznos">Iznosi
-	<input type="radio" name="izbor" id="" value="broj">Brojčano
-    
-    <form>
-        <select name="postupak" id="">
-            <option value="otvoreni">Otvoreni</option>
-            <option value="restriktivni">Restriktivni</option>
-            <option value="sa_objavljivanjem">Sa objavljivanjem</option>
-            <option value="bez_objavljivanja">Bez objavljivanja</option>
-            <option value="kvalifikacioni">Kvalifikacioni</option>
-        </select>
-        <select name="predmet" id="">
-            <option value="dobra">Dobra</option>
-            <option value="usluge">Usluge</option>
-            <option value="radovi">Radovi</option>
-        </select>
-        <select name="ponuda" id="">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        <input type="number" name="cena">
-        <button type="button">Trazi</button>
-    </form>
-    <div class="tip"></div>
-    <div id="sequence"></div>
-    <div id="wrap" class="row">
-        <div id="chart" class="col-md-8"></div>
-        <div id="chart2" class="col-md-4"></div>
+    <input type="radio" name="izbor" id="" value="iznos">Iznosi
+    <input type="radio" name="izbor" id="" value="broj">Brojčano
+    <div class="container-fluid">
+        <div class="col-md-3">
+            <form>
+                <!-- Left -->
+                <div id="selektori" class="">
+                    <select name="narucilac" id="narucilac">
+                        <option value="" selected disabled>Naručilac</option>
+                        <option value="mo">Ministarstvo odbrane</option>
+                        <option value="mup">Mup</option>
+                    </select>
+                    <select name="predmet" id="vrstepredmeta">
+                        <option value="" selected disabled>Vrste predmeta</option>
+                        <option value="dobra">Dobra</option>
+                        <option value="usluge">Usluge</option>
+                        <option value="usluge">Radovi</option>
+                    </select>
+                    <select name="maticniBroj" id="maticniBroj">
+                        <option value="" selected disabled>Matični broj</option>
+                        <option value="07093608">07093608</option>
+                        <option value="07008104">07008104</option>
+                    </select>
+                    <select name="postupak" id="postupak">
+                        <option value="" selected disabled>Tip postupka</option>
+                        <option value="otvoreni">Otvoreni postupak</option>
+                        <option value="restriktivni">Restriktivni postupak</option>
+                        <option value="sa_objavljivanjem">Bez objavljivanja</option>
+                        <option value="bez_objavljivanja">Sa objavljivanjem</option>
+                        <option value="kvalifikacioni">Konkurs za dizajn</option>
+                        <option value="kvalifikacioni">Postupak javne nabavke male vrednosti</option>
+                        <option value="kvalifikacioni">Kvalifikacioni postupak</option>
+                        <option value="kvalifikacioni">Konkurentni dijalog</option>
+                    </select>
+                    <select name="predmet" id="predmet">
+                        <option value="" selected disabled>Predmet</option>
+                        <option value="dobra">Dobra</option>
+                        <option value="usluge">Usluge</option>
+                        <option value="radovi">Radovi</option>
+                    </select>
+                    <select name="ponuda" id="ponuda" multiple="ponuda">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                    </select>
+                    
+                    
+                    <div> Ugovorena cena:
+                    	
+                        <div name="cena_pdv" id="slider"></div>
+                        <br>
+                        <input type="number" lang="en" name="iznos_od" id="iznos_od" class="input-sm col-md-5">
+                        <input type="number" lang="en" name="iznos_do" id="iznos_do" class="input-sm col-md-5 col-md-offset-1">
+                    </div>
+                    <div>
+                    	<span class="col-md-8">Vremenski raspon:</span>
+                        <input type="text" name="datum_od" id="datum_od" class="input-sm col-md-5">
+                        <input type="text" name="datum_do" id="datum_do" class="input-sm col-md-5 col-md-offset-1">
+                    </div>
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="button">Search</button>
+                    </div>
+                    <!-- Right -->
+                </div>
+            </form>
+        </div>
+        <div class="col-md-9">
+            <div class="tip"></div>
+            <div id="sequence"></div>
+            <div id="wrap" class="row">
+                <div id="chart" class="col-md-8"></div>
+                <div id="chart2" class="col-md-4"></div>
+            </div>
+        </div>
     </div>
     <script>
     //http://bl.ocks.org/mbostock/4063423
@@ -100,40 +151,39 @@
     };
 
     // Mapping of step names to colors.
-   
-    var colors = 
-    {
-	  "radovi":{
-	    "osnovna": "#1b9e77",
-	    "izvedene": {
-	      "restriktivni": "#093427",
-	      "otvoreni": "#157A5C",
-	      "sa_objavljivanjem": "#23D19D",
-	      "bez_objavljivanja": "#62E4BD",
-	      "kvalifikacioni": "#CBF6E9"
-	    }
-	  },
-	  "dobra": {	    
-	    "osnovna": "#d95f02",
-	    "izvedene": {
-	      "restriktivni": "#3D1B01",
-	      "otvoreni": "#A24702",
-	      "sa_objavljivanjem": "#FD8021",
-	      "bez_objavljivanja": "#FD9749",
-	      "kvalifikacioni": "#FED1AE"
-	    }
-	  },
-	  "usluge":{	    
-	    "osnovna": "#7570b3",
-	    "izvedene": {
-	      "restriktivni": "#1E1C35",
-	      "otvoreni": "#433F78",
-	      "sa_objavljivanjem": "#5A54A0",
-	      "bez_objavljivanja": "#A4A1CE",
-	      "kvalifikacioni": "#D8D7EA"
-	    }
-	  }
-	}
+
+    var colors = {
+        "radovi": {
+            "osnovna": "#1b9e77",
+            "izvedene": {
+                "restriktivni": "#093427",
+                "otvoreni": "#157A5C",
+                "sa_objavljivanjem": "#23D19D",
+                "bez_objavljivanja": "#62E4BD",
+                "kvalifikacioni": "#CBF6E9"
+            }
+        },
+        "dobra": {
+            "osnovna": "#d95f02",
+            "izvedene": {
+                "restriktivni": "#3D1B01",
+                "otvoreni": "#A24702",
+                "sa_objavljivanjem": "#FD8021",
+                "bez_objavljivanja": "#FD9749",
+                "kvalifikacioni": "#FED1AE"
+            }
+        },
+        "usluge": {
+            "osnovna": "#7570b3",
+            "izvedene": {
+                "restriktivni": "#1E1C35",
+                "otvoreni": "#433F78",
+                "sa_objavljivanjem": "#5A54A0",
+                "bez_objavljivanja": "#A4A1CE",
+                "kvalifikacioni": "#D8D7EA"
+            }
+        }
+    }
 
 
     var HTMLabsoluteTip = d3.select("div.tip");
@@ -160,12 +210,12 @@
         .attr('width', mera)
         .attr('height', mera)
         .attr("transform", "translate(" + pomeraj + "," + pomeraj + ")")
-	.append("xhtml:div")    	
+        .append("xhtml:div")
         .attr('id', "labelCenter")
         .append("xhtml:p");
-        
 
-    
+
+
 
     //change dinaicly size of circle
     var partition = d3.layout.partition()
@@ -189,60 +239,63 @@
             return Math.sqrt(d.y + d.dy);
         });
 
-        //initializeBreadcrumbTrail();
+    //initializeBreadcrumbTrail();
 
-     
 
-	// Setup for switching data: stash the old values for transition.
-	function stash(d) {
-	  d.x0 = d.x;
-	  d.dx0 = d.dx;
-	}  	
 
-  	function arcTweenData(a, i) {
-	  var oi = d3.interpolate({x: a.x0, dx: a.dx0}, a);
-	  function tween(t) {
-	    var b = oi(t);
-	    a.x0 = b.x;
-	    a.dx0 = b.dx;
-	    return arc(b);
-	  }
-	  if (i == 0) {
-	   // If we are on the first arc, adjust the x domain to match the root node
-	   // at the current zoom level. (We only need to do this once.)
-	    var xd = d3.interpolate(x.domain(), [node.x, node.x + node.dx]);
-	    return function(t) {
-	      x.domain(xd(t));
-	      return tween(t);
-	    };
-	  } else {
-	    return tween;
-	  }
-	}    
+    // Setup for switching data: stash the old values for transition.
+    function stash(d) {
+        d.x0 = d.x;
+        d.dx0 = d.dx;
+    }
 
-	function arcTweenZoom(d) {
-	  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
-	      yd = d3.interpolate(y.domain(), [d.y, 1]),
-	      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
-	  return function(d, i) {
-	    return i
-	        ? function(t) { return arc(d); }
-	        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
-	  };
-	}
+    function arcTweenData(a, i) {
+        var oi = d3.interpolate({
+            x: a.x0,
+            dx: a.dx0
+        }, a);
 
-    d3.csv('rawData/uzorak.csv', function(err, data) {
+        function tween(t) {
+            var b = oi(t);
+            a.x0 = b.x;
+            a.dx0 = b.dx;
+            return arc(b);
+        }
+        if (i == 0) {
+            // If we are on the first arc, adjust the x domain to match the root node
+            // at the current zoom level. (We only need to do this once.)
+            var xd = d3.interpolate(x.domain(), [node.x, node.x + node.dx]);
+            return function(t) {
+                x.domain(xd(t));
+                return tween(t);
+            };
+        } else {
+            return tween;
+        }
+    }
 
+    function arcTweenZoom(d) {
+        var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+            yd = d3.interpolate(y.domain(), [d.y, 1]),
+            yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+        return function(d, i) {
+            return i ? function(t) {
+                return arc(d);
+            } : function(t) {
+                x.domain(xd(t));
+                y.domain(yd(t)).range(yr(t));
+                return arc(d);
+            };
+        };
+    }
+
+    d3.csv('rawData/uzorak2.csv', function(err, data) {
 
         var json = transformData(data);
 
         createVisualization(json);
 
     })
-
-
-    
-
 
 
     /*======================================
@@ -254,24 +307,42 @@
 
         var tempEl = d3.selectAll("path").filter(function(la, po) {
             var uslov = true;
+            
             if (la.children != undefined) return false;
+
             for (var i = 0, len = nizArgumenata.length; i < len; i++) {
 
-            	if(la["postupak"] == undefined) return false;
+                if (la["postupak"] == undefined) return false;
 
                 if (nizArgumenata[i].name == "postupak")
-                    uslov &= la["postupak"].toLowerCase().indexOf(nizArgumenata[i].value.replace("_", " ")) != -1;
+                    uslov &= (la["postupak"].toLowerCase().indexOf(nizArgumenata[i].value.replace("_", " ")) != -1 );
                 else if (nizArgumenata[i].name == "predmet")
-                    uslov &= la["predmet"].toLowerCase().indexOf(nizArgumenata[i].value) != -1;
+                    uslov &= (la["predmet"].toLowerCase().indexOf(nizArgumenata[i].value) != -1);
                 else if (nizArgumenata[i].name == "ponuda")
-                    uslov &= +la["broj_ponuda"] == +nizArgumenata[i].value;
-                else if (nizArgumenata[i].name == "cena_pdv")
-                    uslov &= +la["cena_pdv"] >= +nizArgumenata[i].value;
+                    uslov &= (+la["broj_ponuda"] == +nizArgumenata[i].value);
+                else if (nizArgumenata[i].name == "iznos_od")
+                    uslov &= (+la["cena_pdv"] >= +nizArgumenata[i].value );
+                
+                else if (nizArgumenata[i].name == "iznos_do")
+                    uslov &= (+la["cena_pdv"] <= +nizArgumenata[i].value );
+                
+                else if(nizArgumenata[i].name == "narucilac"){
+                	uslov &= la["narucilac"].toLowerCase() == nizArgumenata[i].value.toLowerCase();
+                }
+                else if(nizArgumenata[i].name == "maticniBroj"){
+                	uslov &=  ( nizArgumenata[i].value.trim() .indexOf(la["maticni_broj"] ) !=-1 );
+                }
+                else if(nizArgumenata[i].name == "datum_od" && nizArgumenata[i].value.length > 0){
+                	uslov &=  moment( la["datum"].trim(),"DD.MM.YYYY." ).isAfter( moment(nizArgumenata[i].value,"DD.MM.YYYY."))  ;
+                }
+                else if(nizArgumenata[i].name == "datum_do" && nizArgumenata[i].value.length > 0 ){
+                	uslov &=  moment( la["datum"].trim(), "DD.MM.YYYY." ).isBefore( moment(nizArgumenata[i].value,"DD.MM.YYYY."))  ;
+                }
 
                 //postupak predmet, ponuda , cena 
             }
 
-            return uslov;
+            return uslov ;
         })
 
         return tempEl
@@ -282,10 +353,10 @@
         var res = filterPretraga(parametri)
         res.style("fill", "red");
 
-        if(res.data().length == 0)
-        	alert("Nema podataka za zadate kriterijume");
+        if (res.data().length == 0)
+            alert("Nema podataka za zadate kriterijume");
         else
-        	secondGraph(res.data())
+            secondGraph(res.data())
             //napraviti poseban graf ovde
     })
 
@@ -302,7 +373,7 @@
             .attr("r", radius)
             .style("opacity", 0);
 
-      
+
 
         var path = vis.datum(json).selectAll("path")
             .data(partition.nodes(json))
@@ -314,17 +385,17 @@
             .attr("fill-rule", "evenodd")
             .style("stroke", "#fff")
             .style("fill", function(d) {
-            	return  d.color;
+                return d.color;
             })
             .style("opacity", 1)
-            .on("mouseover", function (d, j) {
-            	//if(d.depth!=0 && d.depth == 2 && d.children ==undefined)
-            		mouseover(d, j);
+            .on("mouseover", function(d, j) {
+                //if(d.depth!=0 && d.depth == 2 && d.children ==undefined)
+                mouseover(d, j);
 
-            	labelMouse(d,j);
+                labelMouse(d, j);
             })
             //.on("mouseleave", mouseleaveCell)
-            //.on("click", mrdniGa)
+            .on("click", dodajTT)
             .each(stash);
 
 
@@ -333,28 +404,30 @@
         initializeBreadcrumbTrail();
 
         d3.selectAll("input[name='izbor']").on("change", function change() {
-		    var value = this.value === "broj"
-		        ? function() { return 1; }
-		        : function(d) { return d.cena_pdv; };
+            var value = this.value === "broj" ? function() {
+                return 1;
+            } : function(d) {
+                return d.cena_pdv;
+            };
 
-		    path
-		        .data(partition.value(value).nodes)
-		      .transition()
-		        .duration(1500)
-		        .attrTween("d", arcTween);
-		  });
+            path
+                .data(partition.value(value).nodes)
+                .transition()
+                .duration(1500)
+                .attrTween("d", arcTween);
+        });
 
         // Add the mouseleave handler to the bounding circle.
         d3.select("#container").on("mouseleave", mouseleave);
 
         // Get total size of the tree = value of root node from partition.
         totalSize = path.node().__data__.value;
-        
+
     };
 
 
-    function labelMouse (d,j) {
-    	d3.select('#labelCenter p').html(d.name);
+    function labelMouse(d, j) {
+        d3.select('#labelCenter p').html(d.name);
     }
 
     function mouseover(d, j) {
@@ -369,7 +442,7 @@
 
     }
 
-     function mouseleave(d) {
+    function mouseleave(d) {
 
         //hide tips
         d3.select(".tip").style("visibility", "hidden");
@@ -400,7 +473,7 @@
     }
 
     function arcTween(a) {
-        
+
         var i = d3.interpolate({
             x: a.x0,
             dx: a.dx0
@@ -413,10 +486,7 @@
             return arc(b);
         };
     }
-
-
     </script>
-    
 </body>
 
 </html>

@@ -1,0 +1,25 @@
+    #chart2 {
+        overflow-y: scroll;
+        width: 400px;
+    }
+    
+    #chart2 svg {
+        height: 100vh;
+    }
+    
+    .izdvojen {
+        transform: scale(1.10);
+    }
+    
+    .vracen {
+        transform: scale(1);
+    }
+    
+    .bar.positive {
+        fill: steelblue;
+    }
+    
+    .bar.negative {
+        fill: brown;
+    }
+    

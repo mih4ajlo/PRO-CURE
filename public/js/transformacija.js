@@ -1,3 +1,4 @@
+
 function transformData(all) {
         var tempObje = {
             "name": "Bezbednost",
@@ -25,16 +26,16 @@ function transformData(all) {
         var tempRadovi = [];
 
         dobra.forEach(function (funk) {
-        	if(funk.children != undefined)
-        	tempDobra = tempDobra.concat(funk.children)		
+            if(funk.children != undefined)
+            tempDobra = tempDobra.concat(funk.children)     
         })
         usluge.forEach(function (funk) {
-        	if(funk.children != undefined)
-        	tempUsluge = tempUsluge.concat(funk.children)		
+            if(funk.children != undefined)
+            tempUsluge = tempUsluge.concat(funk.children)       
         })
         radovi.forEach(function (funk) {
-        	if(funk.children != undefined)
-        	tempRadovi = tempRadovi.concat(funk.children)		
+            if(funk.children != undefined)
+            tempRadovi = tempRadovi.concat(funk.children)       
         })
 
         tempObje.children.push({
@@ -64,7 +65,7 @@ function transformData(all) {
         var uslovArra = [];
 
         var katego = 
-        	["restriktivni", "otvoreni", "sa objavljivanjem", "bez objavljivanja", "kvalifikacioni"];
+            ["restriktivni", "otvoreni", "sa objavljivanjem", "bez objavljivanja", "kvalifikacioni"];
 
         poljaZaDif.forEach(function(to) {
             
@@ -81,11 +82,11 @@ function transformData(all) {
             })
 
             tempArr.map(function(te) {
-            	var boja1 = "";
-            	katego.forEach(function(la){
-            		if(te.postupak.toLowerCase().indexOf(la)!=-1)
-            		boja1 = la.replace(" ","_"); 
-            	})
+                var boja1 = "";
+                katego.forEach(function(la){
+                    if(te.postupak.toLowerCase().indexOf(la)!=-1)
+                    boja1 = la.replace(" ","_"); 
+                })
                 
 
                 te.name = te.firma ; /*+ " " +  te.cena_pdv + " din"*///te[param]/*.substr(0, 15)*/ ;
@@ -97,7 +98,7 @@ function transformData(all) {
             tempOb.children = tempArr;
             //uslovArra.concat(tempArr);
 
-        	uslovArra.push(tempOb);    
+            uslovArra.push(tempOb);    
         })
 
 
