@@ -348,9 +348,10 @@
         x.domain([0, 250])
             //x.domain(d3.extent(data, function(d) { return d.cena_pdv; })).nice();
         y.domain(
-        data.map(function(d) {
-            return +d.idNum ;
-        }))
+        	data.map(function(d) {
+            	return +d.idNum ;
+        	})
+    	)
 
 
         svgDrugi.selectAll(".bar")
@@ -429,10 +430,10 @@
         // For efficiency, filter nodes to keep only those large enough to see.
         var nodes = partition.nodes(json)
             .filter(function(d) {
-                return d; //(d.dx > 0.005); // 0.005 radians = 0.29 degrees
+                return (d.dx > 0.005); // 0.005 radians = 0.29 degrees
             });
 
-        var path = vis.data([json]).selectAll("path")
+        var path = vis/*.data([json])*/.selectAll("path")
             .data(nodes)
             .enter().append("svg:path")
             .attr("display", function(d) {
@@ -443,38 +444,11 @@
             .style("stroke", "#fff")
             .style("fill", function(d) {
             	return  d.color;
-            	/*var tem = ["dobra","usluge","radovi"];
-            	var ocena = tem.indexOf( d.name.toLowerCase() )
-            	var ocena2;
-
-            	if(d.depth ==0 )return "";
-            	if(d.parent !=undefined) 
-            		ocena2 = tem.indexOf( d.parent.name.toLowerCase() )
-            	
-            	if( ocena != -1)
-            		return colors.find(function(te){return te.name ==tem[ocena] })["osnovna"];
-            	else if( ocena2 !=-1 )
-            	{
-            		var tempGl = colors.find(function(te){
-            			return te.name ==tem[ocena2] 
-            			})
-            		var boja = "";
-            		Object.keys(tempGl.izvedene).filter(function (kre) {
-            				if ( d.postupak.toLowerCase().indexOf( kre.replace("_"," ") ) !=-1  )
-            					boja =  kre;
-            			});
-            		return tempGl.izvedene[boja];
-            	}
-            	//if(d.parent !=undefined )
-                //d.postupak
-               // if (d.name.toLowerCase().indexOf() ) value.replace("_", " ")
-                return colors[d.name.toLowerCase()];*/
-
             })
             .style("opacity", 1)
             .on("mouseover", mouseover)
             .on("mouseleave", mouseleaveCell)
-            .on("click", mrdniGa)
+            //.on("click", mrdniGa)
             .each(stash);
 
         // Add the mouseleave handler to the bounding circle.
@@ -628,7 +602,7 @@
         // Add the label at the end, for the percentage.
         trail.append("svg:text")
             .attr("id", "endlabel")
-            .style("fill", "#000");
+            .style("fill", "yellow");
     }
 
     // Generate a string that describes the points of a breadcrumb polygon.
@@ -652,7 +626,7 @@
         var g = d3.select("#trail")
             .selectAll("g")
             .data(nodeArray, function(d) {
-                return d.name + d.depth;
+                return d.idNum;//d.name + d.depth;
             });
 
         // Add breadcrumb and label for entering nodes.
@@ -661,13 +635,14 @@
         entering.append("svg:polygon")
             .attr("points", breadcrumbPoints)
             .style("fill", function(d) {
-                return colors[Math.floor(Math.random() * 3)];
+                return d.color/*colors[Math.floor(Math.random() * 3)]*/;
             });
 
         entering.append("svg:text")
             .attr("x", (b.w + b.t) / 2)
             .attr("y", b.h / 2)
             .attr("dy", "0.35em")
+            .attr('fill', "white" )
             .attr("text-anchor", "middle")
             .text(function(d) {
                 return d.name;
@@ -688,12 +663,12 @@
 
 
         // Now move and update the percentage at the end.
-        d3.select("#trail").select("#endlabel")
+       /* d3.select("#trail").select("#endlabel")
             .attr("x", (nodeArray.length + 0.5) * (b.w + b.s))
             .attr("y", b.h / 2)
             .attr("dy", "0.35em")
             .attr("text-anchor", "middle")
-            .text(percentageString);
+            .text(percentageString);*/
 
 
         // Make the breadcrumb trail visible, if it's hidden.

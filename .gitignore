@@ -3,3 +3,4 @@ vendor/*
 composer*
 index.php*
 notes
+.~lock*
