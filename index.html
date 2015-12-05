@@ -90,27 +90,38 @@
     };
 
     // Mapping of step names to colors.
-    var colors =
-        /*{
-        "Bez odgovora": "#DDD",
-        "Neispunjeno": "#fecc5c",
-        "Delimično ispunjeno": "#7fcdbb",
-        "Ispunjeno": "#2c7fb8",
-        "Agencija": "#1b9e77",
-        "Poverenik": "#d95f02",
-        "Ombudsman": "#7570b3"
-    };
-*/
+    var colors = {
+        "radovi": "#1b9e77",
+        "dobra": "#d95f02",
+        "usluge": "#7570b3"
+    }
 
+    var temp = ["restriktivni", "otvoreni", "sa_objavljivanjem", "bez_objavljivanja", "kvalifikacioni"];
+    var j = 1;
+    var tempNIz = ["radovi", "dobra", "usluge"];
+    var rezNis = []
 
-        ["#DDD",
-            "#fecc5c",
-            "#7fcdbb",
-            "#2c7fb8",
-            "#1b9e77",
-            "#d95f02",
-            "#7570b3"
-        ]
+    for (var z = 0, lenZ= tempNIz.length; z < lenZ; z++) {
+
+    	var tempArBle = {"name":tempNIz[z],"izvedene":{}}; 
+
+        for (var i = 0, len = temp.length; i < len; i++) {
+
+            var tempColor = "";
+
+            if (i < (len / 2))
+                tempColor = d3.rgb( colors[tempNIz[z]] ).darker(0.1 * i).toString();
+            else
+                tempColor =  d3.rgb( colors[tempNIz[z]] ).brighter(0.1 * j++).toString();
+            
+
+            tempArBle.izvedene[temp[i]] = tempColor;
+        }
+
+        rezNis.push(tempArBle);
+
+    }
+
 
 
     var HTMLabsoluteTip = d3.select("div.tip");
@@ -287,17 +298,17 @@
 
 
 
-   
 
-        //neki button ce biti	
-        /*  d3.select("input").on("change", change);
+
+    //neki button ce biti	
+    /*  d3.select("input").on("change", change);
 
 		  var sortTimeout = setTimeout(function() {
 		    d3.select("input").property("checked", true).each(change);
 		  }, 2000);*/
 
-     
-    
+
+
 
     function secondGraph(data) {
         var width = 350;
@@ -311,7 +322,7 @@
 
 
         var x = d3.scale.linear()
-            .range([0, 150]);
+            .range([0, 250]);
 
         var y = d3.scale.ordinal()
             .rangeRoundBands([0, height], .2);
@@ -321,7 +332,7 @@
         x.domain([0, 150])
             //x.domain(d3.extent(data, function(d) { return d.cena_pdv; })).nice();
         y.domain(data.map(function(d) {
-            return d.cena_pdv;
+            return d.name;
         }))
 
 
@@ -342,12 +353,12 @@
             .on("mouseover", function(l, e) {
                 console.log(l)
             })
-        	.on("click", change);
+            .on("click", change);
 
-	   function change(nes) {
+        function change(nes) {
             //clearTimeout(sortTimeout);
-            nes  =true
-            // Copy-on-write since tweens are evaluated after a delay.
+            nes = false
+                // Copy-on-write since tweens are evaluated after a delay.
             var y0 = y.domain(
                     data.sort(
                         nes ? function(a, b) {
@@ -357,13 +368,13 @@
                         })
 
                     .map(function(d) {
-                        return d.cena_pdv;
+                        return d.name;
                     }))
                 .copy();
 
             svgDrugi.selectAll(".bar")
                 .sort(function(a, b) {
-                    return y0(a.cena_pdv) - y0(b.cena_pdv);
+                    return y0(a.name) - y0(b.name);
                 });
 
             var transition = svgDrugi.transition().duration(750),
@@ -374,7 +385,7 @@
             transition.selectAll(".bar")
                 .delay(delay)
                 .attr("y", function(d) {
-                    return y0(d.cena_pdv) + 25;
+                    return y0(d.name) + 25;
                 });
 
 
@@ -416,7 +427,9 @@
             .style("stroke", "#fff")
             .style("fill", function(d) {
 
-                return colors[Math.floor(Math.random() * 5)];
+                //d.postupak
+                //if (d.name.toLowerCase()) value.replace("_", " ")
+                return colors[d.name.toLowerCase()];
 
             })
             .style("opacity", 1)
@@ -435,7 +448,7 @@
 
 
 
-        d3.selectAll("input").on("change", function () {
+        d3.selectAll("input").on("change", function() {
             /*var value = this.value === "count" ? function() {
                 return 1;
             } : function(d) {
