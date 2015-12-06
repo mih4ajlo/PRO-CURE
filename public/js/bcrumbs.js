@@ -48,10 +48,11 @@
     function updateBreadcrumbs(nodeArray, percentageString) {
 
         // Data join; key function combines name and depth (= position in sequence).
+        d3.select("#trail g").remove()  ;
         var g = d3.select("#trail")
             .selectAll("g")
             .data(nodeArray, function(d) {
-                return d.idNum;//d.name + d.depth;
+                return  d.depth;
             });
 
         // Add breadcrumb and label for entering nodes.

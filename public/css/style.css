@@ -115,8 +115,10 @@ body {
     color: #0D3B6C;
     padding: 10px ;
 }
-
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+/* 
+ .ui-state-default, */ 
+ .ui-widget-content .ui-state-default:not(td,tr,th,tbody),
+  .ui-widget-header .ui-state-default:not(td,tr,th,tbody){
     background: #0D3B6C;
     border: 1px solid #0D3B6C;
     border-radius: 25px;
@@ -125,10 +127,10 @@ body {
 }
 
 .ui-widget-header{
-    color: #0D3B6C;
+    color: white;
     background: #0D3B6C;   
 }
-.ui-widget-content,.ui-widget-header{
+.ui-widget-content:not(td,tr,th,tbody),.ui-widget-header:not(td,tr,th,tbody){
     height: 0.5em !important;
 }
 .gray-background{
@@ -184,6 +186,20 @@ body {
 
 }
 
+#buttonSearch{
+    cursor: pointer;
+    cursor: hand;
+}
+
+
+/*=============================================
+=            Search controls            =
+=============================================*/
+
+
+
+
+
 #chart2 {
     overflow-y: scroll;
     width: 400px;
@@ -209,7 +225,11 @@ body {
     fill: brown;
 }
 
-
+#labelCenter{
+    height: inherit;
+    margin: auto;
+    text-align: center;
+}
 
 
 

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>ProCure</title>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,800&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" type="text/css"/> -->
@@ -31,7 +31,6 @@
     	$( "#datum_od" ).datepicker({dateFormat: 'dd.mm.yy.'});
     	$( "#datum_do" ).datepicker({dateFormat: 'dd.mm.yy.'});
 
-
     })
 
     $(function() {
@@ -57,7 +56,7 @@
   });
 
     $(function () {
-    	  	 $( "#sliderPonuda" ).slider({
+	  	$( "#sliderPonuda" ).slider({
 	      range: true,
 	      min: 0,
 	      max: 10,
@@ -65,7 +64,8 @@
 	      slide: function( event, ui ) {
 	      	$( "#amount_label" ).html( 
 	    	  ui.values[ 0 ] + " - "   	 +  ui.values[ 1 ]    	 );
-	      	
+	      	$("[name='ponuda_od']").val( ui.values[ 0 ])
+	      	$("[name='ponuda_do']").val( ui.values[ 1 ])
 	      }
 	    });
 	        
@@ -92,8 +92,7 @@
 		
 	</header>
 
-	<input type="radio" name="izbor" id="" value="iznos">Iznosi
-    <input type="radio" name="izbor" id="" value="broj">Brojčano
+
 
 
 
@@ -181,9 +180,11 @@
                     	
 						<span id="amount_label"></span>
                     	<div name="ponuda" id="sliderPonuda"></div>
+                    	<input type="hidden" name="ponuda_od" value="2">
+                    	<input type="hidden" name="ponuda_do" value="6">
 
                     </div>
-                    <div class="margin-20px krajnji-border invert button-search">
+                    <div  id="buttonSearch"	 class="margin-20px krajnji-border invert button-search">
                         Pretraži    >
                     </div>
                     <!-- Right -->
@@ -193,6 +194,10 @@
         <div class="col-md-8">
             <div class="tip"></div>
             <div id="sequence"></div>
+            <div>
+            	<input type="radio" name="izbor" value="iznos" checked>Iznosi
+    			<input type="radio" name="izbor" value="broj">Brojčano
+            </div>
             <div id="wrap" class="row">
                 <div id="chart" class="col-md-8"></div>
                 <div id="chart2" class="col-md-4"></div>
@@ -255,7 +260,7 @@
     }
 
 
-    var HTMLabsoluteTip = d3.select("div.tip");
+    //var HTMLabsoluteTip = d3.select("div.tip");
 
     var mera = radius * 0.5;
 
@@ -277,9 +282,9 @@
 
     var label = vis.append("g");
     label.append('foreignObject')
-        .attr('width', mera)
-        .attr('height', mera)
-        .attr("transform", "translate(" + pomeraj + "," + pomeraj + ")")
+        .attr('width', mera + 20 )
+        .attr('height', mera + 20)
+        .attr("transform", "translate(" + (pomeraj-10) + "," + (pomeraj-10) + ")")
         .append("xhtml:div")
         .attr('id', "labelCenter")
         .append("xhtml:p");
@@ -289,7 +294,7 @@
 
     //change dinaicly size of circle
     var partition = d3.layout.partition()
-        .sort(null)
+        .sort(function(a,b){return b.cena_pdv-a.cena_pdv})
         .size([2 * Math.PI, radius * radius * 0.5])
         .value(function(d) {
             return d.cena_pdv;
@@ -309,7 +314,8 @@
             return Math.sqrt(d.y + d.dy);
         });
 
-    //initializeBreadcrumbTrail();
+
+    /*initializeBreadcrumbTrail();*/
 
 
 
@@ -388,8 +394,10 @@
                     uslov &= (la["postupak"].toLowerCase().indexOf(nizArgumenata[i].value.replace("_", " ")) != -1 );
                 else if (nizArgumenata[i].name == "predmet")
                     uslov &= (la["predmet"].toLowerCase().indexOf(nizArgumenata[i].value) != -1);
-                else if (nizArgumenata[i].name == "ponuda")
-                    uslov &= (+la["broj_ponuda"] == +nizArgumenata[i].value);
+                else if (nizArgumenata[i].name == "ponuda_od")
+                    uslov &= (+la["broj_ponuda"] >= +nizArgumenata[i].value);
+                else if (nizArgumenata[i].name == "ponuda_do")
+                    uslov &= (+la["broj_ponuda"] <= +nizArgumenata[i].value);
                 else if (nizArgumenata[i].name == "iznos_od")
                     uslov &= (+la["cena_pdv"] >= +nizArgumenata[i].value );
                 
@@ -418,10 +426,24 @@
         return tempEl
     }
 
-    d3.select("button").on("click", function() {
+    d3.select("#buttonSearch").on("click", function() {
+
+
         var parametri = $("form").serializeArray();
         var res = filterPretraga(parametri)
-        res.style("fill", "red");
+        
+
+        /*========================================
+        =            Rezultati pretrage - kuda dalje?            =
+        ========================================*/
+        
+
+        	 res.style("fill", "red");
+        
+        
+        /*=====  End of Rezultati pretrage - kuda dalje?  ======*/
+        
+       
 
         if (res.data().length == 0)
             alert("Nema podataka za zadate kriterijume");
@@ -443,7 +465,7 @@
             .attr("r", radius)
             .style("opacity", 0);
 
-        var tooltip = d3.select('#chart')                               
+       /* var tooltip = d3.select('#chart')                               
           .append('div')                                                
           .attr('class', 'MyTooltip');                                    
                       
@@ -455,7 +477,7 @@
 
         tooltip.append('div')                                           
           .attr('class', 'percent');     
-
+*/
         var path = vis.datum(json).selectAll("path")
             .data(partition.nodes(json))
             .enter().append("svg:path")
@@ -469,25 +491,28 @@
                 return d.color;
             })
             .style("opacity", 1)
-            .on("mouseover", function(d, j) {
+            .each(stash);
+                        
+
+         vis.selectAll("path").on("mouseout",function (d, j) {
+            	 //tooltip.style('display', 'none');  
+            })
+         	.on("mouseover", function(d, j) {
                 //if(d.depth!=0 && d.depth == 2 && d.children ==undefined)
-                mouseover(d, j);
+               // mouseover(d, j);
 
                 labelMouse(d, j);
 
 
-            tooltip.select('.label').html("d.data.label");                
+         /*   tooltip.select('.label').html("d.data.label");                
             tooltip.select('.count').html("d.data.count");                
             tooltip.select('.percent').html("54" + '%'); 
-             tooltip.style('display', 'block');  
+             tooltip.style('display', 'block');  */
 
             })
-            .on("mouseout",function (d, j) {
-            	 //tooltip.style('display', 'none');  
-            })
             .on('mousemove', function(d) {         
-            	tooltip.style('top', (d3.event.offsetY -50 ) + 'px')          
-              .style('left', (d3.event.offsetX -50 ) + 'px');       
+            	// tooltip.style('top', (d3.event.offsetY -50 ) + 'px')          
+             //  .style('left', (d3.event.offsetX -50 ) + 'px');       
           	})
 
             //.on("mouseleave", mouseleaveCell)
@@ -496,9 +521,9 @@
             	staviSadrzajTT(d, j , d3.mouse(this))*/
 
             })
-            .each(stash);
 
-
+        //inicijalna vrednost       
+        labelMouse(d3.selectAll("path").data()[0])  
 
         // Basic setup of page elements.
         initializeBreadcrumbTrail();
@@ -513,6 +538,7 @@
             path
                 .data(partition.value(value).nodes)
                 .transition()
+                .sort(null)
                 .duration(1500)
                 .attrTween("d", arcTween);
         });
@@ -527,7 +553,12 @@
 
 
     function labelMouse(d, j) {
-        d3.select('#labelCenter p').html(d.name);
+
+    	var poruka = "" ;
+    	if(d.depth < 2) poruka = "<h2>" + d.name + "</h2>";
+
+    	poruka = poruka + " <br/> <br/> UKUPNO <h3>"+ d.value + "</h3> dinara" ;
+        d3.select('#labelCenter p').html(poruka);
     }
 
     function mouseover(d, j) {
