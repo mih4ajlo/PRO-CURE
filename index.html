@@ -41,7 +41,7 @@
     $(function() {
         var sl = $("#slider").slider({
             range: true,
-            min: 5 * 1000 * 1000,
+            min:  100 * 1000,
             max:  1000 * 1000 * 1000,
             //values: [  50, 100 ],
             slide: function(event, ui) {
@@ -82,6 +82,17 @@
 </head>
 
 <body>
+
+<!-- <?xml version="1.0" ?>
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <pattern id="hash4_4" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <rect width="4" height="8" transform="translate(0,0)" fill="orange"></rect>
+        </pattern>
+    </defs>
+    <circle cx="60" cy="60" r="50" fill="url(#hash4_4)" />
+</svg>
+ -->
     <header class="container-fluid no-gutter">
         <div class="base row">
             <div class="logo col-md-2 col-md-offset-2 col-xs-offset-none col-xs-3"></div>
@@ -262,6 +273,16 @@
         </div>
     </div>
     <script>
+
+   /* var svg = d3.select("body").append("svg").attr("id", "d3svg")
+    .attr("width", 120)
+    .attr("height", 120);
+//Pattern injection
+	var defs = svg.append("defs")
+	var pattern = svg.append("pattern")
+		.attr({ id:"hash4_4", width:"8", height:"8", patternUnits:"userSpaceOnUse", patternTransform:"rotate(-45)"})
+	.append("rect")
+		.attr({ width:"4", height:"8", transform:"translate(0,0)", fill:"#88AAEE" });*/
     //http://bl.ocks.org/mbostock/4063423
 
     //var tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.name ; });
