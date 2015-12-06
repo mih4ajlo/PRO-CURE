@@ -486,7 +486,7 @@
 
                 if (nizArgumenata[i].name == "postupak")
                     uslov &= (la["postupak"].toLowerCase().indexOf(nizArgumenata[i].value.replace("_", " ")) != -1);
-                else if (nizArgumenata[i].name == "predmet")
+                else if (nizArgumenata[i].name == "predmet[]")
                     uslov &= (la["predmet"].toLowerCase().indexOf(nizArgumenata[i].value) != -1);
                 else if (nizArgumenata[i].name == "ponuda_od")
                     uslov &= (+la["broj_ponuda"] >= +nizArgumenata[i].value);
@@ -498,7 +498,7 @@
                 else if (nizArgumenata[i].name == "iznos_do")
                     uslov &= (+la["cena_pdv"] <= +nizArgumenata[i].value);
 
-                else if (nizArgumenata[i].name == "narucilac") {
+                else if (nizArgumenata[i].name == "narucilac[]") {
                     uslov &= la["narucilac"].toLowerCase() == nizArgumenata[i].value.toLowerCase();
                 } else if (nizArgumenata[i].name == "maticniBroj") {
                     uslov &= (nizArgumenata[i].value.trim().indexOf(la["maticni_broj"]) != -1);
