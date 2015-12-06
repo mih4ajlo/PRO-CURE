@@ -660,8 +660,8 @@
         //hack
         if (d.value < 1000) jedinica = "stavki";
         else jedinica = "dinara";
-
-        poruka = poruka + " <br/> <br/> UKUPNO <h3>" + d.value + "</h3> " + jedinica;
+        var nesto = d3.format(",")(d.value)
+        poruka = poruka + " <br/> <br/> UKUPNO <h3>" + nesto + "</h3> " + jedinica;
         d3.select('#labelCenter p').html(poruka);
     }
 
