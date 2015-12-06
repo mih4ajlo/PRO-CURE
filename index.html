@@ -8,6 +8,8 @@
     <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" type="text/css"/> -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
+	<link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
+
     <script src="public/js/d3.v3.min.js"></script>
     <script src="public/js/underscore-min.js"></script>
     <script src="public/js/jquery.min.js"></script>
@@ -17,6 +19,8 @@
     <script src="public/js/drugi.js"></script>
     <script src="public/js/settings.js"></script>
     <script src="public/js/tooltip.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.min.js"></script>	
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <!-- <script type="text/javascript" src="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"></script> -->
@@ -53,7 +57,21 @@
 </head>
 
 <body>
-    <input type="radio" name="izbor" id="" value="iznos">Iznosi
+	<header class="container-fluid no-gutter">
+		<div class="base row">
+			<div class="logo col-md-1 col-md-offset-2 col-xs-offset-none col-xs-3"></div>
+			<div class="col-md-4 col-xs-6">
+				<h3 >Javne nabavke Ministartstva</h3>
+				<h4 >Unutrašnjih poslova i Odbrane</h4>
+			</div>
+			<div class="col-md-3">
+				<img src="./public/img/bedge-1.png" alt=""><img src="./public/img/bedge-2.png" alt="">
+			</div>
+		</div>
+		
+	</header>
+
+	<input type="radio" name="izbor" id="" value="iznos">Iznosi
     <input type="radio" name="izbor" id="" value="broj">Brojčano
     <div class="container-fluid">
         <div class="col-md-3">
@@ -135,7 +153,9 @@
     <script>
     //http://bl.ocks.org/mbostock/4063423
 
+    var tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.name ; });
 
+	
 
     // Dimensions of sunburst.
     var width = 750;
@@ -203,6 +223,7 @@
         .append("g")
         .attr("id", "rotiraj");
 
+   
 
 
     var label = vis.append("g");
@@ -294,7 +315,7 @@
         var json = transformData(data);
 
         createVisualization(json);
-
+     
     })
 
 
@@ -373,7 +394,18 @@
             .attr("r", radius)
             .style("opacity", 0);
 
+        var tooltip = d3.select('#chart')                               
+          .append('div')                                                
+          .attr('class', 'MyTooltip');                                    
+                      
+        tooltip.append('div')                                           
+          .attr('class', 'label');                                      
+             
+        tooltip.append('div')                                           
+          .attr('class', 'count');                                      
 
+        tooltip.append('div')                                           
+          .attr('class', 'percent');     
 
         var path = vis.datum(json).selectAll("path")
             .data(partition.nodes(json))
@@ -393,9 +425,28 @@
                 mouseover(d, j);
 
                 labelMouse(d, j);
+
+
+            tooltip.select('.label').html("d.data.label");                
+            tooltip.select('.count').html("d.data.count");                
+            tooltip.select('.percent').html("54" + '%'); 
+             tooltip.style('display', 'block');  
+
             })
+            .on("mouseout",function (d, j) {
+            	 //tooltip.style('display', 'none');  
+            })
+            .on('mousemove', function(d) {         
+            	tooltip.style('top', (d3.event.offsetY -50 ) + 'px')          
+              .style('left', (d3.event.offsetX -50 ) + 'px');       
+          	})
+
             //.on("mouseleave", mouseleaveCell)
-            .on("click", dodajTT)
+            .on("click", function (d,j) {
+            	/*dodajTT(d,j, d3.mouse(this));
+            	staviSadrzajTT(d, j , d3.mouse(this))*/
+
+            })
             .each(stash);
 
 

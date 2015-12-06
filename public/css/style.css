@@ -1,25 +1,228 @@
-    #chart2 {
-        overflow-y: scroll;
-        width: 400px;
-    }
+@font-face {
+    font-family: 'Akkurat';
+    src: url('../font/Akkurat.otf');
+    /* IE9 Compat Modes */
+    src: url('../font/Akkurat.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: "Akkurat";
+    src: url("../font/Akkurat-Bold.otf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Akkurat";
+    src: url("../font/Akkurat-BoldItalic.otf");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Akkurat";
+    src: url("../font/Akkurat-BoldItalicExtra.otf");
+    font-weight: bold;
+    font-style: italic;
+    font-stretch: extra;
+}
+
+@font-face {
+    font-family: "Akkurat";
+    src: url("../font/Akkurat-Extra.otf");
+    font-stretch: extra;
+}
+
+@font-face {
+    font-family: "Akkurat";
+    src: url("../font/Akkurat-ItalicExtra.otf");
+    font-style: italic;
+    font-stretch: extra;
+}
+
+@font-face {
+    font-family: "Akkurat";
+    src: url("../font/Akkurat-LightItalicExtra.otf");
+    font-weight: light;
+    font-style: italic;
+    font-stretch: extra;
+}
+
+@font-face {
+    font-family: "Akkurat";
+    src: url("../font/Akkurat-LightItalic.otf");
+    font-weight: light;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Akkurat";
+    src: url("../font/Akkurat-LightExtra.otf");
+    font-weight: light;
+    font-stretch: extra;
+}
+
+
+/*mono*/
+
+body {
+    font-family: Akkurat;
+}
+
+.base {
+    background-image: url(../img/base.png);
+    height: 75px;
+    /* position: absolute; */
+    color: white;
+}
+
+.base h3, .base h4{
+    margin-top: 5px;
+    text-align: left;
+    text-transform: uppercase;
     
-    #chart2 svg {
-        height: 100vh;
-    }
+}
+
+@media screen and (max-size:800px){
+.base h3, .base h4{
+    margin-top: 5px;
+    text-align: left;
+    text-transform: inherit;
     
-    .izdvojen {
-        transform: scale(1.10);
     }
+
+}
+
+.logo {
+    background-image: url(../img/logo.png);
+    height: 150px;
+    background-repeat: no-repeat;
     
-    .vracen {
-        transform: scale(1);
-    }
-    
-    .bar.positive {
-        fill: steelblue;
-    }
-    
-    .bar.negative {
-        fill: brown;
-    }
-    
+
+}
+
+.no-gutter {
+    padding: 0;
+    margin: 0;
+}
+
+#chart2 {
+    overflow-y: scroll;
+    width: 400px;
+}
+
+#chart2 svg {
+    height: 100vh;
+}
+
+.izdvojen {
+    transform: scale(1.10);
+}
+
+.vracen {
+    transform: scale(1);
+}
+
+.bar.positive {
+    fill: steelblue;
+}
+
+.bar.negative {
+    fill: brown;
+}
+
+.mytooltip {
+    position: absolute;
+    text-align: center;
+    width: 200px;
+    height: auto;
+    background-color: #EDE3D1;
+    border-radius: 10px;
+    color: #787777;
+    padding: 6px 12px;
+    z-index: 3;
+}
+
+.mytooltip:after {
+    box-sizing: border-box;
+    display: inline;
+    width: 100%;
+    line-height: 1;
+    color: #EDE3D1;
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+    margin: -3px 0 0 0;
+    top: 100%;
+    left: 0;
+}
+
+.mytooltip span {
+    display: block;
+    text-align: center;
+    width: 200px;
+    height: auto;
+    margin: 5px auto;
+}
+
+#thumbnail {
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+    color: #787777;
+    text-align: center;
+}
+
+
+/*===============================
+=            tooltip            =
+http://www.competa.com/blog/2015/07/how-create-tooltips-in-d3-js/
+===============================*/
+
+.MyTooltip {
+    position: absolute;
+    text-align: center;
+    width: 200px;
+    height: auto;
+    background-color: #EDE3D1;
+    border-radius: 10px;
+    color: #787777;
+    padding: 6px 12px;
+    top: 95px;
+    left: 195px;
+    z-index: 3;
+}
+
+.MyTooltip:after {
+    box-sizing: border-box;
+    display: inline;
+    width: 100%;
+    line-height: 1;
+    color: #EDE3D1;
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+    margin: -3px 0 0 0;
+    top: 100%;
+    left: 0;
+}
+
+.MyTooltip span {
+    display: block;
+    text-align: center;
+    width: 200px;
+    height: auto;
+    margin: 5px auto;
+}
+
+#thumbnail {
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+    color: #787777;
+    text-align: center;
+}
+
+
+/*===============================
+=            tooltip            =
+===============================*/
