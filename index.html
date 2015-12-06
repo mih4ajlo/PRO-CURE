@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>ProCure</title>
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,800&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,800&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" type="text/css"/> -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
-	<link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
-
+    <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
     <script src="public/js/d3.v3.min.js"></script>
     <script src="public/js/underscore-min.js"></script>
     <script src="public/js/jquery.min.js"></script>
@@ -20,196 +19,241 @@
     <script src="public/js/drugi.js"></script>
     <script src="public/js/settings.js"></script>
     <script src="public/js/tooltip.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.min.js"></script>	
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script src="https://cdn.rawgit.com/susielu/d3-legend/master/d3-legend.min.js"></script>
     <!-- <script type="text/javascript" src="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"></script> -->
-
     <script>
-    $(function () {
-    	$( "#datum_od" ).datepicker({dateFormat: 'dd.mm.yy.'});
-    	$( "#datum_do" ).datepicker({dateFormat: 'dd.mm.yy.'});
+    $(function() {
+        $("#datum_od").datepicker({
+            dateFormat: 'dd.mm.yy.'
+        });
+        $("#datum_do").datepicker({
+            dateFormat: 'dd.mm.yy.'
+        });
 
     })
 
     $(function() {
-	    var sl = $( "#slider" ).slider({
-	      range: true,
-	      min: 5*1000*1000,
-	      max: 5*1000*1000*1000,
-	      //values: [  50, 100 ],
-	      slide: function( event, ui ) {
-	      	$("#iznos_od").val( ui.values[ 0 ])
-	      	$("#iznos_do").val( ui.values[ 1 ])
-	        
-	      }
-	    });
+        var sl = $("#slider").slider({
+            range: true,
+            min: 5 * 1000 * 1000,
+            max:  1000 * 1000 * 1000,
+            //values: [  50, 100 ],
+            slide: function(event, ui) {
+                $("#iznos_od").val(ui.values[0])
+                $("#iznos_do").val(ui.values[1])
 
-	    sl.slider( "option", "values", [ 100000000, 2500000000 ] );
+            }
+        });
 
-
-	    $("#iznos_od").val($( "#slider" ).slider( "values", 0 ))
-	      	$("#iznos_do").val( $( "#slider" ).slider( "values", 1 ))
+        sl.slider("option", "values", [100000000, 250000000]);
 
 
-  });
+        $("#iznos_od").val($("#slider").slider("values", 0))
+        $("#iznos_do").val($("#slider").slider("values", 1))
 
-    $(function () {
-	  	$( "#sliderPonuda" ).slider({
-	      range: true,
-	      min: 0,
-	      max: 10,
-	      values: [ 2, 6 ],
-	      slide: function( event, ui ) {
-	      	$( "#amount_label" ).html( 
-	    	  ui.values[ 0 ] + " - "   	 +  ui.values[ 1 ]    	 );
-	      	$("[name='ponuda_od']").val( ui.values[ 0 ])
-	      	$("[name='ponuda_do']").val( ui.values[ 1 ])
-	      }
-	    });
-	        
-	    $( "#amount_label" ).html( 
-	    	 $( "#sliderPonuda" ).slider( "values", 0 ) + " - " 
-	    	 + $( "#sliderPonuda" ).slider( "values", 1 ) 
-    	 );
+
+    });
+
+    $(function() {
+        $("#sliderPonuda").slider({
+            range: true,
+            min: 0,
+            max: 10,
+            values: [2, 6],
+            slide: function(event, ui) {
+                $("#amount_label").html(
+                    ui.values[0] + " - " + ui.values[1]);
+                $("[name='ponuda_od']").val(ui.values[0])
+                $("[name='ponuda_do']").val(ui.values[1])
+            }
+        });
+
+        $("#amount_label").html(
+            $("#sliderPonuda").slider("values", 0) + " - " + $("#sliderPonuda").slider("values", 1)
+        );
     })
     </script>
 </head>
 
 <body>
-	<header class="container-fluid no-gutter">
-		<div class="base row">
-			<div class="logo col-md-2 col-md-offset-2 col-xs-offset-none col-xs-3"></div>
-			<div class="col-md-4 col-xs-6">
-				<h3 >Javne nabavke Ministarstava</h3>
-				<h4 >Unutrašnjih poslova i Odbrane</h4>
-			</div>
-			<div class="col-md-3">
-				<img src="./public/img/bedge-1.png" alt=""><img src="./public/img/bedge-2.png" alt="">
+    <header class="container-fluid no-gutter">
+        <div class="base row">
+            <div class="logo col-md-2 col-md-offset-2 col-xs-offset-none col-xs-3"></div>
+            <div class="col-md-4 col-xs-6">
+                <h3>Javne nabavke Ministarstava</h3>
+                <h4>Unutrašnjih poslova i Odbrane</h4>
+            </div>
+            <div class="col-md-3">
+                <img src="./public/img/bedge-1.png" alt=""><img src="./public/img/bedge-2.png" alt="">
+            </div>
+        </div>
+    </header>
+    <div class="container">
+			<div class="row">
+				<div id="sequence" class="col-md-offset-2"></div>
 			</div>
 		</div>
-		
-	</header>
-
-
-
-
-
     <div class="container-fluid">
         <div class="col-md-2">
             <form>
                 <!-- Left -->
-                
                 <div id="selektori" class="">
-                	<div class="krajnji-border gray-background">Detaljna pretraga</div>
-                	<div class="krajnji-border">
-                		<input type="checkbox" name="narucilac[]" value="mup"><span>Mup</span>
-	                    <br>
-	                    <input type="checkbox" name="narucilac[]" value="mo"><span>Ministarstvo odbrane</span>
-                    </div>
-                	
-					<div class="srednji-border">
-						<input type="checkbox" name="predmet[]" value="dobra"><span>Dobra</span>
-						<br>
-						<input type="checkbox" name="predmet[]" value="usluge"><span>Usluge</span>
-						<br>
-						<input type="checkbox" name="predmet[]" value="usluge"><span>Radovi</span>
-					</div>
-					
-                   
-                   <div class="srednji-border">
-                   	 <select name="maticniBroj" id="maticniBroj">
-                   	    <option value="" selected disabled>Matični broj</option>
-                   	    <option value="07093608">07093608</option>
-                   	    <option value="07008104">07008104</option>
-                   	</select>
-                   </div>
-                    
-
-                    <div class="srednji-border">
-                    	<select name="postupak" id="postupak">
-                    	    <option value="" selected disabled>Tip postupka</option>
-                    	    <option value="otvoreni">Otvoreni postupak</option>
-                    	    <option value="restriktivni">Restriktivni postupak</option>
-                    	    <option value="sa_objavljivanjem">Bez objavljivanja</option>
-                    	    <option value="bez_objavljivanja">Sa objavljivanjem</option>
-                    	    <option value="kvalifikacioni">Konkurs za dizajn</option>
-                    	    <option value="kvalifikacioni">Postupak javne nabavke male vrednosti</option>
-                    	    <option value="kvalifikacioni">Kvalifikacioni postupak</option>
-                    	    <option value="kvalifikacioni">Konkurentni dijalog</option>
-                    	</select>
+                    <div class="krajnji-border gray-background">Detaljna pretraga</div>
+                    <div class="krajnji-border">
+                        <input type="checkbox" name="narucilac[]" value="mup"><span>Mup</span>
+                        <br>
+                        <input type="checkbox" name="narucilac[]" value="mo"><span>Ministarstvo odbrane</span>
                     </div>
                     <div class="srednji-border">
-                    	<select name="predmet" id="predmet">
-                    	    <option value="" selected disabled>Predmet</option>
-                    	    <option value="dobra">Dobra</option>
-                    	    <option value="usluge">Usluge</option>
-                    	    <option value="radovi">Radovi</option>
-                    	</select>
+                        <input type="checkbox" name="predmet[]" value="dobra"><span>Dobra</span>
+                        <br>
+                        <input type="checkbox" name="predmet[]" value="usluge"><span>Usluge</span>
+                        <br>
+                        <input type="checkbox" name="predmet[]" value="usluge"><span>Radovi</span>
                     </div>
-                    
-                    
-                    
-                    <div class="srednji-border"> 
-                    <span>Ugovorena cena:</span>
-                    <br>
-                    	<span>
+                    <div class="srednji-border">
+                        <select name="maticniBroj" id="maticniBroj">
+                            <option value="" selected disabled>Matični broj</option>
+                            <option value="07093608">07093608</option>
+                            <option value="07008104">07008104</option>
+                        </select>
+                    </div>
+                    <div class="srednji-border">
+                        <select name="postupak" id="postupak">
+                            <option value="" selected disabled>Tip postupka</option>
+                            <option value="otvoreni">Otvoreni postupak</option>
+                            <option value="restriktivni">Restriktivni postupak</option>
+                            <option value="sa_objavljivanjem">Bez objavljivanja</option>
+                            <option value="bez_objavljivanja">Sa objavljivanjem</option>
+                            <option value="kvalifikacioni">Konkurs za dizajn</option>
+                            <option value="kvalifikacioni">Postupak javne nabavke male vrednosti</option>
+                            <option value="kvalifikacioni">Kvalifikacioni postupak</option>
+                            <option value="kvalifikacioni">Konkurentni dijalog</option>
+                        </select>
+                    </div>
+                    <div class="srednji-border">
+                        <select name="predmet" id="predmet">
+                            <option value="" selected disabled>Predmet</option>
+                            <option value="dobra">Dobra</option>
+                            <option value="usluge">Usluge</option>
+                            <option value="radovi">Radovi</option>
+                        </select>
+                    </div>
+                    <div class="srednji-border">
+                        <span>Ugovorena cena:</span>
+                        <br>
+                        <span>
                         	<input type="text" lang="en" name="iznos_od" id="iznos_od" class="input-sm col-md-5"></span>
-						<span>
-							<input type="text" lang="en" name="iznos_do" id="iznos_do" class="input-sm col-md-5 col-md-offset-1"></span>	
-							<br>
-							<br>
-							
+                        <span>
+							<input type="text" lang="en" name="iznos_do" id="iznos_do" class="input-sm col-md-5 col-md-offset-1"></span>
+                        <br>
+                        <br>
                         <div name="cena_pdv" id="slider"></div>
                         <br>
-                        
                     </div>
                     <div class="srednji-border">
-                    	
                         <input type="text" name="datum_od" id="datum_od" placeholder="datum od" class="input-sm col-md-5">
                         <input type="text" name="datum_do" id="datum_do" placeholder="datum do" class="input-sm col-md-5 col-md-offset-1">
                         <br>
                         <br>
                     </div>
-					
-
                     <div class="krajnji-border">
-
-                    	<span>Broj ponuda:</span>
-                    	
-						<span id="amount_label"></span>
-                    	<div name="ponuda" id="sliderPonuda"></div>
-                    	<input type="hidden" name="ponuda_od" value="2">
-                    	<input type="hidden" name="ponuda_do" value="6">
-
+                        <span>Broj ponuda:</span>
+                        <span id="amount_label"></span>
+                        <div name="ponuda" id="sliderPonuda"></div>
+                        <input type="hidden" name="ponuda_od" value="2">
+                        <input type="hidden" name="ponuda_do" value="6">
                     </div>
-                    <div  id="buttonSearch"	 class="margin-20px krajnji-border invert button-search">
-                        Pretraži    >
+                    <div id="buttonSearch" class="margin-20px krajnji-border invert button-search">
+                        Pretraži >
                     </div>
                     <!-- Right -->
                 </div>
             </form>
         </div>
+		
+        
         <div class="col-md-8">
             <div class="tip"></div>
-            <div id="sequence"></div>
+           
             <div>
-            	<input type="radio" name="izbor" value="iznos" checked>Iznosi
-    			<input type="radio" name="izbor" value="broj">Brojčano
+                <input type="radio" name="izbor" value="iznos" checked>Iznosi
+                <input type="radio" name="izbor" value="broj">Brojčano
             </div>
             <div id="wrap" class="row">
                 <div id="chart" class="col-md-8">
-                	<div class="legend">
-                		<div class="legendItem" name="Dobra" id="dobra"></div>Dobra
-                		<div class="legendItem" name="Usluge" id="usluge"></div>Usluge
-                		<div class="legendItem" name="Radovi" id="radovi"></div>Radovi
-
-
-                	</div>
+                    <div class="legend">
+                        <div class="legendItem" name="Dobra" id="dobra"></div>Dobra
+                        <div class="legendItem" name="Usluge" id="usluge"></div>Usluge
+                        <div class="legendItem" name="Radovi" id="radovi"></div>Radovi
+                    </div>
                 </div>
-                <div id="chart2" class="col-md-4"></div>
+                <div id="chart2" class="col-md-4">
+                	<div class="krajnji-border gray-background invert">Detalji o nabavci</div>
+                    <div class="krajnji-border">
+                    	<span>Naručilac:</span>
+                    	<span id="narucilac">Ministarstvo odbrane</span>
+                    	</div>
+                    <div class="srednji-border">
+                    	<span>Matični broj:</span>
+                    	<span id="maticni_broj">7093608</span>
+                	</div>
+                    <div class="srednji-border">
+                    	<span>PIB:</span>
+                    	<span id="pib"></span>
+                	</div>
+                    <div class="srednji-border">
+                    	<span>Naziv javne nabavke:</span>
+                    	<span id="opis_predmeta">Obezbeđenje avio karata i hotelskog smeštaja za službena putovanja u inostranstvo</span>
+                	</div>
+                    <div class="srednji-border">
+                    	<span>Predmet:</span>
+                    	<span id="predmet"></span>
+                	</div>
+                    <div class="srednji-border">
+                    	<span>Kontakt osoba: </span>
+                    	<span id="kontakt_osoba"></span>
+                	</div>
+                    <div class="srednji-border">
+                    	<span>Opšti rečnik nabavki:</span>
+                    	<span id="recnik_nabavke"></span>
+                	</div>
+                    <div class="srednji-border">
+                    	<span>Vrsta postupka: </span>
+                    	<span id="postupak">Otvoreni</span>
+                	</div>
+                    <div class="srednji-border">
+                    	<span>Broj ponuda: </span>
+                    	<span id="">7</span>
+                	</div>
+                    <div class="srednji-border">
+                    	<span>Pravno lice sa kojim je sklopljen ugovor: </span>
+                    	<span id="firma">Sky Multicom</span></div>
+                    <div class="srednji-border">
+                    	<span>Datum zaključenja ugovora: </span>
+                    	<span id="datum">28.10.2014.</span>
+                    </div>
+                    <div class="srednji-border">
+                    	<span>Procenjena vrednost (bez PDV): </span>
+                    	<span id="procenjena_cena">89.657.000 din</span>
+                	</div>
+                    <div class="srednji-border">
+                    	<span>Ugovorena vrednost (bez PDV): </span>
+                    	<span id="cena_pdv">89.670.833 din</span>
+                	</div>
+                    <div class="srednji-border">
+                    	<span>Dokumenta postupka:</span>
+                	</div>
+                    <div class="srednji-border">
+                    	<span>* Link ka PJN</span><span id=""></span>
+                	</div>
+                    <div class="krajnji-border">
+                    	<span id="">* Link ka PJN</span>
+                	</div>
+                   
+                </div>
             </div>
         </div>
     </div>
@@ -218,7 +262,7 @@
 
     //var tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.name ; });
 
-	
+ 	var poear = ["idNum", "izvestaj", "br", "narucilac", "maticni_broj", "firma", "opis_predmeta", "predmet", "cena_pdv", "procenjena_cena", "postupak", "datum", "broj_ponuda", "br_nabavke", "name", "color", "parent", "depth", "value", "x", "y", "dx", "dy", "x0", "dx0"]
 
     // Dimensions of sunburst.
     var width = 750;
@@ -286,14 +330,14 @@
         .append("g")
         .attr("id", "rotiraj");
 
-   
+
 
 
     var label = vis.append("g");
     label.append('foreignObject')
-        .attr('width', mera + 20 )
+        .attr('width', mera + 20)
         .attr('height', mera + 20)
-        .attr("transform", "translate(" + (pomeraj-10) + "," + (pomeraj-10) + ")")
+        .attr("transform", "translate(" + (pomeraj - 10) + "," + (pomeraj - 10) + ")")
         .append("xhtml:div")
         .attr('id', "labelCenter")
         .append("xhtml:p");
@@ -303,7 +347,9 @@
 
     //change dinaicly size of circle
     var partition = d3.layout.partition()
-        .sort(function(a,b){return b.cena_pdv-a.cena_pdv})
+        .sort(function(a, b) {
+            return b.cena_pdv - a.cena_pdv
+        })
         .size([2 * Math.PI, radius * radius * 0.5])
         .value(function(d) {
             return d.cena_pdv;
@@ -374,26 +420,26 @@
         };
     }
 
-    d3.csv('rawData/uzorak2.csv', function(err, data) {
+    d3.csv('rawData/final.csv', function(err, data) {
 
         var json = transformData(data);
 
 
 
         createVisualization(json);
-     	
-     
-		d3.selectAll(".legendItem").on("click",function  (argument) {
-			 var kategorija = d3.select(this).attr("name") 
 
-			var skup = d3.selectAll("path").filter(function (po) {
-			 	return po.name != kategorija;
-			 });
-			 
-			 skup.selectAll("path").attr("opacity",0.2);
 
-		})
-		
+        d3.selectAll(".legendItem").on("click", function(argument) {
+            var kategorija = d3.select(this).attr("name")
+
+            var skup = d3.selectAll("path").filter(function(po) {
+                return po.name != kategorija;
+            });
+
+            skup.selectAll("path").attr("opacity", 0.2);
+
+        })
+
     })
 
 
@@ -406,7 +452,7 @@
 
         var tempEl = d3.selectAll("path").filter(function(la, po) {
             var uslov = true;
-            
+
             if (la.children != undefined) return false;
 
             for (var i = 0, len = nizArgumenata.length; i < len; i++) {
@@ -414,7 +460,7 @@
                 if (la["postupak"] == undefined) return false;
 
                 if (nizArgumenata[i].name == "postupak")
-                    uslov &= (la["postupak"].toLowerCase().indexOf(nizArgumenata[i].value.replace("_", " ")) != -1 );
+                    uslov &= (la["postupak"].toLowerCase().indexOf(nizArgumenata[i].value.replace("_", " ")) != -1);
                 else if (nizArgumenata[i].name == "predmet")
                     uslov &= (la["predmet"].toLowerCase().indexOf(nizArgumenata[i].value) != -1);
                 else if (nizArgumenata[i].name == "ponuda_od")
@@ -422,28 +468,25 @@
                 else if (nizArgumenata[i].name == "ponuda_do")
                     uslov &= (+la["broj_ponuda"] <= +nizArgumenata[i].value);
                 else if (nizArgumenata[i].name == "iznos_od")
-                    uslov &= (+la["cena_pdv"] >= +nizArgumenata[i].value );
-                
+                    uslov &= (+la["cena_pdv"] >= +nizArgumenata[i].value);
+
                 else if (nizArgumenata[i].name == "iznos_do")
-                    uslov &= (+la["cena_pdv"] <= +nizArgumenata[i].value );
-                
-                else if(nizArgumenata[i].name == "narucilac"){
-                	uslov &= la["narucilac"].toLowerCase() == nizArgumenata[i].value.toLowerCase();
-                }
-                else if(nizArgumenata[i].name == "maticniBroj"){
-                	uslov &=  ( nizArgumenata[i].value.trim() .indexOf(la["maticni_broj"] ) !=-1 );
-                }
-                else if(nizArgumenata[i].name == "datum_od" && nizArgumenata[i].value.length > 0){
-                	uslov &=  moment( la["datum"].trim(),"DD.MM.YYYY." ).isAfter( moment(nizArgumenata[i].value,"DD.MM.YYYY."))  ;
-                }
-                else if(nizArgumenata[i].name == "datum_do" && nizArgumenata[i].value.length > 0 ){
-                	uslov &=  moment( la["datum"].trim(), "DD.MM.YYYY." ).isBefore( moment(nizArgumenata[i].value,"DD.MM.YYYY."))  ;
+                    uslov &= (+la["cena_pdv"] <= +nizArgumenata[i].value);
+
+                else if (nizArgumenata[i].name == "narucilac") {
+                    uslov &= la["narucilac"].toLowerCase() == nizArgumenata[i].value.toLowerCase();
+                } else if (nizArgumenata[i].name == "maticniBroj") {
+                    uslov &= (nizArgumenata[i].value.trim().indexOf(la["maticni_broj"]) != -1);
+                } else if (nizArgumenata[i].name == "datum_od" && nizArgumenata[i].value.length > 0) {
+                    uslov &= moment(la["datum"].trim(), "DD.MM.YYYY.").isAfter(moment(nizArgumenata[i].value, "DD.MM.YYYY."));
+                } else if (nizArgumenata[i].name == "datum_do" && nizArgumenata[i].value.length > 0) {
+                    uslov &= moment(la["datum"].trim(), "DD.MM.YYYY.").isBefore(moment(nizArgumenata[i].value, "DD.MM.YYYY."));
                 }
 
                 //postupak predmet, ponuda , cena 
             }
 
-            return uslov ;
+            return uslov;
         })
 
         return tempEl
@@ -454,34 +497,40 @@
 
         var parametri = $("form").serializeArray();
         var res = filterPretraga(parametri)
-        
+
 
         /*========================================
         =            Rezultati pretrage - kuda dalje?            =
         ========================================*/
-        	//selektuj sve koji nisu u ovoj grupi
-        	var tempProvera = res.data()
+        //selektuj sve koji nisu u ovoj grupi
+        var tempProvera = res.data()
 
-        	d3.selectAll('path').filter(function(d,i) {
-		      return (tempProvera.indexOf(d) == -1);
-		    }).transition().style('opacity','0.3');
-		    	
-		    d3.select(res).attr('opacity','1.0');
-        	//res.style("fill", "red");
-        
-        
+        d3.selectAll('path').filter(function(d, i) {
+            return (tempProvera.indexOf(d) == -1);
+        }).transition().style('opacity', '0.3');
+
+        res.attr('opacity', '1.0');
+        //res.style("fill", "red");
+
+
         /*=====  End of Rezultati pretrage - kuda dalje?  ======*/
-        
-       
+
+
 
         if (res.data().length == 0)
             alert("Nema podataka za zadate kriterijume");
         else
-            secondGraph(res.data())
+            prikaziDetalje(res.data())
+            //secondGraph(res.data())
             //napraviti poseban graf ovde
     })
 
 
+
+    function prikaziDetalje(arg) {
+        alert("stigao ovde");
+        console.log(arg)
+    }
 
 
     function createVisualization(json) {
@@ -494,7 +543,7 @@
             .attr("r", radius)
             .style("opacity", 0);
 
-       /* var tooltip = d3.select('#chart')                               
+        /* var tooltip = d3.select('#chart')                               
           .append('div')                                                
           .attr('class', 'MyTooltip');                                    
                       
@@ -521,38 +570,38 @@
             })
             .style("opacity", 1)
             .each(stash);
-                        
 
-         vis.selectAll("path").on("mouseout",function (d, j) {
-            	 //tooltip.style('display', 'none');  
+
+        vis.selectAll("path").on("mouseout", function(d, j) {
+                //tooltip.style('display', 'none');  
             })
-         	.on("mouseover", function(d, j) {
+            .on("mouseover", function(d, j) {
                 //if(d.depth!=0 && d.depth == 2 && d.children ==undefined)
-               // mouseover(d, j);
+                // mouseover(d, j);
 
-               // labelMouse(d, j);
+                // labelMouse(d, j);
 
 
-         /*   tooltip.select('.label').html("d.data.label");                
-            tooltip.select('.count').html("d.data.count");                
-            tooltip.select('.percent').html("54" + '%'); 
-             tooltip.style('display', 'block');  */
-
-            })
-            .on('mousemove', function(d) {         
-            	// tooltip.style('top', (d3.event.offsetY -50 ) + 'px')          
-             //  .style('left', (d3.event.offsetX -50 ) + 'px');       
-          	})
-
-            //.on("mouseleave", mouseleaveCell)
-            .on("click", function (d,j) {
-            	/*dodajTT(d,j, d3.mouse(this));
-            	staviSadrzajTT(d, j , d3.mouse(this))*/
+                /*   tooltip.select('.label').html("d.data.label");                
+                   tooltip.select('.count').html("d.data.count");                
+                   tooltip.select('.percent').html("54" + '%'); 
+                    tooltip.style('display', 'block');  */
 
             })
+            .on('mousemove', function(d) {
+                // tooltip.style('top', (d3.event.offsetY -50 ) + 'px')          
+                //  .style('left', (d3.event.offsetX -50 ) + 'px');       
+            })
+
+        //.on("mouseleave", mouseleaveCell)
+        .on("click", function(d, j) {
+            /*dodajTT(d,j, d3.mouse(this));
+            staviSadrzajTT(d, j , d3.mouse(this))*/
+
+        })
 
         //inicijalna vrednost  - ukupna vrednost polja      
-        labelMouse(d3.selectAll("path").data()[0])  
+        labelMouse(d3.selectAll("path").data()[0])
 
         // Basic setup of page elements.
         initializeBreadcrumbTrail();
@@ -580,9 +629,9 @@
             .duration(300)
             .style("opacity", 1)
             .each("end", function() {
-                d3.select(this).on("mouseover", function function_name (d,j) {
-                	mouseover(d,j);
-                	labelMouse(d, j);
+                d3.select(this).on("mouseover", function function_name(d, j) {
+                    mouseover(d, j);
+                    labelMouse(d, j);
                 });
             });
 
@@ -594,13 +643,13 @@
 
     function labelMouse(d, j) {
 
-    	var poruka = "" ;
-    	if(d.depth < 2) poruka = "<h2>" + d.name + "</h2>";
-    	//hack
-    	if(d.value< 1000) jedinica = "stavki";
-    	else jedinica = "dinara";
+        var poruka = "";
+        if (d.depth < 2) poruka = "<h2>" + d.name + "</h2>";
+        //hack
+        if (d.value < 1000) jedinica = "stavki";
+        else jedinica = "dinara";
 
-    	poruka = poruka + " <br/> <br/> UKUPNO <h3>"+ d.value + "</h3> " + jedinica;
+        poruka = poruka + " <br/> <br/> UKUPNO <h3>" + d.value + "</h3> " + jedinica;
         d3.select('#labelCenter p').html(poruka);
     }
 
@@ -634,9 +683,9 @@
             .duration(300)
             .style("opacity", 1)
             .each("end", function() {
-                d3.select(this).on("mouseover", function function_name (d,j) {
-                	mouseover(d,j);
-                	labelMouse(d, j);
+                d3.select(this).on("mouseover", function function_name(d, j) {
+                    mouseover(d, j);
+                    labelMouse(d, j);
                 });
             });
 
