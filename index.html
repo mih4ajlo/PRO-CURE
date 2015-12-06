@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>ProCure</title>
+
+    <link rel="shortcut icon" type="image/ico" href="./public/img/favicon16.ico"/>
+    <link rel="shortcut icon" type="image/ico" href="./public/img/favicon32.ico"/>
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,800&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" type="text/css"/> -->
@@ -190,7 +194,7 @@
                         <div class="legendItem" name="Radovi" id="radovi"></div>Radovi
                     </div>
                 </div>
-                <div id="chart2" class="col-md-4">
+                <div id="chart2" class="col-md-4 hidden">
                 	<div class="krajnji-border gray-background invert">Detalji o nabavci</div>
                     <div class="krajnji-border">
                     	<span>Naručilac:</span>
@@ -528,8 +532,15 @@
 
 
     function prikaziDetalje(arg) {
-        alert("stigao ovde");
-        console.log(arg)
+
+    	$("#chart2").removeClass("hidden");
+
+        var params = Object.keys(arg)
+        params.forEach(function (po) {
+        	$("span#"+po).html(arg[po]);
+        })
+        console.log(params)
+       // label#id
     }
 
 
@@ -595,6 +606,7 @@
 
         //.on("mouseleave", mouseleaveCell)
         .on("click", function(d, j) {
+            	prikaziDetalje(d);
             /*dodajTT(d,j, d3.mouse(this));
             staviSadrzajTT(d, j , d3.mouse(this))*/
 
