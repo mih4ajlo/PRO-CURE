@@ -436,9 +436,15 @@
         /*========================================
         =            Rezultati pretrage - kuda dalje?            =
         ========================================*/
-        
+        	//selektuj sve koji nisu u ovoj grupi
+        	var tempProvera = res.data()
 
-        	 res.style("fill", "red");
+        	d3.selectAll('path').filter(function(d,i) {
+		      return (tempProvera.indexOf(d) == -1);
+		    }).transition().style('opacity','0.3');
+		    	
+		    d3.select(res).attr('opacity','1.0');
+        	//res.style("fill", "red");
         
         
         /*=====  End of Rezultati pretrage - kuda dalje?  ======*/
