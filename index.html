@@ -34,34 +34,54 @@
     })
 
     $(function() {
-	    $( "#slider" ).slider({
+	    var sl = $( "#slider" ).slider({
 	      range: true,
-	      min: 10 * 1000,
-	      max: 1000*1000*1000,
-	      values: [ 7500, 100000 ],
+	      min: 5*1000*1000,
+	      max: 5*1000*1000*1000,
+	      //values: [  50, 100 ],
 	      slide: function( event, ui ) {
 	      	$("#iznos_od").val( ui.values[ 0 ])
 	      	$("#iznos_do").val( ui.values[ 1 ])
 	        
 	      }
 	    });
+
+	    sl.slider( "option", "values", [ 100000000, 2500000000 ] );
+
+
 	    $("#iznos_od").val($( "#slider" ).slider( "values", 0 ))
 	      	$("#iznos_do").val( $( "#slider" ).slider( "values", 1 ))
-	        
-	    /*$( "#amount_label" ).html( 
-	    	 $( "#slider" ).slider( "values", 0 ) + " - " 
-	    	 + $( "#slider" ).slider( "values", 1 ) + " din"
-    	 );*/
+
+
   });
+
+    $(function () {
+    	  	 $( "#sliderPonuda" ).slider({
+	      range: true,
+	      min: 0,
+	      max: 10,
+	      values: [ 2, 6 ],
+	      slide: function( event, ui ) {
+	      	$( "#amount_label" ).html( 
+	    	  ui.values[ 0 ] + " - "   	 +  ui.values[ 1 ]    	 );
+	      	
+	      }
+	    });
+	        
+	    $( "#amount_label" ).html( 
+	    	 $( "#sliderPonuda" ).slider( "values", 0 ) + " - " 
+	    	 + $( "#sliderPonuda" ).slider( "values", 1 ) 
+    	 );
+    })
     </script>
 </head>
 
 <body>
 	<header class="container-fluid no-gutter">
 		<div class="base row">
-			<div class="logo col-md-1 col-md-offset-2 col-xs-offset-none col-xs-3"></div>
+			<div class="logo col-md-2 col-md-offset-2 col-xs-offset-none col-xs-3"></div>
 			<div class="col-md-4 col-xs-6">
-				<h3 >Javne nabavke Ministartstva</h3>
+				<h3 >Javne nabavke Ministarstava</h3>
 				<h4 >Unutrašnjih poslova i Odbrane</h4>
 			</div>
 			<div class="col-md-3">
@@ -73,75 +93,103 @@
 
 	<input type="radio" name="izbor" id="" value="iznos">Iznosi
     <input type="radio" name="izbor" id="" value="broj">Brojčano
+
+
+
     <div class="container-fluid">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <form>
                 <!-- Left -->
+                
                 <div id="selektori" class="">
-                    <select name="narucilac" id="narucilac">
-                        <option value="" selected disabled>Naručilac</option>
-                        <option value="mo">Ministarstvo odbrane</option>
-                        <option value="mup">Mup</option>
-                    </select>
-                    <select name="predmet" id="vrstepredmeta">
-                        <option value="" selected disabled>Vrste predmeta</option>
-                        <option value="dobra">Dobra</option>
-                        <option value="usluge">Usluge</option>
-                        <option value="usluge">Radovi</option>
-                    </select>
-                    <select name="maticniBroj" id="maticniBroj">
-                        <option value="" selected disabled>Matični broj</option>
-                        <option value="07093608">07093608</option>
-                        <option value="07008104">07008104</option>
-                    </select>
-                    <select name="postupak" id="postupak">
-                        <option value="" selected disabled>Tip postupka</option>
-                        <option value="otvoreni">Otvoreni postupak</option>
-                        <option value="restriktivni">Restriktivni postupak</option>
-                        <option value="sa_objavljivanjem">Bez objavljivanja</option>
-                        <option value="bez_objavljivanja">Sa objavljivanjem</option>
-                        <option value="kvalifikacioni">Konkurs za dizajn</option>
-                        <option value="kvalifikacioni">Postupak javne nabavke male vrednosti</option>
-                        <option value="kvalifikacioni">Kvalifikacioni postupak</option>
-                        <option value="kvalifikacioni">Konkurentni dijalog</option>
-                    </select>
-                    <select name="predmet" id="predmet">
-                        <option value="" selected disabled>Predmet</option>
-                        <option value="dobra">Dobra</option>
-                        <option value="usluge">Usluge</option>
-                        <option value="radovi">Radovi</option>
-                    </select>
-                    <select name="ponuda" id="ponuda" multiple="ponuda">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                    </select>
+                	<div class="krajnji-border gray-background">Detaljna pretraga</div>
+                	<div class="krajnji-border">
+                		<input type="checkbox" name="narucilac[]" value="mup"><span>Mup</span>
+	                    <br>
+	                    <input type="checkbox" name="narucilac[]" value="mo"><span>Ministarstvo odbrane</span>
+                    </div>
+                	
+					<div class="srednji-border">
+						<input type="checkbox" name="predmet[]" value="dobra"><span>Dobra</span>
+						<br>
+						<input type="checkbox" name="predmet[]" value="usluge"><span>Usluge</span>
+						<br>
+						<input type="checkbox" name="predmet[]" value="usluge"><span>Radovi</span>
+					</div>
+					
+                   
+                   <div class="srednji-border">
+                   	 <select name="maticniBroj" id="maticniBroj">
+                   	    <option value="" selected disabled>Matični broj</option>
+                   	    <option value="07093608">07093608</option>
+                   	    <option value="07008104">07008104</option>
+                   	</select>
+                   </div>
+                    
+
+                    <div class="srednji-border">
+                    	<select name="postupak" id="postupak">
+                    	    <option value="" selected disabled>Tip postupka</option>
+                    	    <option value="otvoreni">Otvoreni postupak</option>
+                    	    <option value="restriktivni">Restriktivni postupak</option>
+                    	    <option value="sa_objavljivanjem">Bez objavljivanja</option>
+                    	    <option value="bez_objavljivanja">Sa objavljivanjem</option>
+                    	    <option value="kvalifikacioni">Konkurs za dizajn</option>
+                    	    <option value="kvalifikacioni">Postupak javne nabavke male vrednosti</option>
+                    	    <option value="kvalifikacioni">Kvalifikacioni postupak</option>
+                    	    <option value="kvalifikacioni">Konkurentni dijalog</option>
+                    	</select>
+                    </div>
+                    <div class="srednji-border">
+                    	<select name="predmet" id="predmet">
+                    	    <option value="" selected disabled>Predmet</option>
+                    	    <option value="dobra">Dobra</option>
+                    	    <option value="usluge">Usluge</option>
+                    	    <option value="radovi">Radovi</option>
+                    	</select>
+                    </div>
                     
                     
-                    <div> Ugovorena cena:
-                    	
+                    
+                    <div class="srednji-border"> 
+                    <span>Ugovorena cena:</span>
+                    <br>
+                    	<span>
+                        	<input type="text" lang="en" name="iznos_od" id="iznos_od" class="input-sm col-md-5"></span>
+						<span>
+							<input type="text" lang="en" name="iznos_do" id="iznos_do" class="input-sm col-md-5 col-md-offset-1"></span>	
+							<br>
+							<br>
+							
                         <div name="cena_pdv" id="slider"></div>
                         <br>
-                        <input type="number" lang="en" name="iznos_od" id="iznos_od" class="input-sm col-md-5">
-                        <input type="number" lang="en" name="iznos_do" id="iznos_do" class="input-sm col-md-5 col-md-offset-1">
+                        
                     </div>
-                    <div>
-                    	<span class="col-md-8">Vremenski raspon:</span>
-                        <input type="text" name="datum_od" id="datum_od" class="input-sm col-md-5">
-                        <input type="text" name="datum_do" id="datum_do" class="input-sm col-md-5 col-md-offset-1">
+                    <div class="srednji-border">
+                    	
+                        <input type="text" name="datum_od" id="datum_od" placeholder="datum od" class="input-sm col-md-5">
+                        <input type="text" name="datum_do" id="datum_do" placeholder="datum do" class="input-sm col-md-5 col-md-offset-1">
+                        <br>
+                        <br>
                     </div>
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="button">Search</button>
+					
+
+                    <div class="krajnji-border">
+
+                    	<span>Broj ponuda:</span>
+                    	
+						<span id="amount_label"></span>
+                    	<div name="ponuda" id="sliderPonuda"></div>
+
+                    </div>
+                    <div class="margin-20px krajnji-border invert button-search">
+                        Pretraži    >
                     </div>
                     <!-- Right -->
                 </div>
             </form>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="tip"></div>
             <div id="sequence"></div>
             <div id="wrap" class="row">

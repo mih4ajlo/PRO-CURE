@@ -100,9 +100,87 @@ body {
 
 }
 
+
+.krajnji-border{
+    border:1px solid #0D3B6C;
+}
+.srednji-border{
+    border-left: 1px solid #0D3B6C;
+    border-right: 1px solid #0D3B6C;
+    border-bottom: 1px solid #0D3B6C;
+}
+
+#selektori div:not([class^="ui-slider"]){
+    color: #0D3B6C;
+    padding: 10px ;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    background: #0D3B6C url("./img/price-slider.png");
+    border: 1px solid #0D3B6C;
+    border-radius: 25px;
+
+    color: #0D3B6C;
+}
+
+.ui-widget-header{
+    color: #0D3B6C;
+    background: #0D3B6C;   
+}
+.ui-widget-content,.ui-widget-header{
+    height: 0.5em !important;
+}
+.gray-background{
+    background-color: #E7E7E7;
+}
+
+#selektori input,#selektori select{
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -o-appearance:none;
+    border:2px solid #0D3B6C;
+    /*outline: 2px solid #0D3B6C;*/
+}
+.ui-slider-range{
+    font-size: 0;
+}
+#selektori span:not([class^="ui-slider"]){
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+
+#selektori input[type='checkbox']:checked{
+      background:  url(../img/scheck-mark.png) left center no-repeat;
+}
+
+
+#selektori input[type='checkbox']{
+    width: 10px;
+    height: 10px;
+}
+#selektori select{
+    width: 92%;
+    /* background: #0D3B6C url(../img/dropdown-and-pretrazi-arrow.png) right center no-repeat; */
+    
+}
+
 .no-gutter {
-    padding: 0;
-    margin: 0;
+    padding: 0 ;
+    margin: 0 ;
+}
+.margin-20px{
+    margin-top: 20px;
+}
+.invert{
+    color: white !important;
+    background-color: #0D3B6C !important; 
+}
+.button-search{
+    text-align: center;
+    text-transform: uppercase;
+
 }
 
 #chart2 {
@@ -129,6 +207,10 @@ body {
 .bar.negative {
     fill: brown;
 }
+
+
+
+
 
 .mytooltip {
     position: absolute;
