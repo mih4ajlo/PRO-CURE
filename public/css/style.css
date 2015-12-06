@@ -65,7 +65,7 @@
 /*mono*/
 
 body {
-    font-family: Akkurat;
+    font-family: Akkurat, OpenSans,sans-serif;
 }
 
 .base {
