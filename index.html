@@ -24,6 +24,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.min.js"></script>	
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://cdn.rawgit.com/susielu/d3-legend/master/d3-legend.min.js"></script>
     <!-- <script type="text/javascript" src="https://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js"></script> -->
 
     <script>
@@ -199,7 +200,15 @@
     			<input type="radio" name="izbor" value="broj">Brojčano
             </div>
             <div id="wrap" class="row">
-                <div id="chart" class="col-md-8"></div>
+                <div id="chart" class="col-md-8">
+                	<div class="legend">
+                		<div class="legendItem" name="Dobra" id="dobra"></div>Dobra
+                		<div class="legendItem" name="Usluge" id="usluge"></div>Usluge
+                		<div class="legendItem" name="Radovi" id="radovi"></div>Radovi
+
+
+                	</div>
+                </div>
                 <div id="chart2" class="col-md-4"></div>
             </div>
         </div>
@@ -207,7 +216,7 @@
     <script>
     //http://bl.ocks.org/mbostock/4063423
 
-    var tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.name ; });
+    //var tip = d3.tip().attr('class', 'd3-tip').html(function(d) { return d.name ; });
 
 	
 
@@ -369,8 +378,22 @@
 
         var json = transformData(data);
 
+
+
         createVisualization(json);
+     	
      
+		d3.selectAll(".legendItem").on("click",function  (argument) {
+			 var kategorija = d3.select(this).attr("name") 
+
+			var skup = d3.selectAll("path").filter(function (po) {
+			 	return po.name != kategorija;
+			 });
+			 
+			 skup.selectAll("path").attr("opacity",0.2);
+
+		})
+		
     })
 
 
